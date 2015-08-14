@@ -1,0 +1,11 @@
+{
+  "name": "boxmate",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "ember": "*",
+    "grunt": "~0.4.0",
+    "grunt-ember-templates": "0.5.0",
+    "mongoose": "^4.1.2"
+  }
+}

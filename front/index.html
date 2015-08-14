@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="front/style.css">
+</head>
+<body>
+    <script type="text/x-handlebars">
+        <br/> {{#link-to 'groups'}}Groups{{/link-to}}
+        <br/> {{#link-to 'upload'}}Upload{{/link-to}}
+        <div class="outlet-container">
+            {{outlet}}
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="projects">
+        something
+        {{#each model}}
+              {{name}}
+        {{/each}}
+    </script>
+
+    <!--<script type="text/x-handlebars" data-template-name="upload">-->
+        <!--{{upload-field}}-->
+    <!--</script>-->
+
+    <script type="text/x-handlebars" data-template-name="groups">
+        <h1>Groups</h1>
+        {{#each model}}
+        <div class="group">
+            <h2>{{name}}</h2>
+            <p>{{description}}</p>
+        </div>
+        {{/each}}
+
+        <section class="create">
+            {{#link-to 'projects' this}}{{input class="name" placeholder="name" action='createGroup' value=newName }}{{/link-to}}
+            <button {{action 'createGroup'}}>Add</button>
+        </section>
+
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="index">
+        Welcome
+
+    </script>
+
+
+    <!--<script type="text/x-handlebars" data-template-name="test">-->
+        <!--<div class="image-container">-->
+            <!--<img class="image" {{bind-attr src="imageUrl"}}>-->
+        <!--</div>-->
+    <!--</script>-->
+
+
+    <script type="text/x-handlebars" data-template-name="upload">
+        {{#view 'fileDrop'}}
+            <form>
+                <div class="drop-zone">
+                    Для загрузки, перетащите файл сюда.
+                </div>
+            </form>
+        {{/view}}
+    </script>
+
+    <script src="front/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="front/bower_components/ember/ember.debug.js"></script>
+    <script>
+        Ember.deprecate = function(){};
+        Ember.warn = function(i){};
+    </script>
+    <script src="front/bower_components/ember/ember-template-compiler.js"></script>
+    <script src="front/bower_components/ember-data/ember-data.js"></script>
+    <!--<script src="front/controllers/UploadController.js"></script>-->
+    <!--<!--<script src="front/script.js"></script>-->
+    <script src="front/app.js"></script>
+
+    <script src="front/models/projectModel.js"></script>
+    <script src="front/models/groupModel.js"></script>
+    <script src="front/models/moqupModel.js"></script>
+    <script src="front/models/fileModel.js"></script>
+
+    <script src="front/routes/groupsRoute.js"></script>
+    <script src="front/routes/projectsRoute.js"></script>
+
+    <script src="front/controllers/GroupsController.js"></script>
+    <script src="front/controllers/UploadController.js"></script>
+    <script src="front/controllers/ProjectsController.js"></script>
+
+    <script src="front/views/fileDropView.js"></script>
+
+    <!--<script src="front/components/upload-field.js"></script>-->
+</body>
+
+</html>
