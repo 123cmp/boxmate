@@ -1,0 +1,1 @@
+window.bm = {}; // new scope
