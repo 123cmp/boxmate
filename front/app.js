@@ -1,38 +1,34 @@
-App = Ember.Application.create({
-    LOG_TRANSITIONS: false
-});
-App.ApplicationAdapter = DS.FixtureAdapter;
+bm.Views = {
+    stateView: new bm.StateView({ model: bm.StateModel })
+};
+bm.stateModel.trigger("change");
 
-App.Router.map(function() {
-    this.resource('groups' );
-    this.resource('projects', {path: "groups/:group_id"});
-    this.route('upload');
-});
+bm.Router = Backbone.Router.extend({
+    routes: {
+        "": "home",
+        "!/": "home",
+        "!/home": "home",
+        "!/upload": "upload",
+        "!/projects": "projects"
+    },
 
+    home: function () {
+        bm.stateModel.set({ state: "home" });
+        bm.stateModel.trigger("change");
+    },
 
-//    = DS.Store.extend({
-//    adapter: DS.FixtureAdapter
-//});
+    upload: function () {
+        bm.stateModel.set({ state: "upload" });
+        bm.stateModel.trigger("change");
+    },
 
-
-/*App.IndexRoute = Ember.Route.extend({
-    setupController: function(controller) {
-        controller.set('title', 'Boxmate');
+    projects: function () {
+        bm.stateModel.set({ state: "projects" });
+        bm.stateModel.trigger("change");
     }
 });
 
-App.UploadRoute = Ember.Route.extend({
-    //setupController: UploadController
-});
+bm.router = new bm.Router();
+Backbone.history.start();
 
-App.ProjectsRoute = Ember.Route.extend({
-    setupController: function(controller) {
-        controller.set('title', 'Boxmate/projects');
-    }
-});
-App.TestRoute = Ember.Route.extend({
-    setupController: function(controller) {
-        controller.set('title', 'Boxmate/test');
-    }
-}); */
 
