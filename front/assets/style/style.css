@@ -1,52 +1,15 @@
-.drop-zone {
-    color: #555;
-    font-size: 18px;
-    text-align: center;
-
-    width: 400px;
-    padding: 50px 0;
-    margin: 50px auto;
-
-    background: #eee;
-    border: 1px solid #ccc;
-
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+header {
+@include grid-row;
+    .logo  { @include grid-column($columns:3, $center:true); }
+    padding-bottom: em-calc(10px);
+    background-image: url('../img/header.jpg');
+    background-size: cover;
+    h1 {
+        color: white;
+        font-weight: 300;
+    }
+    h4 {
+        color: #cccccc;
+        font-weight: 300;
+    }
 }
-
-.drop-zone.hover {
-    background: #ddd;
-    border-color: #aaa;
-}
-
-.drop-zone.error {
-    background: #faa;
-    border-color: #f00;
-}
-
-.drop-zone.drop {
-    background: #afa;
-    border-color: #0f0;
-}
-
-.outlet-container {
-    text-align: center;
-    position: relative;
-}
-
-.group {
-    display: table;
-    width: 400px;
-    height: 120px;
-    position: relative;
-    margin: 15px auto;
-    box-shadow: 0 0 3px 0;
-    cursor: pointer;
-}
-
-.group:hover {
-    box-shadow: 0 0 10px 0;
-}
-
-
