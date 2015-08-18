@@ -1,7 +1,10 @@
+bm.loader = new bm.TemplateLoader(bm.TemplateStore);
 bm.Views = {
     stateView: new bm.StateView({ model: bm.StateModel })
 };
 bm.stateModel.trigger("change");
+
+var auth = false;
 
 bm.Router = Backbone.Router.extend({
     routes: {
@@ -9,7 +12,10 @@ bm.Router = Backbone.Router.extend({
         "!/": "home",
         "!/home": "home",
         "!/upload": "upload",
-        "!/projects": "projects"
+        "!/projects": "projects",
+        "!/registration": "registration",
+        "!/authorization": "authorization"
+
     },
 
     home: function () {

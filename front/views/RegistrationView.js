@@ -1,3 +1,11 @@
-/**
- * Created by user on 8/18/15.
- */
+bm.RegistrationView = Backbone.View.extend({
+    el: "#projects",
+
+    template: _.template("<div>PROJECTS</div>"),
+
+    render: function () {
+        $(this.el).html(this.template());
+    }
+});
+
+

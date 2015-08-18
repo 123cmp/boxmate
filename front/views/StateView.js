@@ -1,10 +1,12 @@
 bm.StateView = Backbone.View.extend({
     el: $("#view"),
-
-    templates:  {
-        "home": _.template("<ul class='large-block-grid-3'><li></li><li class='text-center'><h1 id='hello'></h1></li><li></li></ul>"),
-        "upload": _.template("<div id='upload-field'></div>"),
-        "projects": _.template("<div id='projects'></div>")
+    auth: false,
+    templates: {
+        "home": "HomeTemplate.html", //_.template("<ul class='large-block-grid-3'><li></li><li class='text-center'><h1 id='hello'></h1></li><li></li></ul>"),
+        "registration": "RegistrationTemplate.html",
+        "authorization": "AuthorizationTemplate.html",
+        "upload": "UploadTemplate.html", //_.template("<div id='upload-field'></div>"),
+        "projects": "ProjectsTemplate.html" //_.template("<div id='projects'></div>")
     },
 
     views: {
@@ -15,22 +17,48 @@ bm.StateView = Backbone.View.extend({
 
     initialize: function () {
         var __self = this;
+        var state = null;
         bm.stateModel.bind("change:state", function () {
-            __self.render();
+            state = bm.stateModel.get("state");
+            __self.checkAuth(state);
+            __self.render(state);
+        });
+        $.when(bm.loader.done()).then(function () {
+            state = bm.stateModel.get("state");
+            __self.checkAuth(state);
+            __self.render(state);
         });
         __self.render();
     },
 
+    checkAuth: function(state) {
+        var __self = this;
+        if (!__self.auth && state != "registration") {
+            bm.stateModel.set({state: "authorization"});
+            Backbone.history.navigate('#!/authorization', true);
+            bm.stateModel.trigger("change");
+
+        }
+
+
+    },
+
     events: {},
 
-    render: function () {
-        var state = bm.stateModel.get("state");
-        $(this.el).html(this.templates[state](bm.stateModel.toJSON()));
-        $.each(this.views[state], function(i, v) {
-            console.log(bm, bm[v]);
-            if(!bm[v]) console.error("Ошибка при инжекте вьюхи (проверь index.html)");
-            else new bm[v]().render();
-        });
+    render: function (state) {
+        var template = bm.TemplateStore.get(this.templates[state]);
+        if (template) {
+            template = _.template(template);
+            $(this.el).html(template(bm.stateModel.toJSON()));
+        } else {
+            $(this.el).html("");
+        }
+        if (this.views[state]) {
+            $.each(this.views[state], function (i, v) {
+                if (!bm[v]) console.error("Ошибка при инжекте вьюхи (проверь index.html)");
+                else new bm[v]().render();
+            });
+        }
         return this;
     }
 });

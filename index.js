@@ -2,6 +2,8 @@ var express = require("express");
 var mongoose = require("mongoose");
 mongoose.connect('mongodb://admin:admin@localhost:27017/boxmate');
 var app=express();
+var glob = require("glob");
+
 
 var FileSchema = new mongoose.Schema({
     fieldname: String,
@@ -46,6 +48,13 @@ app.listen(9000,function(){
 
 app.get(/^\/front\/.+$/, function(req, res) {
     res.sendfile(req.url.replace("/", ""));
+});
+
+app.get('/templates', function(req, res) {
+    glob("front/templates/*", {}, function (er, files) {
+        res.send(files);
+    });
+
 });
 
 app.post('/upload',function(req,res){
