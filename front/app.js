@@ -31,6 +31,16 @@ bm.Router = Backbone.Router.extend({
     projects: function () {
         bm.stateModel.set({ state: "projects" });
         bm.stateModel.trigger("change");
+    },
+
+    registration: function () {
+        bm.stateModel.set({ state: "registration" });
+        bm.stateModel.trigger("change");
+    },
+
+    authorization: function () {
+        bm.stateModel.set({ state: "authorization" });
+        bm.stateModel.trigger("change");
     }
 });
 
