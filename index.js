@@ -1,6 +1,6 @@
 var express = require("express");
 var mongoose = require("mongoose");
-mongoose.connect('mongodb://mate:qweasd@localhost:27017/boxmate');
+mongoose.connect('mongodb://admin:admin@localhost:27017/boxmate');
 var app=express();
 
 var FileSchema = new mongoose.Schema({
@@ -30,13 +30,11 @@ app.use(multer({ dest: './uploads/',
     },
     onFileUploadComplete: function (file) {
         console.log(file.fieldname + ' uploaded to  ' + file.path);
-        /*var mgFile = new File(file);
-        mgFile.save();*/
     },
     onFileUploadData: function (file, data, req, res) {
         res.write(JSON.stringify(file));
     }
-}));
+}).single("files"));
 
 app.get('/',function(req,res){
     res.sendfile("front/index.html");
