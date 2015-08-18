@@ -1,6 +1,7 @@
 bm.loader = new bm.TemplateLoader(bm.TemplateStore);
 bm.Views = {
-    stateView: new bm.StateView({ model: bm.StateModel })
+    stateView: new bm.StateView({ model: bm.StateModel }),
+    menuView: new bm.MenuView()
 };
 bm.stateModel.trigger("change");
 

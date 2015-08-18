@@ -8,14 +8,37 @@
     <link rel="stylesheet" href="/front/bower_components/foundation/css/foundation.css">
 </head>
 <body>
-    <div id="menu"> <!-- Блок меню -->
-        <ul>
-            <li><a href="#!/">Главная</a></li>
+<header class="top-bar">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="#">Boxmate</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section" id="menu">
+
+        <!--<ul class="right">-->
+            <!--<li class="active"><a href="#">Right Button Active</a></li>-->
+            <!--<li class="has-dropdown">-->
+                <!--<a href="#">Right Button Dropdown</a>-->
+                <!--<ul class="dropdown">-->
+                    <!--<li><a href="#">First link in dropdown</a></li>-->
+                    <!--<li class="active"><a href="#">Active link in dropdown</a></li>-->
+                <!--</ul>-->
+            <!--</li>-->
+        <!--</ul>-->
+
+        <ul class="left" >
             <li><a href="#!/upload">Загрузка</a></li>
             <li><a href="#!/projects">Проекты</a></li>
-            <li><a href="#!/registration">Registration</a></li>
+            <li><a href="#!/registration">Регистрация</a></li>
         </ul>
-    </div>
+    </section>
+
+</header>
+
+
 
     <div id="view"></div>
 
@@ -30,6 +53,7 @@
     <script src="/front/modules/TemplateCache/TemplateStore.js"></script>
     <script src="/front/views/StateView.js"></script>
     <script src="/front/views/HomeView.js"></script>
+    <script src="/front/views/MenuView.js"></script>
     <script src="/front/views/ProjectsView.js"></script>
     <script src="/front/views/UploadFieldView.js"></script>
     <script src="/front/app.js"></script>

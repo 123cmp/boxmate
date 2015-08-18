@@ -1,15 +1,13 @@
-header {
-@include grid-row;
-    .logo  { @include grid-column($columns:3, $center:true); }
-    padding-bottom: em-calc(10px);
-    background-image: url('../img/header.jpg');
-    background-size: cover;
-    h1 {
-        color: white;
-        font-weight: 300;
-    }
-    h4 {
-        color: #cccccc;
-        font-weight: 300;
-    }
-}
+/*header, footer {*/
+    /*float:left;*/
+    /*padding:15px 0;*/
+    /*width:100%;*/
+/*}*/
+/*header, footer {*/
+    /*width: 100%;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*margin-top: 0;*/
+    /*margin-bottom: 0;*/
+    /*max-width: 62.5rem;*/
+/*}*/

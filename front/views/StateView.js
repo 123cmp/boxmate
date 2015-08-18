@@ -1,6 +1,6 @@
 bm.StateView = Backbone.View.extend({
     el: $("#view"),
-    auth: false,
+    auth: true,
     templates: {
         "home": "HomeTemplate.html", //_.template("<ul class='large-block-grid-3'><li></li><li class='text-center'><h1 id='hello'></h1></li><li></li></ul>"),
         "registration": "RegistrationTemplate.html",
@@ -11,8 +11,8 @@ bm.StateView = Backbone.View.extend({
 
     views: {
         "home": ['HomeView'],
-        "upload": ['UploadFieldView'],
-        "projects": ['ProjectsView']
+        "upload": ['UploadFieldView']
+       // "projects": ['ProjectsView']
     },
 
     initialize: function () {
@@ -35,7 +35,7 @@ bm.StateView = Backbone.View.extend({
             bm.stateModel.set({state: "authorization"});
             Backbone.history.navigate('#!/authorization', true);
             bm.stateModel.trigger("change");
-            __self.render(state);
+            __self.render("authorization");
             return false;
         }
         return true;
