@@ -1,9 +1,8 @@
 var path = require('path');
 var appDir = path.dirname(require.main.filename);
 
-var sendfile = function (res, path) {
-    console.log("dirname", appDir);
-    res.sendFile(path.resolve(__dirname+'/../../front'+ path));
+var sendfile = function (res, file) {
+    res.sendFile(path.resolve(__dirname+'/../../front'+ file));
 };
 
 module.exports = function(app) {
