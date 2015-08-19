@@ -17,24 +17,24 @@ bm.StateView = Backbone.View.extend({
 
     initialize: function () {
         var __self = this;
-        var state = null;
-        bm.stateModel.bind("change:state", function () {
-            state = bm.stateModel.get("state");
-            if(__self.checkAuth(state)) __self.render(state);
+        var state = __self.model.get("state");
+        __self.model.bind("change:state", function () {
+            state = __self.model.get("state");
+            __self.changeState(state)
         });
-        $.when(bm.loader.done()).then(function () {
-            state = bm.stateModel.get("state");
-            if(__self.checkAuth(state)) __self.render(state);
-        });
-        __self.render();
+        __self.render(state);
+    },
+
+    changeState: function(state) {
+        if(this.checkAuth(state)) this.render(state);
     },
 
     checkAuth: function(state) {
         var __self = this;
         if (!__self.auth && state != "registration") {
-            bm.stateModel.set({state: "authorization"});
+            __self.model.set({state: "authorization"});
             Backbone.history.navigate('#!/authorization', true);
-            bm.stateModel.trigger("change");
+            __self.model.trigger("change");
             __self.render("authorization");
             return false;
         }
@@ -44,21 +44,27 @@ bm.StateView = Backbone.View.extend({
     events: {},
 
     render: function (state) {
-        console.log("state", state);
-        var template = bm.TemplateStore.get(this.templates[state]);
-        if (template) {
+        var __self = this;
+        if(!state) return;
+        var templatePromise = bm.TemplateStore.get(__self.templates[state]);
+        bm.spinnerModel.set({spin: true});
+        bm.spinnerModel.trigger("change");
+        console.log("spin: true");
+        $.when(templatePromise).then(function(template) {
             template = _.template(template);
-            $(this.el).html(template(bm.stateModel.toJSON()));
-        } else {
-            $(this.el).html("");
-        }
-        if (this.views[state]) {
-            $.each(this.views[state], function (i, v) {
-                if (!bm[v]) console.error("Ошибка при инжекте вьюхи (проверь index.html)");
-                else new bm[v]().render();
-            });
-        }
-        return this;
+            $(__self.el).html(template(__self.model.toJSON()));
+            bm.spinnerModel.set({spin: false});
+            bm.spinnerModel.trigger("change");
+            console.log("spin: false");
+            if (__self.views[state]) {
+                $.each(__self.views[state], function (i, v) {
+                    if (!bm[v]) console.error("Ошибка при инжекте вьюхи (проверь index.html)");
+                    else new bm[v]().render();
+                });
+            }
+        });
+
+        return __self;
     }
 });
 

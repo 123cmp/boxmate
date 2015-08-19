@@ -1,11 +1,12 @@
 bm.loader = new bm.TemplateLoader(bm.TemplateStore);
+
+bm.stateModel = new bm.StateModel();
 bm.Views = {
-    stateView: new bm.StateView({ model: bm.StateModel }),
-    menuView: new bm.MenuView()
+    stateView: new bm.StateView({ model: bm.stateModel }),
+    menuView: new bm.MenuView({ model: bm.stateModel }),
+    spinnerView: new bm.SpinnerView({ model: bm.spinnerModel })
 };
 bm.stateModel.trigger("change");
-
-var auth = false;
 
 bm.Router = Backbone.Router.extend({
     routes: {

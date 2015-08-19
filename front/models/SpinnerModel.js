@@ -1,3 +1,8 @@
-/**
- * Created by user on 8/19/15.
- */
+bm.SpinnerModel = Backbone.Model.extend({
+    defaults: {
+        spin: false
+    }
+});
+
+bm.spinnerModel = new bm.SpinnerModel();
+

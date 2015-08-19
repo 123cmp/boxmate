@@ -1,10 +1,9 @@
-bm.ProjectModel = Backbone.Model.extend({
+bm.ImageModel = Backbone.Model.extend({
     defaults: {
         id: 0,
         name: "",
-        options: null, //object
-        users: null, //array of UserModel
-        images: null, //array of ImageModel
+        path: "",
+        project: null, //ref to UserModel
         tasks: null, //array of TaskModel
         owner: null //ref to UserModel
     }

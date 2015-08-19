@@ -8,7 +8,12 @@ bm.TemplateStore = {
         delete this.__templates[key];
     },
     get: function (key) {
-        return this.__templates[key];
+        if(this.__templates[key])  {
+            return this.__templates[key];
+        } else {
+            var promise = bm.loader.loadTemplate(key);
+            return promise;
+        }
     }
 };
 

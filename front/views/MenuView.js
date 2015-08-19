@@ -4,11 +4,7 @@ bm.MenuView = Backbone.View.extend({
     initialize: function () {
         var __self = this;
         var state = null;
-        bm.stateModel.bind("change:state", function () {
-            state = bm.stateModel.get("state");
-            __self.render(state);
-        });
-        $.when(bm.loader.done()).then(function () {
+        __self.model.bind("change:state", function () {
             state = bm.stateModel.get("state");
             __self.render(state);
         });

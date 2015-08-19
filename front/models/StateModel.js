@@ -4,5 +4,5 @@ bm.StateModel = Backbone.Model.extend({
     }
 });
 
-bm.stateModel = new bm.StateModel();
+
 
