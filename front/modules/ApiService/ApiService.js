@@ -1,57 +1,58 @@
 bm.ServiceApi = {
     getTemplates: function() {
-        return $.get("/templates/")
+        return $.get("api/templates/")
     },
     getTemplate: function(name) {
-        return $.get("/templates/"+name)
+        return $.get("api/templates/"+name)
     },
     getUsers: function() {
-        return $.get("/users/");
+        return $.get("api/users/");
     },
     getUser: function(id) {
-        return $.get("/users/"+id);
+        return $.get("api/users/"+id);
     },
     addUser: function(user) {
-        return $.put("/users/", user);
+        return $.put("api/users/", user);
     },
     removeUser: function(id) {
-        return $.delete("/users/id");
+        return $.delete("api/users/id");
     },
     getUserProjects: function(userId) {
-        return $.get("/users/"+userId+"/projects/");
+        return $.get("api/users/"+userId+"/projects/");
     },
     getProject: function(id) {
-        return $.get("/projects/"+id);
+        return $.get("api/projects/"+id);
     },
     addProject: function(project) {
-        return $.put("/projects/", project);
+        return $.put("api/projects/", project);
     },
     removeProject: function(id) {
-        return $.delete("/projects/"+id);
+        return $.delete("api/projects/"+id);
     },
     getProjectImages: function(projectId) {
-        return $.get("/projects/"+projectId+"/images");
+        return $.get("api/projects/"+projectId+"/images");
     },
-    getImages: function(id) {
-        return $.get("/images/"+id);
+    getImage: function(id) {
+        return $.get("api/images/"+id);
     },
-    addImage: function(project) {
-        return $.put("/projects/", project);
+    addImage: function(image) {
+        return $.put("api/images/", image);
     },
     removeImage: function(id) {
-        return $.delete("/projects/"+id);
+        return $.delete("api/images/"+id);
     },
-
     getImageTasks: function(imageId) {
-        return $.get("/images/"+imageId+"/tasks");
+        return $.get("api/images/"+imageId+"/tasks");
     },
-    getTasks: function(id) {
-        return $.get("/tasks/"+id);
+    getTask: function(id) {
+        return $.get("api/tasks/"+id);
+    },
+    addTask: function(task) {
+        return $.put("api/tasks/", task);
+    },
+    removeTask: function(id) {
+        return $.delete("api/tasks/"+id);
     }
-
-
-
-
 };
 
 
