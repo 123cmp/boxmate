@@ -1,4 +1,4 @@
-bm.loader = new bm.TemplateLoader(bm.TemplateStore);
+
 
 bm.stateModel = new bm.StateModel();
 bm.Views = {

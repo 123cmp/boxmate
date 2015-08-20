@@ -1,3 +1,7 @@
-/**
- * Created by user on 8/20/15.
- */
+bm.AuthModel = Backbone.Model.extend({
+    defaults: {
+        email: "",
+        password: ""
+    }
+});
+

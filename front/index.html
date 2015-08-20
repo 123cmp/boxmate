@@ -46,17 +46,18 @@
         <div class="medium-2 large-2  right bm-social">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png">
             <img src="https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/Twitter_alt_3.png">
-            <img src="http://icons.iconarchive.com/icons/icons8/android/512/Social-Networks-Linkedin-icon.png">
+            <img src="http://www.acg.org/UserFiles/image/ACG_BC/Website/linkedin.png">
         </div>
 
 
     </div>
 </footer>
-    <div class="test"></div>
     <script src="/front/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/front/bower_components/underscore/underscore-min.js"></script>
     <script src="/front/bower_components/backbone/backbone-min.js"></script>
     <script src="/front/bower_components/foundation/js/foundation.min.js"></script>
+    <script src="/front/bower_components/backbone.syphon/lib/backbone.syphon.min.js"></script>
+
     <script src="/front/extensions.js"></script>
     <script src="/front/scope.js"></script>
 
@@ -70,10 +71,12 @@
     <script src="/front/models/ProjectModel.js"></script>
     <script src="/front/models/TaskModel.js"></script>
     <script src="/front/models/UserModel.js"></script>
+    <script src="/front/models/AuthModel.js"></script>
 
 
 
     <script src="/front/views/SpinnerView.js"></script>
+    <script src="/front/views/AuthFormView.js"></script>
     <script src="/front/views/StateView.js"></script>
     <script src="/front/views/HomeView.js"></script>
     <script src="/front/views/MenuView.js"></script>
@@ -81,6 +84,21 @@
     <script src="/front/views/UploadFieldView.js"></script>
 
     <script src="/front/app.js"></script>
+
+<script>
+//    $(window).bind("load", function () {
+//        var footer = $("footer.bm-footer");
+//        var pos = footer.position();
+//        var height = $(window).height();
+//        height = height - pos.top;
+//        height = height - footer.height();
+//        if (height > 0) {
+//            footer.css({
+//                'margin-top': height + 'px'
+//            });
+//        }
+//    });
+</script>
 </body>
 
 </html>

@@ -150,9 +150,19 @@
     margin-left: 15px;
 }
 
+footer.panel.bm-footer {
+    background-color: #333333;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    overflow: visible;
+}
+
 .bm-footer .bm-footer-content .bm-copyright{
     margin-top: 14px;
     margin-left: 20px;
+    color: white;
 }
 
 .bm-footer .bm-footer-content .bm-social {
@@ -163,6 +173,17 @@
     width: 50px;
     float: right;
     margin-right: 5px;
+}
+
+section.panel div.row.bm-auth-fields .columns{
+    float: none;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+section.panel div.row.bm-auth-fields .columns label{
+    float: left;
 }
 
 

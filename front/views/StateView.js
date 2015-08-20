@@ -1,6 +1,6 @@
 bm.StateView = Backbone.View.extend({
     el: $("#view"),
-    auth: true,
+    auth: false,
     templates: {
         "home": "HomeTemplate.html", //_.template("<ul class='large-block-grid-3'><li></li><li class='text-center'><h1 id='hello'></h1></li><li></li></ul>"),
         "registration": "RegistrationTemplate.html",
@@ -11,7 +11,8 @@ bm.StateView = Backbone.View.extend({
 
     views: {
         "home": ['HomeView'],
-        "upload": ['UploadFieldView']
+        "upload": ['UploadFieldView'],
+        "authorization": ["AuthFormView"]
        // "projects": ['ProjectsView']
     },
 
@@ -47,8 +48,7 @@ bm.StateView = Backbone.View.extend({
         var __self = this;
         if(!state) return;
         var templatePromise = bm.TemplateStore.get(__self.templates[state]);
-        bm.spinnerModel.set({spin: true});
-        bm.spinnerModel.trigger("change");
+
         console.log("spin: true");
         $.when(templatePromise).then(function(template) {
             template = _.template(template);

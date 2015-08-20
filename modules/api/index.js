@@ -1,5 +1,4 @@
 var path = require('path');
-var appDir = path.dirname(require.main.filename);
 
 var sendfile = function (res, file) {
     res.sendFile(path.resolve(__dirname+'/../../front'+ file));

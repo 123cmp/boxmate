@@ -1,10 +1,20 @@
 bm.RegistrationView = Backbone.View.extend({
-    el: "#projects",
+    el: "#registrationForm",
 
-    template: _.template("<div>PROJECTS</div>"),
+    events: {
+        "submit form": "formSubmitted"
+    },
+
+    formSubmitted: function(e){
+        e.preventDefault();
+        var data = Backbone.Syphon.serialize(this);
+        this.model.set(data);
+        this.model.save();
+        console.log(data);
+    },
 
     render: function () {
-        $(this.el).html(this.template());
+        //$(this.el).html(this.template());
     }
 });
 
