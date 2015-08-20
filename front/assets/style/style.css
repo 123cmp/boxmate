@@ -97,8 +97,11 @@
 }
 
 .panel.bm-footer .bm-footer-content{
-    padding-bottom: 56px;
-    padding-top: 8px;
+    /*padding-bottom: 56px;*/
+    /*padding-top: 8px;*/
+    overflow: hidden;
+    padding: 8px 0;
+    box-sizing: border-box;
 }
 
 .row.bm-row .columns.bm-project-box {
@@ -185,6 +188,7 @@ section.panel div.row.bm-auth-fields .columns{
 section.panel div.row.bm-auth-fields .columns label{
     float: left;
 }
+
 
 
 

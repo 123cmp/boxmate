@@ -34,7 +34,6 @@ bm.Router = Backbone.Router.extend({
         bm.stateModel.set({ state: "projects" });
         bm.stateModel.trigger("change");
     },
-
     registration: function () {
         bm.stateModel.set({ state: "registration" });
         bm.stateModel.trigger("change");
