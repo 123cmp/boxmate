@@ -188,7 +188,9 @@ section.panel div.row.bm-auth-fields .columns{
 section.panel div.row.bm-auth-fields .columns label{
     float: left;
 }
-
+.padding-0{
+    padding: 0 !important;
+}
 
 
 
