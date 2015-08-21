@@ -37,7 +37,7 @@
 
     <div id="view"></div>
 
-<footer class="panel bm-footer">
+<footer class="panel bm-footer" id="footer">
     <div class="bm-footer-content">
         <div class="medium-2 large-2  left bm-copyright">
             Copyright (c)
@@ -86,6 +86,7 @@
     <script src="/front/app.js"></script>
 
 <script>
+<<<<<<< HEAD
     $(document).foundation();
 
     /*!
@@ -160,6 +161,20 @@
             }
         }
     }
+=======
+    $(window).bind("load", function () {
+        var footer = $("#footer");
+        var pos = footer.position();
+        var height = $(window).height();
+        height = height - pos.top;
+        height = height - footer.height();
+        if (height > 0) {
+            footer.css({
+                'margin-top': height + 'px'
+            });
+        }
+    });
+>>>>>>> 60b9a1ee08581d536962b371e6de99cc9d6d4b05
 </script>
 </body>
 
