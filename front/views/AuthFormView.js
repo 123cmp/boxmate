@@ -12,8 +12,10 @@ bm.AuthFormView = Backbone.View.extend({
     formSubmitted: function(e){
         e.preventDefault();
         var data = Backbone.Syphon.serialize(this);
-        console.log(data);
         this.model.set(data);
+        if(this.model.get("password")) {
+
+        }
         //this.model.save();
 
     },
