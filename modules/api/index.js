@@ -1,5 +1,4 @@
 var path = require('path');
-var appDir = path.dirname(require.main.filename);
 var dataBase = require("../dataBase").UsersModel;
 var bodyParser = require('body-parser');
 var log = require("../myWinston")(module);
@@ -24,14 +23,15 @@ module.exports = function(app) {
    app.get("/api/users/:id", function(req, res) {
 
    });
-   app.put("/api/users/", bodyParser.json(), function(req, res) {
+   app.put("/api/users/", function(req, res) {
 
       log.info(req.body);
+      log.info(req.body[0].name)
 
       var user = new dataBase({
-         name: req.body.name,
-         mail: req.body.mail,
-         pwd: req.body.pwd
+         name: req.body[0].name,
+         mail: req.body[0].mail,
+         pwd: req.body[0].pwd
       });
       console.log(user);
 
