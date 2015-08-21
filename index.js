@@ -1,11 +1,7 @@
 var express = require("express");
-var mongoose = require("mongoose");
-mongoose.connect('mongodb://admin:admin@localhost:27017/boxmate');
 var app = express();
 var myWinston = require("./modules/myWinston")(module);
-
 var path = require('path');
-
 //var FileSchema = new mongoose.Schema({
 //    fieldname: String,
 //    originalname: String,
