@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "backbone": "^1.2.1",
+    "body-parser": "^1.13.3",
     "express": "^4.13.3",
     "foundation": "^4.2.1",
     "glob": "^5.0.14",
