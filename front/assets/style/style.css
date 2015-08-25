@@ -198,6 +198,10 @@ section.panel div.row.bm-auth-fields .columns label{
 .padding-0{
     padding: 0;
 }
+form{
+    max-width: 500px;
+    margin: 0 auto;
+}
 form h3{
     margin: 0;
 }

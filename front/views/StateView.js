@@ -6,7 +6,8 @@ bm.StateView = Backbone.View.extend({
         "registration": "RegistrationTemplate.html",
         "authorization": "AuthorizationTemplate.html",
         "upload": "UploadTemplate.html", //_.template("<div id='upload-field'></div>"),
-        "projects": "ProjectsTemplate.html" //_.template("<div id='projects'></div>")
+        "projects": "ProjectsTemplate.html", //_.template("<div id='projects'></div>")
+        "usertool": "UserToolTemplate.html" //_.template("<div id='projects'></div>")
     },
 
     views: {

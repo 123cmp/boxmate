@@ -16,7 +16,8 @@ bm.Router = Backbone.Router.extend({
         "!/upload": "upload",
         "!/projects": "projects",
         "!/registration": "registration",
-        "!/authorization": "authorization"
+        "!/authorization": "authorization",
+        "!/usertool": "usertool"
 
     },
 
@@ -41,6 +42,10 @@ bm.Router = Backbone.Router.extend({
 
     authorization: function () {
         bm.stateModel.set({ state: "authorization" });
+        bm.stateModel.trigger("change");
+    },
+    usertool: function () {
+        bm.stateModel.set({ state: "usertool" });
         bm.stateModel.trigger("change");
     }
 });
