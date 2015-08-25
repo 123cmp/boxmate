@@ -1,6 +1,6 @@
 bm.StateView = Backbone.View.extend({
     el: $("#view"),
-    auth: false,
+    auth: true,
     templates: {
         "home": "HomeTemplate.html", //_.template("<ul class='large-block-grid-3'><li></li><li class='text-center'><h1 id='hello'></h1></li><li></li></ul>"),
         "registration": "RegistrationTemplate.html",
