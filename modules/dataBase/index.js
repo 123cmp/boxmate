@@ -13,23 +13,15 @@ db.once('open', function callback () {
 
 var Schema = mongoose.Schema;
 
-// Schemas
 var Users = new Schema({
     id:{ type: String, index: true },
     name: {type:String, required: true},
-    mail: {type:String, required: true},
-    pwd: { type: String, required: true},
+    email: {type:String, required: true},
+    password: { type: String, required: true},
     projects: Array,
     tasks: Array
 }, {autoIndex: true});
 
-//var Article = new Schema({
-//    title: { type: String, required: true },
-//    author: { type: String, required: true },
-//    description: { type: String, required: true },
-//    images: [Images],
-//    modified: { type: Date, default: Date.now }
-//});
 
 // validation
 //Users.path('title').validate(function (v) {
