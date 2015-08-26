@@ -41,6 +41,9 @@ bm.RegistrationView = Backbone.View.extend({
         e.preventDefault();
         var data = Backbone.Syphon.serialize(__self);
         __self.model.set(data);
+        $(__self.el).find('.error-message').remove();
+        console.log($(__self.el).find('.error'));
+        $(__self.el).find('.error').removeClass('error');
         var validationResult = __self.model.valid(__self.validation);
         if(validationResult.result) bm.ApiService.addUser(__self.model.toJSON());
         else {

@@ -12,7 +12,17 @@ bm.ApiService = {
         return $.get("api/users/"+id);
     },
     addUser: function(user) {
-        return $.put("api/users/", user);
+        //console.log(user);
+        //return $.put("api/users/", JSON.stringify(user), null, 'application/json');
+
+        return $.ajax({
+            url: "api/users/",
+            type: "PUT",
+            contentType: 'application/json',
+            dataType: "json",
+            data: JSON.stringify(user)
+        });
+
     },
     removeUser: function(id) {
         return $.delete("api/users/id");
@@ -57,7 +67,13 @@ bm.ApiService = {
         return $.get("api/validations/"+key);
     },
     authorize: function(model) {
-        return $.post("api/authorize/", model);
+        return $.ajax({
+            url: "api/login/",
+            type: "POST",
+            contentType: 'application/json',
+            dataType: "json",
+            data: JSON.stringify(model)
+        });
     }
 };
 

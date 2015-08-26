@@ -40,7 +40,7 @@ module.exports = function (app) {
 
     });
     app.put("/api/users/", function (req, res) {
-
+        console.log(req.body);
         dataBase.UsersModel.findOne({email: req.body.email}, function (err, article) {
             if (!article) {
 
