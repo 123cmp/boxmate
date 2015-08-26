@@ -122,6 +122,11 @@
     width: 227px;
     float: left
 }
+.row .row.bm-user-block {
+    margin: 10px 0 0 20px;
+    width: 227px;
+    float: left
+}
 
 .row .row.bm-user-block .bm-user {
     float: left;
@@ -218,6 +223,151 @@ section .select-tack:hover{
     background-color:red;
 }
 
+/*usertool*/
+.main-usertool-block{
+    background: #fff;
+    padding: 1rem;
+}
+.panel-left,.panel-right{
+    background: #fff;
+    padding: 10px;
+
+}
+.panel-left:hover,.panel-right:hover{
+    box-shadow: 0 0 3px 1px #000000;
+    transition: 1s ease 0s;
+}
+
+ button.button.tiny{
+     border-radius: 2px;
+     font-size: 1rem;
+     margin: 0;
+     padding: 0.025rem 1rem 0.0875rem;
+     position: relative;
+     background: #f2f2f2;
+     color:#000000;
+     border: 2px solid #000;
+}
+.collapse-block-left:hover{
+    box-shadow: 0 0 3px 1px #464646;
+    transition: 0.2s ease 0s;
+    background: #dbdbdb
+}
+.collapse-block-left:active{
+    box-shadow: 0 0 5px 1px #464646;
+    transition: 0.1s ease 0s;
+
+}
+.row .row.bm-list-project {
+    margin:0.5rem 0 0.9rem 0;
+    width: 100%;
+    float: left
+}
+.section-container{
+    outline: 1px solid #d8d8d8;
+    float: left;
+    padding: 5px;
+}
+section .user-name {
+    float: left;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+section .user-name:hover {
+   outline: 1px solid  #d8d8d8;
+    padding: 0 2px;
+    box-sizing: border-box;
+    transition: 0.7s ease 0s;
+}
+section .user-name a{
+    font-size: 1rem;
+    float: left;
+    min-width: 100px;
+    max-width: 190px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0 5px 0 0 ;
+    font-weight: normal;
+}
+section .user-name p{
+    font-size: 1rem;
+    float: left;
+    margin: 0;
+    font-weight: normal;
+    color: #000000;
+}
+section .user-name.message{
+    float: left;
+}
+section .user-name .time-message{
+    float: right;
+}
+section .user-name a:hover{
+    text-decoration: underline;
+    color: #00668b;
+    transition: 0.7s ease 0s;
+}
+section .user-name:first-child a:hover{
+    text-decoration: underline;
+    color: #d70339;
+    transition: 0.7s ease 0s;
+}
+section .user-name:nth-child(2) a:hover{
+    text-decoration: underline;
+    color: #d743c2;
+    transition: 0.7s ease 0s;
+}
+section .user-name:nth-child(3) a:hover{
+    text-decoration: underline;
+    color: #6f45d7;
+    transition: 0.7s ease 0s;
+}
+section .user-name:nth-child(4) a:hover{
+    text-decoration: underline;
+    color: #343dd7;
+    transition: 0.7s ease 0s;
+}
+section .user-name:nth-child(5) a:hover{
+    text-decoration: underline;
+    color: #b27c1b;
+    transition: 0.7s ease 0s;
+}
+section .user-name:nth-child(6) a:hover{
+    text-decoration: underline;
+    color: #b20987;
+    transition: 0.7s ease 0s;
+}
+section .user-name:nth-child(7) a:hover{
+    text-decoration: underline;
+    color: #83272d;
+    transition: 0.7s ease 0s;
+}
+section .user-name:nth-child(8) a:hover{
+    text-decoration: underline;
+    color: #15f322;
+    transition: 0.7s ease 0s;
+}
+section .user-name:nth-child(9) a:hover{
+    text-decoration: underline;
+    color: #d7d60e;
+    transition: 0.7s ease 0s;
+}
+section .user-name:nth-child(10) a:hover{
+    text-decoration: underline;
+    color: #b8028b;
+    transition: 0.7s ease 0s;
+}
+.text-message{
+    margin-top: 15px;
+}
+.text-message textarea:focus{
+    box-shadow: 0 0 3px 1px #008cba;
+    transition: 0.7s ease 0s;
+}
+
+
 
 @media (max-width: 1348px) {
     .bm-project-title{
@@ -238,6 +388,9 @@ section .select-tack:hover{
         width: 100%;
         margin-left: 0;
     }
+    .bm-user{
+        padding: 0;
+    }
     .bm-user-additional-block{
         width: 100%;
         float: left;
@@ -246,6 +399,9 @@ section .select-tack:hover{
         width: 83%;
     }
 }
+
+
+
 @media (max-width: 1145px) {
     .bm-user-additional-block .button.bm-open {
         width: 79%;
@@ -277,8 +433,6 @@ section .select-tack:hover{
     .row .row.bm-user-block .bm-user img{
         width: 100%;
     }
-
-
 }
 @media (max-width: 420px) {
         .bm-user-additional-block .button.bm-open {
