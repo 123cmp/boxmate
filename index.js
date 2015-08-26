@@ -54,7 +54,7 @@ app.get(/^\/front\/.+$/, function (req, res) {
 });
 
 
-app.listen(9001, function () {
+app.listen(9000, function () {
     myWinston.info('Express server listening on port 9000');
 });
 

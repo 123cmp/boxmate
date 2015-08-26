@@ -4,7 +4,8 @@ bm.UserModel = Backbone.Model.extend({
         name: "",
         email: "",
         password: "",
-        options: null, //object
+        repeat: "",
+        subscribe: false, //object
         projects: null, //array of ProjectModel
         tasks: null //array of TaskModel
     }

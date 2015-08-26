@@ -13,8 +13,8 @@ bm.StateView = Backbone.View.extend({
     views: {
         "home": ['HomeView'],
         "upload": ['UploadFieldView'],
-        "authorization": ["AuthFormView"]
-       // "projects": ['ProjectsView']
+        "authorization": ["AuthFormView"],
+        "registration": ['RegistrationView']
     },
 
     initialize: function () {
@@ -49,14 +49,9 @@ bm.StateView = Backbone.View.extend({
         var __self = this;
         if(!state) return;
         var templatePromise = bm.TemplateStore.get(__self.templates[state]);
-
-        console.log("spin: true");
         $.when(templatePromise).then(function(template) {
             template = _.template(template);
             $(__self.el).html(template(__self.model.toJSON()));
-            bm.spinnerModel.set({spin: false});
-            bm.spinnerModel.trigger("change");
-            console.log("spin: false");
             if (__self.views[state]) {
                 $.each(__self.views[state], function (i, v) {
                     if (!bm[v]) console.error("Ошибка при инжекте вьюхи (проверь index.html)");

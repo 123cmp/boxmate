@@ -1,4 +1,4 @@
-bm.ServiceApi = {
+bm.ApiService = {
     getTemplates: function() {
         return $.get("api/templates/")
     },
@@ -52,6 +52,12 @@ bm.ServiceApi = {
     },
     removeTask: function(id) {
         return $.delete("api/tasks/"+id);
+    },
+    getValidation: function(key) {
+        return $.get("api/validations/"+key);
+    },
+    authorize: function(model) {
+        return $.post("api/authorize/", model);
     }
 };
 

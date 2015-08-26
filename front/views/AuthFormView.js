@@ -7,17 +7,52 @@ bm.AuthFormView = Backbone.View.extend({
         "submit form": "formSubmitted"
     },
     initialize: function() {
-        if(!this.model) this.model = new bm.UserModel();
+        if(!this.model) this.model = new bm.AuthModel();
     },
-    formSubmitted: function(e){
-        e.preventDefault();
-        var data = Backbone.Syphon.serialize(this);
-        this.model.set(data);
-        if(this.model.get("password")) {
 
+    validation: {
+        "email": {
+            "required":  {"value" : "true", "message": "Укажите email"},
+            "maxLength": {"value" : "25", "message": "Email слишком длинный"},
+            "minLength": {"value" : "4", "message": "Email слишком короткий"},
+            "isEmail" :  {"value" : "true", "message": "Email не валидный"}
+        },
+        "password": {
+            "required":  {"value" : "true", "message": "Укажите пароль"},
+            "maxLength": {"value" : "25", "message": "Пароль слишком длинный"},
+            "minLength": {"value" : "6", "message": "Пароль слишком короткий"},
         }
-        //this.model.save();
+    },
 
+    formSubmitted: function(e){
+        var __self = this;
+        e.preventDefault();
+        var data = Backbone.Syphon.serialize(__self);
+        __self.model.set(data);
+        var validationResult = __self.model.valid(__self.validation);
+        if(validationResult.result) bm.ApiService.addUser(__self.model.toJSON());
+        else {
+            $.each(validationResult.full, function(i, field) {
+                if(!field.result) {
+                    $.each(field.rules, function(name, rule) {
+                        console.log(name, rule);
+                        if(!rule.valid) {
+                            __self.addError(i, rule.message);
+                            return false;
+                        }
+                    });
+                }
+            });
+        }
+    },
+
+    addError: function(fieldName, message) {
+        var field = $(this.el).find('[name='+fieldName+']');
+        field.addClass("error");
+        var messageField = $("<div></div>")
+            .addClass("error-message")
+            .text(message)
+            .insertAfter(field)
     },
 
     render: function () {
