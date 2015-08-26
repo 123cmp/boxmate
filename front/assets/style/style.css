@@ -233,7 +233,7 @@ section .select-tack:hover{
     padding: 10px;
 
 }
-.panel-left:hover,.panel-right:hover{
+.panel-left:hover,.panel-right:hover,.centre-block-img:hover{
     box-shadow: 0 0 3px 1px #000000;
     transition: 1s ease 0s;
 }
