@@ -366,6 +366,14 @@ section .user-name:nth-child(10) a:hover{
     box-shadow: 0 0 3px 1px #008cba;
     transition: 0.7s ease 0s;
 }
+.centre-block-img{
+    position: relative;
+}
+.centre-block-img .canvas{
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
 
 
 
