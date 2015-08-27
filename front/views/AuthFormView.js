@@ -30,7 +30,7 @@ bm.AuthFormView = Backbone.View.extend({
         var data = Backbone.Syphon.serialize(__self);
         __self.model.set(data);
         var validationResult = __self.model.valid(__self.validation);
-        if(validationResult.result) bm.ApiService.addUser(__self.model.toJSON());
+        if(validationResult.result) bm.ApiService.authorize(__self.model.toJSON());
         else {
             $.each(validationResult.full, function(i, field) {
                 if(!field.result) {

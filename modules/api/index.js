@@ -1,30 +1,31 @@
 var path = require('path');
-var dataBase = require("../dataBase");
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-//var RememberMeStrategy = require('passport-remember-me').Strategy;
 var log = require("../myWinston")(module);
+var User = require("../models/userModel")
 var sendfile = function (res, file) {
     res.sendFile(path.resolve(__dirname + '/../../front' + file));
 };
 
-module.exports = function (app) {
+module.exports = function (app, passport) {
 
-    app.use(cookieParser());
-    app.use(bodyParser.json());
+    app.post("/api/login/", function(req, res, next) {
+            passport.authenticate('local-login', function(err, user, info) {
+                if (err) {
+                    return next(err);
+                }
+                if (info) {
+                    res.status(400);
+                    return res.send(info);
+                }
+                req.logIn(user, function(err) {
+                    if (err) { return next(err); }
+                    return res.send({id: user._id});
+                });
+            })(req, res, next);
+        });
 
-    var authorization = require("../authorization/authorization").initialize(app, dataBase);
-
-    //app.use(passport.authenticate('local'));
-
-    app.post("/api/login/", authorization.loginStandart, function(req, res){
-        return res.send({status: 'OK'});
-    });
-
-    app.get("/api/logOut", function(req, res){
-        res.clearCookie("remember_me");
+    app.get("/api/logOut", function (req, res) {
         req.logout();
-        res.redirect('/');
+        res.send(200);
     });
 
     app.get("/api/templates/", function (req, res) {
@@ -33,15 +34,14 @@ module.exports = function (app) {
     app.get("/api/templates/:name", function (req, res) {
         sendfile(res, "/templates/" + req.params.name);
     });
-    app.get("/api/users/",  authorization.isAuth ,function (req, res) {
+    app.get("/api/users/", isLoggedIn, function (req, res) {
         return res.send({status: 'OK'});
     });
     app.get("/api/users/:id", function (req, res) {
 
     });
     app.put("/api/users/", function (req, res) {
-
-        dataBase.UsersModel.findOne({email: req.body.email}, function (err, article) {
+        User.findOne({email: req.body.email}, function (err, article) {
             if (!article) {
 
                 if (req.body.password != req.body.repeat) {
@@ -49,7 +49,7 @@ module.exports = function (app) {
                     res.send({error: 'Password mismatch'});
                 }
 
-                var user = new dataBase.UsersModel({
+                var user = new User({
                     name: req.body.name,
                     email: req.body.email,
                     password: req.body.password
@@ -132,6 +132,15 @@ module.exports = function (app) {
     app.delete("/api/tasks/:id", function (req, res) {
 
     });
+
+    function isLoggedIn(req, res, next) {
+        if (req.isAuthenticated()){
+            console.log(req.user)
+            return next();
+        }
+
+        res.send(401);
+    }
 
     return this;
 };

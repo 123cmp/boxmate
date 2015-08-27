@@ -1,19 +1,38 @@
 var express = require("express");
 var app = express();
-var myWinston = require("./modules/myWinston")(module);
+var mongoose = require('mongoose');
+var passport = require('passport');
+var flash = require('connect-flash');
 var path = require('path');
-//var FileSchema = new mongoose.Schema({
-//    fieldname: String,
-//    originalname: String,
-//    name: String,
-//    encoding: String,
-//    mimetype: String,
-//    path: String,
-//    extension: String,
-//    size: Number,
-//    truncated: Boolean,
-//    buffer: Buffer
-//});
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var log = require("./modules/myWinston")(module);
+
+
+mongoose.connect('mongodb://admin:admin@localhost:27017/boxmate');
+var db = mongoose.connection;
+
+db.on('error', function (err) {
+    log.error('connection error:', err.message);
+});
+db.once('open', function callback () {
+    log.info("Connected to DB!");
+});
+
+require("./modules/passport")(passport); // pass passport for configuration
+
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser.json()); // get information from html forms
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+var api = require("./modules/api")(app, passport);
+
 //
 //var File = mongoose.model('File', FileSchema);
 
@@ -46,7 +65,6 @@ app.get('/', function (req, res) {
     sendfile(res, 'front/index.html');
 });
 
-var api = require("./modules/api")(app);
 
 app.get(/^\/front\/.+$/, function (req, res) {
     sendfile(res, req.url.replace("/", ""));
@@ -55,7 +73,7 @@ app.get(/^\/front\/.+$/, function (req, res) {
 
 
 app.listen(9000, function () {
-    myWinston.info('Express server listening on port 9000');
+    log.info('Express server listening on port 9000');
 });
 
 //
