@@ -230,7 +230,7 @@ section .select-tack:hover{
 }
 .panel-left,.panel-right{
     background: #fff;
-    padding: 10px;
+    padding: 5px;
 
 }
 .panel-left:hover,.panel-right:hover,.centre-block-img:hover{
@@ -374,9 +374,175 @@ section .user-name:nth-child(10) a:hover{
     position: absolute;
     width: 100%;
 }
+.row.row-tabs{
+    float: left;
+    width: 100%;
+    margin: 0 0 5px 0;
+}
+ .tabs .tab-title  a {
+     padding: 0 1rem;
+     background: #f2f2f2 none repeat scroll 0 0;
+     border: 2px solid #000;
+     border-radius: 2px;
+     color: #000000;
+     font-size: 1rem;
+     box-sizing: border-box;
+     margin: 0;
+     text-align: center;
+     position: relative;
+}
+.tabs  .tab-title {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px!important;
+    width: 31%;
+}
+.tabs  li:last-child {
+    margin-right: 0;
+}
+.accordion-main{
+background: none;
+}
 
+.accordion-main ul{
+   margin: 0;
+    padding: 0;
+}
+.accordion>.list-accordion{
+    background: #f2f2f2 none repeat scroll 0 0;
+    list-style: outside none none;
+    padding: 0.4rem 0.5rem;
+}
+.accordion>.read{
+    background: #d0d0d0;
+}
+.accordion>.list-accordion:hover{
+    background:#d0d0d0;
+}
+.list-accordion>span {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ff321f;
+    border-radius: 50%;
+    color: #ff321f;
+    float: left;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 25px;
+}
+.navigation-accordion{
+    position: relative;
+    float: right;
+    padding-left: 25px;
+}
+.list-accordion>.navigation-accordion>.fa-chevron-circle-down,.fa-chevron-circle-up {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    text-align: left;
+    font-size: 1.2rem;
+    color: #ff321f;
+}
+.list-accordion>.navigation-accordion>.fa-chevron-circle-up {
+    display: none;
+}
+.list-accordion.read>.navigation-accordion>.fa-chevron-circle-up {
+    display: block;
+    color: #343dd7;
+}
+.list-accordion.read>.navigation-accordion>.fa-chevron-circle-down {
+    display: none;
+}
+.list-accordion>.open-block{
+    padding: 0.5rem 0 0 0;
+    display: none;
+}
+.list-accordion.read>.open-block {
+    display:block;
+}
+.list-accordion>.open-block>img{
+    width: 65px;
+    height: auto;
+}
+.list-accordion>.open-block>.title-open-block{
+    font-size: 1rem;
+    float: left;
+    padding: 0 0 0 1rem;
+    text-align: left;
+    margin:0;
+    text-decoration: underline;
+}
+.list-accordion>.open-block>.statys {
+    padding: 0.625rem 1.25rem 0.6875rem;
+    background:#008cba;
+}
+.list-accordion>.open-block>.time-message{
+    font-size: 1rem;
+    float: left;
+    padding: 0 0 0 1rem;
+    text-align: left;
+    margin:0;
+    text-decoration: underline;
+}
+.list-accordion>.open-block>.block-message{
+    font-size: 1rem;
+    float: left;
+    padding: 0.5rem 0 0 0;
+    text-align: left;
+    margin:0;
+}
+.block-list-project{
+    margin: 1rem 0 0 0 ;
+}
+.main-list-project{
+    display: block;
+    position: relative;
+}
+.main-list-project>button{
+    position: absolute;
+    top: 2rem;
+    height: 2rem;
+    padding: 0;
+    width: 2rem;
+    margin: 0;
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #000;
+    border-radius: 50%;
+    color: #000;
+    font-size: 1rem;
+}
+.main-list-project>.button-left{
+    left: 0;
+}
+.main-list-project>.button-right{
+   right: 0;
+}
 
-
+.main-list-project>button:hover{
+    background: #eaeaea none repeat scroll 0 0;
+    box-shadow: 0 0 7px -1px #000000;
+    color: #000;
+}
+.main-list-project>.list-project{
+    margin: 0;
+    padding: 0;
+}
+.main-list-project>.list-project>li{
+    list-style: none;
+    float: left;
+    margin: 0 1rem ;
+}
+.main-list-project>.list-project>li:first-child{
+   margin-left: 0.5rem;
+}
+.main-list-project>.list-project>li:last-child{
+    margin-right: 0;
+}
+.main-list-project>.list-project>li>img{
+    width: 100px;
+    height: auto;
+}
 @media (max-width: 1348px) {
     .bm-project-title{
         font-size: 1.1rem;
@@ -405,6 +571,9 @@ section .user-name:nth-child(10) a:hover{
     }
     .bm-user-additional-block .button.bm-open {
         width: 83%;
+    }
+    .tabs  .tab-title {
+        width: 30%;
     }
 }
 
