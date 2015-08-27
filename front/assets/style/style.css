@@ -400,7 +400,7 @@ section .user-name:nth-child(10) a:hover{
     vertical-align: middle;
 }
 .centre-block-img>.main-click-message>.click-message{
-   width: 200px;
+   width: auto;
     height:auto;
     border-radius: 6px;
     border: 5px solid #ff3823;
