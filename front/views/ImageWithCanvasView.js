@@ -5,16 +5,24 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     template: "",
     compiled: null,
 
+
     initialize: function () {
         var __self = this;
         if (!__self.model) __self.model = new bm.ImageWithCanvasModel();
         __self.model.bind("change:mode", function () {
             var mode = __self.model.get("mode");
-            console.log(mode)
+            if(mode == "clear") __self.clear();
+            else __self.show();
         });
     },
 
+    clear: function() {
 
+    },
+
+    show: function() {
+
+    },
 
     compileTemplate: function (template) {
         if (template.indexOf("{{image}}" >= 0)) {
@@ -23,6 +31,7 @@ bm.ImageWithCanvasView = Backbone.View.extend({
         }
         return _.template(template)
     },
+
     drawer: {},
     piner: {},
 
