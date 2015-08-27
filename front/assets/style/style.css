@@ -416,6 +416,7 @@ section .user-name:nth-child(10) a:hover{
     height: 100%;
     margin: 0;
     padding: 2px;
+    resize: none;
     box-sizing: border-box;
 }
 .row.row-tabs{
