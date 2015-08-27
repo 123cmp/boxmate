@@ -1,7 +1,9 @@
-var LocalStrategy = require('passport-local').Strategy;
-var User = require ("../models/userModel");
+var LocalStrategy = require('passport-local').Strategy,
+    RememberMeStrategy = require("passport-remember-me").Strategy,
+    User = require("../models/userModel"),
+    Token = require("./Token");
 
-module.exports = function(passport) {
+module.exports = function (passport) {
 
     // =========================================================================
     // passport session setup ==================================================
@@ -10,13 +12,13 @@ module.exports = function(passport) {
     // passport needs ability to serialize and unserialize users out of session
 
     // used to serialize the user for the session
-    passport.serializeUser(function(user, done) {
+    passport.serializeUser(function (user, done) {
         done(null, user._id);
     });
 
     // used to deserialize the user
-    passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
+    passport.deserializeUser(function (id, done) {
+        User.findById(id, function (err, user) {
             done(err, user);
         });
     });
@@ -26,17 +28,17 @@ module.exports = function(passport) {
     // =========================================================================
     passport.use('local-login', new LocalStrategy({
             // by default, local strategy uses username and password, we will override with email
-            usernameField : 'email',
-            passwordField : 'password',
-            passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
+            usernameField: 'email',
+            passwordField: 'password',
+            passReqToCallback: true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
         },
-        function(req, email, password, done) {
-            if (email)
-                email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
+        function (req, user, password, done) {
+            if (user)
+                user = user.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
 
             // asynchronous
-            process.nextTick(function() {
-                User.findOne({ 'email' :  email }, function(err, user) {
+            process.nextTick(function () {
+                User.findOne({'email': user}, function (err, user) {
                     // if there are any errors, return the error
                     if (err) {
                         console.log(err);
@@ -58,6 +60,37 @@ module.exports = function(passport) {
             });
 
         }));
+
+    // =========================================================================
+    // REMEMBER ME STRATEGY ====================================================
+    // =========================================================================
+
+
+    passport.use(new RememberMeStrategy(
+        function (token, done) {
+            Token.consumeRememberMeToken(token, function (err, uid) {
+                if (err) {
+                    return done(err);
+                }
+                if (!uid) {
+                    return done(null, false);
+                }
+
+                User.findById(uid, function (err, user) {
+                    if (err) {
+                        return done(err);
+                    }
+                    if (!user) {
+                        return done(null, false);
+                    }
+                    return done(null, user);
+                });
+            });
+        },
+        function (user, func) {
+            Token.issueToken(user, func);
+        }
+    ));
 
     // =========================================================================
     // LOCAL SIGNUP ============================================================
