@@ -1,13 +1,14 @@
-var express = require("express");
-var app = express();
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash = require('connect-flash');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var log = require("./modules/myWinston")(module);
+var express = require("express"),
+    app = express(),
+    mongoose = require('mongoose'),
+    passport = require('passport'),
+    flash = require('connect-flash'),
+    path = require('path'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    session = require('express-session'),
+    log = require("./modules/myWinston")(module),
+    mongoStore = require("connect-mongodb");
 
 
 mongoose.connect('mongodb://admin:admin@localhost:27017/boxmate');
@@ -16,7 +17,7 @@ var db = mongoose.connection;
 db.on('error', function (err) {
     log.error('connection error:', err.message);
 });
-db.once('open', function callback () {
+db.once('open', function callback() {
     log.info("Connected to DB!");
 });
 
@@ -24,22 +25,31 @@ require("./modules/passport")(passport); // pass passport for configuration
 
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({
+    store: mongoStore({
+        dbname: "boxmate",
+        host: "localhost",
+        port: 27017,
+        username: "admin",
+        password: "admin"
+    }),
+    secret: "secret fraze"
+})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+app.use(passport.authenticate('remember-me'));
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 var api = require("./modules/api")(app, passport);
 
-//
 //var File = mongoose.model('File', FileSchema);
 
 //var multer = require('multer');
 
 var sendfile = function (res, path) {
-    res.sendFile(path , { root : __dirname});
+    res.sendFile(path, {root: __dirname});
 };
 //
 //app.use(multer({
