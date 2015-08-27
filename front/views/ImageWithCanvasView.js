@@ -6,8 +6,15 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     compiled: null,
 
     initialize: function () {
-        if (!this.model) this.model = new bm.ImageWithCanvasModel();
+        var __self = this;
+        if (!__self.model) __self.model = new bm.ImageWithCanvasModel();
+        __self.model.bind("change:mode", function () {
+            var mode = __self.model.get("mode");
+            console.log(mode)
+        });
     },
+
+
 
     compileTemplate: function (template) {
         if (template.indexOf("{{image}}" >= 0)) {
@@ -17,63 +24,125 @@ bm.ImageWithCanvasView = Backbone.View.extend({
         return _.template(template)
     },
     drawer: {},
+    piner: {},
 
     initDrawer: function() {
-        console.log(this);
         this.drawer = {
             isDrawing: false,
-            mousedown: this.start,
-            mousemove: this.move,
-            mouseup: this.stop,
-            mouseleave: this.stop,
-            touchstart: this.start,
-            touchmove: this.move,
-            touchend: this.stop
+            mousedown: this.startDraw,
+            mousemove: this.moveDraw,
+            mouseup: this.stopDraw,
+            mouseleave: this.stopDraw,
+            touchstart: this.startDraw,
+            touchmove: this.moveDraw,
+            touchend: this.stopDraw,
+            color: "#FF0000"
+        }
+    },
+
+    initPiner: function() {
+        this.piner = {
+            pinLayer: null,
+            isSquare: false,
+            mousedown: this.startPin,
+            mousemove: this.movePin,
+            mouseup: this.stopPin,
+            touchstart: this.startPin,
+            touchmove: this.movePin,
+            touchend: this.stopPin,
+            color: "#FF0000",
+            coors: {}
         }
     },
 
     events: {
-        "mousedown .canvas": "draw",
-        "mousemove .canvas": "draw",
-        "mouseup .canvas": "draw",
-        "mouseleave .canvas": "draw",
-        "touchstart .canvas": "draw",
-        "touchmove .canvas": "draw",
-        "touchend .canvas": "draw"
+        "mousedown .canvas": "drawOrPin",
+        "mousemove .canvas": "drawOrPin",
+        "mouseup .canvas": "drawOrPin",
+        "mouseleave .canvas": "drawOrPin",
+        "touchstart .canvas": "drawOrPin",
+        "touchmove .canvas": "drawOrPin",
+        "touchend .canvas": "drawOrPin"
     },
 
-    draw: function (e) {
-        var canvas = $(this.el).find(".canvas");
-        var canvasPosition = canvas.offset();
+    drawOrPin: function(e) {
         var coors = {
-            x: e.clientX - canvasPosition.left,
-            y: e.clientY - canvasPosition.top
+            x: e.offsetX,//e.clientX - canvasPosition.left,
+            y: e.offsetY//e.clientY - canvasPosition.top
         };
         if(!coors.x && !coors.y && e.targetTouches && e.targetTouches[0]) {
             coors = {
-                x: e.targetTouches[0].pageX - canvasPosition.left,
-                y: e.targetTouches[0].pageY - canvasPosition.top
+                x: e.targetTouches[0].offsetX, // - canvasPosition.left,
+                y: e.targetTouches[0].offsetY // - canvasPosition.top
             }
         }
-        console.log(coors);
+        var mode = this.model.get("mode");
+        if(mode == "drawing") this.draw(coors, e);
+        if(mode == "pining") this.pin(coors, e);
+    },
+
+    pin: function (coors, e) {
+        if(this.piner[e.type]) this.piner[e.type](coors);
+    },
+
+    startPin: function (coors) {
+        this.coors = coors;
+    },
+
+    movePin: function (coors) {
+        if(this.coors && (coors.x > this.coors.x + 40 || coors.x < this.coors.x - 40) && (coors.y > this.coors.y + 40 || coors.y < this.coors.y - 40)) {
+            this.isSquare = true;
+        }
+    },
+
+    stopPin: function (coors) {
+        var pin = $("<div></div>");
+
+        if(this.isSquare) {
+            pin.addClass("square-pin");
+            if(coors.x > this.coors.x) {
+                pin.css("left", this.coors.x)
+            } else {
+                pin.css("left", coors.x)
+            }
+            if(coors.y > this.coors.y) {
+                pin.css("top", this.coors.y)
+            } else {
+                pin.css("top", coors.y)
+            }
+            var width = Math.abs(this.coors.x - coors.x);
+            var height = Math.abs(this.coors.y - coors.y);
+            pin.css("width", width);
+            pin.css("height", height);
+        } else {
+            pin.addClass("dot-pin")
+               .text("qweasd")
+               .css("left", coors.x)
+               .css("top", coors.y);
+        }
+
+        this.coors = null; this.isSquare = false;
+        this.pinLayer.append(pin);
+    },
+
+    draw: function (coors, e) {
         this.drawer[e.type](coors);
     },
-    start: function (coors) {
-        console.log(this);
+    startDraw: function (coors) {
         this.context.beginPath();
         this.context.moveTo(coors.x, coors.y);
         this.isDrawing = true;
     },
-    move: function (coors) {
+    moveDraw: function (coors) {
         if (this.isDrawing) {
-            this.context.strokeStyle = "#000";
+            this.context.strokeStyle = this.color;
             this.context.lineJoin = "round";
-            this.context.lineWidth = 10;
+            this.context.lineWidth = 3;
             this.context.lineTo(coors.x, coors.y);
             this.context.stroke();
         }
     },
-    stop: function (coors) {
+    stopDraw: function (coors) {
         if (this.isDrawing) {
             this.touchmove(coors);
             this.isDrawing = false;
@@ -87,14 +156,20 @@ bm.ImageWithCanvasView = Backbone.View.extend({
         this.drawer.context = canvas.get(0).getContext('2d');
     },
 
+    initPinLayer: function () {
+        this.piner.pinLayer = $(this.el);
+        console.log(this.piner.pinLayer);
+    },
+
     render: function () {
         var __self = this;
         if (__self.template) {
             $(this.el).html(this.compiled());
             $(__self.el).find(".image-with-canvas-image").load(function() {
-                console.log("init");
                 __self.initDrawer();
                 __self.initCanvas();
+                __self.initPiner();
+                __self.initPinLayer();
             })
         } else {
             $.when(bm.TemplateStore.get(__self.templateName)).then(function (template) {
