@@ -390,18 +390,83 @@ section .user-name:nth-child(10) a:hover{
     padding: 3rem 0 0;
     z-index: 10;
 }
-.centre-block-img>.bottom-click{
-    top:25rem
-}
-.centre-block-img>.right-click{
-    right: 0;
+.centre-block-img>.click-right {
+    height: auto;
+    position: absolute;
+    width:auto;
+    padding: 3rem 0 0;
+    z-index: 10;
+    right: 0.5rem;
 }
 
+.centre-block-img>.click-bottom-left {
+    height: auto;
+    position: absolute;
+    width:auto;
+    padding: 0 0 3rem 0;
+    z-index: 10;
+    left: 1rem;
+    bottom: 0.2rem;
+}
+.centre-block-img>.click-bottom-right {
+    height: auto;
+    position: absolute;
+    width:auto;
+    padding: 0 0 3rem 0;
+    z-index: 10;
+    left: 32rem;
+    bottom: 0.2rem;
+}
 .centre-block-img>.main-click-message>p{
     position: absolute;
     top: 0.2rem;
     height: 2rem;
     left: 1.9rem;
+    margin: 0;
+    width: 2rem;
+    z-index: 20;
+    background: #ff3823 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    vertical-align: middle;
+}
+.centre-block-img>.click-right>p{
+    position: absolute;
+    top: 0.2rem;
+    height: 2rem;
+    left: 12rem;
+    margin: 0;
+    width: 2rem;
+    z-index: 20;
+    background: #ff3823 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    vertical-align: middle;
+}
+.centre-block-img>.click-bottom-left>p{
+    position: absolute;
+    top: 8rem;
+    height: 2rem;
+    left: 1rem;
+    margin: 0;
+    width: 2rem;
+    z-index: 20;
+    background: #ff3823 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    vertical-align: middle;
+}
+.centre-block-img>.click-bottom-right>p{
+    position: absolute;
+    top: 8rem;
+    height: 2rem;
+    left: 10rem;
     margin: 0;
     width: 2rem;
     z-index: 20;
@@ -427,6 +492,22 @@ section .user-name:nth-child(10) a:hover{
     border: 20px solid transparent;
     border-bottom: 20px solid #ff3823;
 }
+.centre-block-img>.click-bottom-left>.message-number:before{
+    content: '';
+    position: absolute;
+    top: -1rem;
+    left:-.2rem;
+    border: 20px solid transparent;
+    border-top: 20px solid #ff3823;
+}
+.centre-block-img>.click-bottom-right>.message-number:before{
+    content: '';
+    position: absolute;
+    top: -1rem;
+    left:-.2rem;
+    border: 20px solid transparent;
+    border-top: 20px solid #ff3823;
+}
 
 .main-click-message>.click-message>.field-tool{
     background: #e6e6e6;
@@ -449,7 +530,7 @@ section .user-name:nth-child(10) a:hover{
 }
 /*end */
 
-
+/*click-left*/
 
 
 .row.row-tabs{
