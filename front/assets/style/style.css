@@ -390,6 +390,12 @@ section .user-name:nth-child(10) a:hover{
     padding: 3rem 0 0;
     z-index: 10;
 }
+.centre-block-img>.bottom-click{
+    top:25rem
+}
+.centre-block-img>.right-click{
+    right: 0;
+}
 
 .centre-block-img>.main-click-message>p{
     position: absolute;
@@ -428,6 +434,9 @@ section .user-name:nth-child(10) a:hover{
     box-sizing: border-box;
     text-align: right;
     font-size: 1.5rem;
+}
+.main-click-message>.click-message>.field-tool>i{
+    margin-right: .5rem;
 }
 .click-message>.field-text>textarea{
     height: 100%;
