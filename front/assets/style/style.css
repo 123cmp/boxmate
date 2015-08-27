@@ -383,23 +383,25 @@ section .user-name:nth-child(10) a:hover{
 
 /*click-message top*/
 
-.centre-block-img>.click{
-    position: absolute;
+.centre-block-img>.main-click-message{
     height: auto;
-    width:auto;
-    z-index: 10;
-    /*padding: 3rem;*/
-}
-.click>.main-click-message{
-   position: relative;
-}
-.click>.main-click-message>p{
     position: absolute;
-    top: auto;
+    width:auto;
+    padding: 3rem 0 0;
+    z-index: 10;
+}
+.centre-block-img>.bottom-click{
+    top:25rem
+}
+.centre-block-img>.right-click{
+    right: 0;
+}
+
+.centre-block-img>.main-click-message>p{
+    position: absolute;
+    top: 0.2rem;
     height: 2rem;
-    left: auto;
-    right: auto;
-    bottom: auto;
+    left: 1.9rem;
     margin: 0;
     width: 2rem;
     z-index: 20;
@@ -410,15 +412,14 @@ section .user-name:nth-child(10) a:hover{
     text-align: center;
     vertical-align: middle;
 }
-.click>.main-click-message>.click-message{
+.centre-block-img>.main-click-message>.click-message{
    width: auto;
     height:auto;
-    margin: 3rem;
-    /*position: relative;*/
+    position: relative;
     border-radius: 6px;
     border: 5px solid #ff3823;
 }
-.click>.main-click-message>.message-number:before{
+.centre-block-img>.main-click-message>.message-number:before{
     content: '';
     position: absolute;
     top: 0.5rem;
