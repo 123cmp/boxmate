@@ -374,12 +374,50 @@ section .user-name:nth-child(10) a:hover{
     position: absolute;
     width: 100%;
 }
-.centre-block-img .message-img{
-    height: 100%;
-    position: absolute;
-    width: 100%;
-}
+/*.centre-block-img .message-img{*/
+    /*height: 100%;*/
+    /*position: absolute;*/
+    /*width: 100%;*/
+/*}*/
 
+
+/*click-message*/
+
+.centre-block-img>.main-click-message{
+    height: auto;
+    position: absolute;
+    width:200px ;
+    z-index: 10;
+}
+.centre-block-img>.main-click-message>p{
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    border-radius:50%;
+    color: #fff;
+    background:#ff3823 ;
+    text-align: center;
+    vertical-align: middle;
+}
+.centre-block-img>.main-click-message>.click-message{
+   width: 200px;
+    height:auto;
+    border-radius: 6px;
+    border: 5px solid #ff3823;
+}
+.main-click-message>.click-message>.field-tool{
+    background: #e6e6e6;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    box-sizing: border-box;
+    text-align: right;
+    font-size: 1.5rem;
+}
+.click-message>.field-text>textarea{
+    height: 100%;
+    margin: 0;
+    padding: 2px;
+    box-sizing: border-box;
+}
 .row.row-tabs{
     float: left;
     width: 100%;
@@ -442,12 +480,15 @@ background: none;
     float: right;
     padding-left: 25px;
 }
+.list-accordion>.navigation-accordion>i{
+    font-size: 1.5rem;
+}
 .list-accordion>.navigation-accordion>.fa-chevron-circle-down,.fa-chevron-circle-up {
     position: absolute;
     left: 0;
     top: 2px;
     text-align: left;
-    font-size: 1.2rem;
+    /*font-size: 1.2rem;*/
     color: #ff321f;
 }
 .list-accordion>.navigation-accordion>.fa-chevron-circle-up {
@@ -576,6 +617,8 @@ background: none;
 .main-list-instrument>div:last-child{
     margin-right: 0;
 }
+
+
 @media (max-width: 1348px) {
     .bm-project-title{
         font-size: 1.1rem;
