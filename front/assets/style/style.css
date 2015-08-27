@@ -374,6 +374,12 @@ section .user-name:nth-child(10) a:hover{
     position: absolute;
     width: 100%;
 }
+.centre-block-img .message-img{
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
 .row.row-tabs{
     float: left;
     width: 100%;
@@ -542,6 +548,33 @@ background: none;
 .main-list-project>.list-project>li>img{
     width: 100px;
     height: auto;
+}
+.main-list-instrument{
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box
+}
+.main-list-instrument>div{
+    margin-right: 5.5%;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 1px solid #ffffff;
+    width: 70px;
+    padding:0.2rem 0 ;
+    height: auto;
+    text-align: center;
+    }
+.main-list-instrument>div:hover{
+   border: 1px solid #d0d0d0;
+    transition: 0.5s ease 0s;
+}
+.main-list-instrument>div>i{
+    font-size: 4rem;
+    color: #000000;
+}
+.main-list-instrument>div:last-child{
+    margin-right: 0;
 }
 @media (max-width: 1348px) {
     .bm-project-title{
