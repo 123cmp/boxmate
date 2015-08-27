@@ -4,24 +4,30 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     templateName: "ImageWithCanvasTemplate.html",
     template: "",
     compiled: null,
-
+    clearMode: false,
 
     initialize: function () {
         var __self = this;
         if (!__self.model) __self.model = new bm.ImageWithCanvasModel();
         __self.model.bind("change:mode", function () {
             var mode = __self.model.get("mode");
-            if(mode == "clear") __self.clear();
-            else __self.show();
+            if(mode == "clear") this.switchClearMode();
         });
     },
 
-    clear: function() {
+    switchClearMode: function() {
+        this.clearMode = !this.clearMode;
+        this.clearMode ? this.clear() : this.show();
+    },
 
+    clear: function() {
+        $(this.el).find(".canvas").hide();
+        $(this.el).find(".pin").hide();
     },
 
     show: function() {
-
+        $(this.el).find(".canvas").show();
+        $(this.el).find(".pin").show();
     },
 
     compileTemplate: function (template) {
@@ -106,7 +112,7 @@ bm.ImageWithCanvasView = Backbone.View.extend({
 
     stopPin: function (coors) {
         var pin = $("<div></div>");
-
+        pin.addClass("pin");
         if(this.isSquare) {
             pin.addClass("square-pin");
             if(coors.x > this.coors.x) {

@@ -21,6 +21,7 @@ module.exports = function (app, passport) {
                 if (err) {
                     return next(err);
                 }
+                log.info(req.body);
                 if (req.body.remember_me) {
 
                     Token.issueToken(req.user, function (err, token) {
