@@ -1,31 +1,48 @@
 var path = require('path');
 var log = require("../myWinston")(module);
-var User = require("../models/userModel")
+var User = require("../models/userModel"),
+    Token = require("../passport/Token");
 var sendfile = function (res, file) {
     res.sendFile(path.resolve(__dirname + '/../../front' + file));
 };
 
 module.exports = function (app, passport) {
 
-    app.post("/api/login/", function(req, res, next) {
-            passport.authenticate('local-login', function(err, user, info) {
+    app.post("/api/login/", function (req, res, next) {
+        passport.authenticate('local-login', function (err, user, info) {
+            if (err) {
+                return next(err);
+            }
+            if (info) {
+                res.status(400);
+                return res.send(info);
+            }
+            req.logIn(user, function (err) {
                 if (err) {
                     return next(err);
                 }
-                if (info) {
-                    res.status(400);
-                    return res.send(info);
-                }
-                req.logIn(user, function(err) {
-                    if (err) { return next(err); }
+                log.info(req.body);
+                if (req.body.remember_me) {
+
+                    Token.issueToken(req.user, function (err, token) {
+                        if (err) {
+                            return next(err);
+                        }
+                        res.cookie('remember_me', token, {path: '/', httpOnly: false, maxAge: 604800000});
+                        return res.send({id: user._id});
+                    });
+                } else {
                     return res.send({id: user._id});
-                });
-            })(req, res, next);
-        });
+                }
+            });
+        })(req, res, next);
+    }, function (req, res) {
+    });
 
     app.get("/api/logOut", function (req, res) {
+        res.clearCookie('remember_me');
         req.logout();
-        res.send(200);
+        res.sendStatus(200);
     });
 
     app.get("/api/templates/", function (req, res) {
@@ -35,6 +52,7 @@ module.exports = function (app, passport) {
         sendfile(res, "/templates/" + req.params.name);
     });
     app.get("/api/users/", isLoggedIn, function (req, res) {
+        console.log(req.cookies);
         return res.send({status: 'OK'});
     });
     app.get("/api/users/:id", function (req, res) {
@@ -134,7 +152,7 @@ module.exports = function (app, passport) {
     });
 
     function isLoggedIn(req, res, next) {
-        if (req.isAuthenticated()){
+        if (req.isAuthenticated()) {
             console.log(req.user)
             return next();
         }

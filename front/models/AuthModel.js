@@ -1,7 +1,8 @@
 bm.AuthModel = Backbone.Model.extend({
     defaults: {
         email: "",
-        password: ""
+        password: "",
+        remember_me: false
     }
 });
 
