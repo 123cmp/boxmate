@@ -3,8 +3,12 @@ var Token = require("../models/tokenModel");
 module.exports.consumeRememberMeToken = function (token, func) {
 
     Token.findOne({"token": token}, function (err, tokenObj) {
-        tokenObj.remove();
-        return func(null, tokenObj.userId);
+        console.log(tokenObj);
+        if(tokenObj) {
+            tokenObj.remove();
+            return func(null, tokenObj.userId);
+        }
+        return func(null, null);
     });
     // invalidate the single-use token
 };
