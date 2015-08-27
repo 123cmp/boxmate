@@ -415,8 +415,10 @@ section .user-name:nth-child(10) a:hover{
 .click-message>.field-text>textarea{
     height: 100%;
     margin: 0;
+    min-width: 100%;
     padding: 2px;
-    resize: none;
+    resize: both;
+    overflow: hidden;
     box-sizing: border-box;
 }
 .row.row-tabs{
@@ -618,8 +620,14 @@ background: none;
 .main-list-instrument>div:last-child{
     margin-right: 0;
 }
-
-
+/*not dell*/
+.dot-pin {
+    position: absolute;
+}
+.square-pin {
+    position: absolute;
+    border: 5px solid red;
+}
 @media (max-width: 1348px) {
     .bm-project-title{
         font-size: 1.1rem;
