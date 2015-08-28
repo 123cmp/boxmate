@@ -222,6 +222,16 @@ section .select-tack:hover{
     outline: 1px solid #008cba;
     background-color:red;
 }
+label>input.error{
+    box-shadow: 0 0 2px 0px #ff0000;
+    border-color: #FF0000;
+}
+label>.error-message{
+    font-size: 0.8rem;
+    color:#FF0000;
+}
+
+
 
 /*usertool*/
 .main-usertool-block{
@@ -655,7 +665,9 @@ background: none;
     margin:0;
 }
 .block-list-project{
-    margin: 1rem 0 0 0 ;
+    margin: 1rem 0 0 0;
+    border: 1px solid #f2f2f2;
+    padding: 1rem 0;
 }
 .main-list-project{
     display: block;
