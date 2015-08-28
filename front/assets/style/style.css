@@ -424,7 +424,7 @@ section .user-name:nth-child(10) a:hover{
     width:auto;
     padding: 0 0 3rem 0;
     z-index: 10;
-    left: 32rem;
+    left: 30rem;
     bottom: 0.2rem;
 }
 .centre-block-img>.main-click-message>p{
@@ -459,7 +459,7 @@ section .user-name:nth-child(10) a:hover{
 }
 .centre-block-img>.click-bottom-left>p{
     position: absolute;
-    top: 8rem;
+    top: 8.8rem;
     height: 2rem;
     left: 1rem;
     margin: 0;
@@ -474,7 +474,7 @@ section .user-name:nth-child(10) a:hover{
 }
 .centre-block-img>.click-bottom-right>p{
     position: absolute;
-    top: 8rem;
+    top: 8.7rem;
     height: 2rem;
     left: 10rem;
     margin: 0;
@@ -488,7 +488,7 @@ section .user-name:nth-child(10) a:hover{
     vertical-align: middle;
 }
 .centre-block-img>.main-click-message>.click-message{
-   width: auto;
+    width: 16rem;
     height:auto;
     position: relative;
     border-radius: 6px;
@@ -529,7 +529,13 @@ section .user-name:nth-child(10) a:hover{
 .main-click-message>.click-message>.field-tool>i{
     margin-right: .5rem;
 }
+.click-message>.field-text{
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
 .click-message>.field-text>textarea{
+    min-height: 4rem;
     height: 100%;
     margin: 0;
     min-width: 100%;
@@ -538,6 +544,12 @@ section .user-name:nth-child(10) a:hover{
     overflow: hidden;
     box-sizing: border-box;
 }
+.click-message>.field-text>.button-click{
+    bottom: 0.2rem;
+    position: absolute;
+    right: 0.2rem;
+}
+
 /*end */
 
 /*click-left*/
@@ -706,17 +718,32 @@ background: none;
     list-style: none;
     float: left;
     margin: 0 1rem ;
+    width: 100px;
+    height: auto;
 }
 .main-list-project>.list-project>li:first-child{
    margin-left: 0.5rem;
 }
-.main-list-project>.list-project>li:last-child{
+.main-list-project>.list-project>li:last-child {
     margin-right: 0;
+    position: relative;
 }
-.main-list-project>.list-project>li>img{
-    width: 100px;
-    height: auto;
+
+.main-list-project>.list-project>li:last-child:after{
+    content: "\f067";
+    position: absolute;
+    bottom: 0;
+    left:0;
+    background: #333333;
+    opacity: 0.5;
+    height: 100%;
+    width: 100%;
+    color: #8c877f;
+    font-family: FontAwesome;
+    font-size: 4.85rem;
+    text-align: center;
 }
+
 .main-list-instrument{
     margin: 0 auto;
     padding: 0 1rem;
@@ -725,6 +752,7 @@ background: none;
 .main-list-instrument>div{
     margin-right: 5.5%;
     margin-bottom: 1rem;
+    cursor: pointer;
     box-sizing: border-box;
     border-radius: 3px;
     border: 1px solid #ffffff;
@@ -752,6 +780,8 @@ background: none;
     position: absolute;
     border: 5px solid red;
 }
+/*end*/
+
 @media (max-width: 1348px) {
     .bm-project-title{
         font-size: 1.1rem;
