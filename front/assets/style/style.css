@@ -80,7 +80,8 @@
 /*.callout-card .callout-card-content {*/
     /*padding: 0.5rem 1.5rem 0.875rem; }*/
 .callout-card.radius {
-    border-radius: 0.6rem; }
+    border-radius: 0.6rem;
+}
 .callout-card .label-text {
     color: #fff;
     font-size: 0.75rem;
@@ -94,9 +95,57 @@
 .bm-project-image {
     float: left;
     margin-right: 10px;
-    /*width: 150px;*/
+    max-width: 11.5rem;
+    height: 10rem;
 }
+.button-status li{
+    margin:  0 0 0.5rem 0;
+    border-radius:0.3rem;
+    border: 0.13rem solid #000000;
+    width:2.1rem;
+    height: 2.1rem;
 
+}
+.button-status li:active{
+    box-shadow: 0 0 0.1rem 0.2rem #cccccc;
+}
+.button-status li:last-child{
+    margin:0;
+}
+.button-status.button-status{
+    color: #000000;
+    list-style: none;
+    border-radius:0.1rem;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+
+}
+.button-status.status-all{
+   background: #d6d6d6;
+}
+.button-status.status-to_do{
+    background: #a8c6fa;
+}
+.button-status.status-resolve{
+    background: #cbe8ba;
+}
+.button-status.status-to_do{
+    background: #a8c6fa;
+}
+.button-status.status-resolve{
+    background: #cbe8ba;
+}
+.button-status.status-all:hover{
+    background: #bfbfbf;
+}
+.button-status.status-to_do:hover{
+    background: #8da5d8;
+}
+.button-status.status-resolve:hover{
+    background: #afcc9e;
+}
 .panel.bm-footer {
     padding: 0;
 }
@@ -118,23 +167,45 @@
 }
 
 .row .row.bm-user-block {
-    margin: 10px 0 0 20px;
-    width: 227px;
+    margin: 10px 0 0 0;
     float: left
 }
-.row .row.bm-user-block {
-    margin: 10px 0 0 20px;
-    width: 227px;
-    float: left
-}
+/*.row .row.bm-user-block {*/
+    /*margin: 10px 0 0 20px;*/
+    /*width: 227px;*/
+    /*float: left*/
+/*}*/
 
-.row .row.bm-user-block .bm-user {
+/*.row .row.bm-user-block .bm-user {*/
+    /*float: left;*/
+    /*margin-left: 5px;*/
+    /*padding: 0;*/
+    /*width: 40px;*/
+/*}*/
+
+
+.nav-list li{
+    border: 1px solid #000000;
+    border-radius: 6px;
+    box-sizing: border-box;
+    display: block;
     float: left;
-    margin-left: 5px;
-    padding: 0;
-    width: 40px;
+    font-size: 1.5rem;
+    list-style: outside none none;
+    margin: 0 0.5rem 0 0;
+    padding: 0.05rem 0.65rem;
+    text-align: center;
+    color: #606060;
 }
-
+.nav-list li a{
+    color: #606060;
+}
+.nav-list>.tools-job>a{
+color: #000000;
+}
+.nav-list li:last-child{
+    margin-right: 0;
+}
 .row .row.bm-user-block .bm-user img {
     max-width: none;
     width: 40px;
@@ -147,14 +218,14 @@
     /*width: 144px;*/
 }
 
-.bm-user-additional-block .columns.bm-trash {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    background: url('http://vignette1.wikia.nocookie.net/ttwthroughthewoods/images/3/3c/Trash_Can_Body.png/revision/latest?cb=20130815221422') no-repeat;
-    background-size: cover;
-    margin:0;
-}
+/*.bm-user-additional-block .columns.bm-trash {*/
+    /*width: 40px;*/
+    /*height: 40px;*/
+    /*padding: 0;*/
+    /*background: url('http://vignette1.wikia.nocookie.net/ttwthroughthewoods/images/3/3c/Trash_Can_Body.png/revision/latest?cb=20130815221422') no-repeat;*/
+    /*background-size: cover;*/
+    /*margin:0;*/
+/*}*/
 
 .pointer {
     cursor: pointer;
@@ -209,6 +280,13 @@ form{
 }
 form h3{
     margin: 0;
+}
+form>.bm-project-title{
+   float: left;
+    border: 0.2rem solid #f3f3f3;
+    padding: 0.2rem 0.4rem;
+    box-sizing: border-box;
+
 }
 
 section .select-tack:hover{
@@ -397,14 +475,14 @@ section .user-name:nth-child(10) a:hover{
     height: auto;
     position: absolute;
     width:auto;
-    padding: 3rem 0 0;
+    padding: 48px 0 0;
     z-index: 10;
 }
 .centre-block-img>.click-right {
     height: auto;
     position: absolute;
     width:auto;
-    padding: 3rem 0 0;
+    padding: 48px 0 0;
     z-index: 10;
     right: 0.5rem;
 }
@@ -413,7 +491,7 @@ section .user-name:nth-child(10) a:hover{
     height: auto;
     position: absolute;
     width:auto;
-    padding: 0 0 3rem 0;
+    padding: 0 0 48px 0;
     z-index: 10;
     left: 1rem;
     bottom: 0.2rem;
@@ -422,73 +500,73 @@ section .user-name:nth-child(10) a:hover{
     height: auto;
     position: absolute;
     width:auto;
-    padding: 0 0 3rem 0;
+    padding: 0 0 48px 0;
     z-index: 10;
     left: 30rem;
     bottom: 0.2rem;
 }
 .centre-block-img>.main-click-message>p{
     position: absolute;
-    top: 0.2rem;
-    height: 2rem;
-    left: 1.9rem;
+    top: 3px;
+    height: 32px;
+    left: 30px;
     margin: 0;
     width: 2rem;
     z-index: 20;
     background: #ff3823 none repeat scroll 0 0;
     border-radius: 50%;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 24px;
     text-align: center;
     vertical-align: middle;
 }
 .centre-block-img>.click-right>p{
     position: absolute;
-    top: 0.2rem;
-    height: 2rem;
-    left: 12rem;
+    top: 3px;
+    height: 32px;
+    left: 192px;
     margin: 0;
-    width: 2rem;
+    width: 32px;
     z-index: 20;
     background: #ff3823 none repeat scroll 0 0;
     border-radius: 50%;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 24px;
     text-align: center;
     vertical-align: middle;
 }
 .centre-block-img>.click-bottom-left>p{
     position: absolute;
-    top: 8.8rem;
-    height: 2rem;
-    left: 1rem;
+    top: 140px;
+    height: 32px;
+    left: 16px;
     margin: 0;
-    width: 2rem;
+    width: 32px;
     z-index: 20;
     background: #ff3823 none repeat scroll 0 0;
     border-radius: 50%;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 24px;
     text-align: center;
     vertical-align: middle;
 }
 .centre-block-img>.click-bottom-right>p{
     position: absolute;
-    top: 8.7rem;
-    height: 2rem;
-    left: 10rem;
+    top: 140px;
+    height: 32px;
+    left: 160px;
     margin: 0;
-    width: 2rem;
+    width: 32px;
     z-index: 20;
     background: #ff3823 none repeat scroll 0 0;
     border-radius: 50%;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 24px;
     text-align: center;
     vertical-align: middle;
 }
 .centre-block-img>.main-click-message>.click-message{
-    width: 16rem;
+    width: 256px;
     height:auto;
     position: relative;
     border-radius: 6px;
@@ -497,37 +575,37 @@ section .user-name:nth-child(10) a:hover{
 .centre-block-img>.main-click-message>.message-number:before{
     content: '';
     position: absolute;
-    top: 0.5rem;
-    left:-0.2rem;
+    top: 8px;
+    left:-3px;
     border: 20px solid transparent;
     border-bottom: 20px solid #ff3823;
 }
 .centre-block-img>.click-bottom-left>.message-number:before{
     content: '';
     position: absolute;
-    top: -1rem;
-    left:-.2rem;
+    top: -16px;
+    left:-3px;
     border: 20px solid transparent;
     border-top: 20px solid #ff3823;
 }
 .centre-block-img>.click-bottom-right>.message-number:before{
     content: '';
     position: absolute;
-    top: -1rem;
-    left:-.2rem;
+    top: -16px;
+    left:-3px;
     border: 20px solid transparent;
     border-top: 20px solid #ff3823;
 }
 
 .main-click-message>.click-message>.field-tool{
     background: #e6e6e6;
-    padding: 0.5rem 0.5rem 0.5rem 0;
+    padding: 8px 0.5rem 0.5rem 0;
     box-sizing: border-box;
     text-align: right;
-    font-size: 1.5rem;
+    font-size: 24px;
 }
 .main-click-message>.click-message>.field-tool>i{
-    margin-right: .5rem;
+    margin-right: 8px;
 }
 .click-message>.field-text{
     position: relative;
@@ -535,7 +613,7 @@ section .user-name:nth-child(10) a:hover{
     margin: 0;
 }
 .click-message>.field-text>textarea{
-    min-height: 4rem;
+    min-height: 64px;
     height: 100%;
     margin: 0;
     min-width: 100%;
@@ -545,9 +623,9 @@ section .user-name:nth-child(10) a:hover{
     box-sizing: border-box;
 }
 .click-message>.field-text>.button-click{
-    bottom: 0.2rem;
+    bottom: 3px;
     position: absolute;
-    right: 0.2rem;
+    right: 3px;
 }
 /*end */
 
