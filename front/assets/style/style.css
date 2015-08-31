@@ -489,16 +489,18 @@ section .user-name:nth-child(10) a:hover{
     width:auto;
     padding: 0 0 48px 0;
     z-index: 10;
-    left: 1rem;
+    left: 16px;
     bottom: 3px;
 }
 .centre-block-img>.click-bottom-right {
     height: auto;
+    float: right;
     position: absolute;
     width:auto;
     padding: 0 0 48px 0;
     z-index: 10;
-    left: 480px;
+    left: inherit;
+    right: 8px;
     bottom: 3px;
 }
 .centre-block-img>.main-click-message>p{
@@ -550,7 +552,8 @@ section .user-name:nth-child(10) a:hover{
     position: absolute;
     top: 140px;
     height: 32px;
-    left: 160px;
+    left: inherit;
+    right: 30px;
     margin: 0;
     width: 32px;
     z-index: 20;
