@@ -549,7 +549,6 @@ section .user-name:nth-child(10) a:hover{
     position: absolute;
     right: 0.2rem;
 }
-
 /*end */
 
 /*click-left*/
@@ -781,6 +780,76 @@ background: none;
     border: 5px solid red;
 }
 /*end*/
+
+
+
+/*add-page*/
+.add-project{
+    border: 0.2rem solid #ccc;
+    margin-top: 2rem;
+    padding: 4rem  4rem  8rem 4rem;
+
+}
+.main-add-page{
+    margin: 0 auto;
+}
+.main-add-page>.title-add-project{
+    text-align: center;
+    margin: 0 0 5rem 0;
+}
+.main-add-page>.block-add-project{
+    border: 1px solid #d8d8d8;
+    margin: 0 6.3rem 0 0;
+    padding: 1rem;
+}
+.main-add-page>.google-disk{
+    margin-right:0;
+}
+
+.main-add-page>.block-add-project:hover{
+    /*padding: 0.77rem;*/
+    transition: 0.7s ease 0s;
+    box-shadow: 0 0 0.1rem 0 #ccc ;
+}
+.main-add-page>.block-add-project:active{
+    /*padding: 0.77rem;*/
+    transition: 0.2s ease 0s;
+    box-shadow: 0 0 0.5rem 0 #ccc,inset ;
+}
+/*.main-add-page>.block-add-project:hover>img{*/
+    /*max-height: 11.5rem;*/
+    /*min-height: 11.5rem;*/
+    /*transition: 0.7s ease 0s;*/
+/*}*/
+
+
+.main-add-page>.block-add-project>img{
+    max-height: 11rem;
+    min-height: 11rem;
+    height: auto;
+    width: 100%;
+}
+
+.main-add-page>.button-cancel{
+    margin: 3rem 0 0 0;
+}
+.main-add-page>.button-cancel>button{
+    display: block;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    background: #f2f2f2 none repeat scroll 0 0;
+    border: 2px solid #000;
+    border-radius: 2px;
+    color: #000000;
+    font-size: 1rem;
+}
+.main-add-page>.button-cancel>button:hover{
+    background: #dcdcdc none repeat scroll 0 0;
+}
+.main-add-page>.button-cancel>button:active{
+    box-shadow: 0 0 0.1rem 0 #858585;
+    color: #464646;
+}
 
 @media (max-width: 1348px) {
     .bm-project-title{
