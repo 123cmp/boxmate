@@ -95,7 +95,7 @@
 .bm-project-image {
     float: left;
     margin-right: 10px;
-    max-width: 11.5rem;
+    /*max-width: 11.5rem;*/
     height: 10rem;
 }
 .button-status li{
