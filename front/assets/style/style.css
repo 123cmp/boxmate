@@ -537,7 +537,7 @@ section .user-name:nth-child(10) a:hover{
     position: absolute;
     top: 140px;
     height: 32px;
-    left: 16px;
+    left: 30px;
     margin: 0;
     width: 32px;
     z-index: 20;
