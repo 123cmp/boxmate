@@ -148,6 +148,8 @@
 }
 .panel.bm-footer {
     padding: 0;
+    max-height: 70px;
+
 }
 
 .panel.bm-footer .bm-footer-content{
@@ -156,6 +158,7 @@
     overflow: hidden;
     padding: 8px 0;
     box-sizing: border-box;
+
 }
 
 .row.bm-row .columns.bm-project-box {
@@ -170,18 +173,6 @@
     margin: 10px 0 0 0;
     float: left
 }
-/*.row .row.bm-user-block {*/
-    /*margin: 10px 0 0 20px;*/
-    /*width: 227px;*/
-    /*float: left*/
-/*}*/
-
-/*.row .row.bm-user-block .bm-user {*/
-    /*float: left;*/
-    /*margin-left: 5px;*/
-    /*padding: 0;*/
-    /*width: 40px;*/
-/*}*/
 
 
 .nav-list li{
@@ -468,15 +459,13 @@ section .user-name:nth-child(10) a:hover{
 }
 
 
-
-
-
 .centre-block-img>.main-click-message{
     height: auto;
     position: absolute;
     width:auto;
     padding: 48px 0 0;
     z-index: 10;
+    left: 16px;
 }
 .centre-block-img>.click-right {
     height: auto;
@@ -484,7 +473,9 @@ section .user-name:nth-child(10) a:hover{
     width:auto;
     padding: 48px 0 0;
     z-index: 10;
+    left: inherit;
     right: 8px;
+    right: 16px;
 }
 
 .centre-block-img>.click-bottom-left {
@@ -600,39 +591,109 @@ section .user-name:nth-child(10) a:hover{
     border-top: 20px solid #ff3823;
 }
 
-.main-click-message>.click-message>.field-tool{
-    background: #e6e6e6;
-    padding: 8px 0.5rem 0.5rem 0;
+/*.main-click-message>.click-message>.field-tool{*/
+    /*background: #e6e6e6;*/
+    /*padding: 8px 0.5rem 0.5rem 0;*/
+    /*box-sizing: border-box;*/
+    /*text-align: right;*/
+    /*font-size: 24px;*/
+/*}*/
+/*.main-click-message>.click-message>.field-tool>i{*/
+    /*margin-right: 8px;*/
+/*}*/
+.main-click-message>.click-message>.comments-block{
+    margin: 0;
+    padding:0;
+    display: block;
+    height: 324px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.main-click-message>.click-message>.no-comments{
+    height: 0;
+    display: block;
+}
+.comments-block>.field-comments:nth-child(even){
+    background: rgb(221, 221, 221);
+}
+.comments-block>.field-comments:nth-child(odd){
+    background: rgb(171, 171, 171);
+}
+
+.comments-block>.field-comments>.name-user{
+    padding: 0 0 0 3px;
+    font-size: 1rem;
+    margin: 0;
+    box-sizing: border-box;
+    text-align: left;
+    color: rgba(255, 102, 36, 1);
+
+}
+.comments-block>.field-comments>.name-user:hover{
+    color: rgb(200, 93, 36);
+    text-decoration: underline;
+    transition: 0.5s ease 0s;
+}
+.comments-block>.field-comments>.data-comments{
+    padding: 0 3px 0 0;
     box-sizing: border-box;
     text-align: right;
-    font-size: 24px;
+    font-size: 1rem;
+    margin: 0;
 }
-.main-click-message>.click-message>.field-tool>i{
-    margin-right: 8px;
+.field-comments>.comments-text{
+    padding: 5px 5px 0 5px;
+    box-sizing: border-box;
+    margin: 0;
+}.field-comments>.edit-text{
+    padding:0 5px 5px 5px ;
+    box-sizing: border-box;
+
+ }
+.field-comments>.edit-text>button{
+    font-size: 1.5rem;
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    padding: 0;
+    margin: 0;
+    color: #606060;
+    background: none;
+}
+.field-comments>.edit-text>button:active{
+    font-size: 1.4rem;
+    transition: 0.3s ease 0s;
+}
+.field-comments>.edit-text>.pencil{
+  text-align: left;
+    float: left;
+}
+.field-comments>.edit-text>.trash{
+    text-align: right;
+    float:right;
 }
 .click-message>.field-text{
     position: relative;
-    padding: 0;
+    padding: 0 0 5px 3px;
     margin: 0;
+    box-sizing: border-box;
+    background: #e6e6e6;
 }
 .click-message>.field-text>textarea{
-    min-height: 64px;
-    height: 100%;
+    min-height: 65px;
     margin: 0;
     min-width: 100%;
     padding: 2px;
     resize: both;
     overflow: hidden;
     box-sizing: border-box;
+    border: none;
 }
 .click-message>.field-text>.button-click{
-    bottom: 3px;
-    position: absolute;
-    right: 3px;
+margin: 5px 0 0 0;
+    float: left;
 }
 /*end */
-
-/*click-left*/
 
 
 .row.row-tabs{
@@ -930,6 +991,60 @@ background: none;
 .main-add-page>.button-cancel>button:active{
     box-shadow: 0 0 0.1rem 0 #858585;
     color: #464646;
+}
+
+/*createnewproject*/
+
+.block-new_project{
+    height: 100%;
+    overflow: auto;
+}
+.registration-project p{
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: left;
+
+}
+.registration-project input{
+    padding: 1rem;
+    height: auto;
+    box-shadow: 0 0 2px 0 #000;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+}
+label.error{
+    padding: 1rem;
+    height: auto;
+    box-shadow: 0 0 2px 0 #fa0103;
+    border: 1px solid #fa0103;
+    box-sizing: border-box;
+    margin: 0;
+}
+label>.error-message{
+   margin: 0 0 0 0;
+    font-size: 0.8rem;
+    text-align: left;
+    color:#fa0103 ;
+
+}
+
+.registration-project input:focus{
+    box-shadow: 0 0 4px 0 #000;
+}
+.registration-project-button>.button-create-project{
+    background: #e6e6e6;
+    border: 2px solid #000000;
+    color: #000000;
+    font-size: 1.5rem;
+    border-radius: 0.3rem;
+    margin-top: 1rem;
+
+}
+.registration-project-button>.button-create-project:active{
+    background: #d2d2d2;
+   box-shadow: 0 0 2px 0 #000 inset;
+    transition: 0.2s ease 0s;
+
 }
 
 @media (max-width: 1348px) {

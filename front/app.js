@@ -18,7 +18,8 @@ bm.Router = Backbone.Router.extend({
         "!/registration": "registration",
         "!/authorization": "authorization",
         "!/usertool": "usertool",
-        "!/addnewproject": "addnewproject"
+        "!/addnewproject": "addnewproject",
+        "!/createnewproject": "createnewproject"
 
     },
 
@@ -51,6 +52,10 @@ bm.Router = Backbone.Router.extend({
     },
     addnewproject: function () {
         bm.stateModel.set({ state: "addnewproject" });
+        bm.stateModel.trigger("change");
+    },
+    createnewproject: function () {
+        bm.stateModel.set({ state: "createnewproject" });
         bm.stateModel.trigger("change");
     }
 
