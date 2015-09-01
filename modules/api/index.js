@@ -50,14 +50,6 @@ module.exports = function (app, passport) {
         return res.send({message: req.session});
     });
 
-    app.get("/api/users/projects/", isLoggedIn, function (req, res) {
-        Project.find({owner: req.session.passport.user}, function(err, projects){
-            if(projects && !err) res.send(projects);
-            else if(err) res.sendStatus(400);
-            else res.sendStatus(404);
-        })
-    });
-
     app.get("/api/users/:id", function (req, res) {
 
     });
@@ -115,6 +107,15 @@ module.exports = function (app, passport) {
             else res.sendStatus(400);
         });
     });
+
+    app.get("/api/projects", isLoggedIn, function(req, res){
+        Project.find({owner: req.session.passport.user}, function(err, projects){
+            if(projects && !err) res.send(projects);
+            else if(err) res.sendStatus(400);
+            else res.sendStatus(404);
+        })
+    });
+
     app.put("/api/projects/", isLoggedIn, function (req, res) {
         var project = new Project(req.body);
         project.owner = req.session.passport.user;
