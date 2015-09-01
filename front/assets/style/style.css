@@ -310,7 +310,7 @@ label>.error-message{
 /*usertool*/
 .main-usertool-block{
     background: #fff;
-    padding: 1rem;
+    padding:0;
 }
 .centre-block-img>.right-open-block{
     position: absolute;
