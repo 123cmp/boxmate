@@ -1,28 +1,21 @@
-var Token = require("../models/tokenModel");
+//var Token = require("../models/tokenModel");
 
-module.exports.consumeRememberMeToken = function (token, func) {
+//module.exports.consumeRememberMeToken = function (token, func) {
+//
+//    Token.findOne({"token": token}, function (err, tokenObj) {
+//        if (tokenObj) {
+//            var uid = tokenObj.userId;
+//            return func(null, uid);
+//        } else {
+//            return func(null, false);
+//        }
+//    });
+//};
 
-    Token.findOne({"token": token}, function (err, tokenObj) {
-        console.log(tokenObj);
-        if(tokenObj) {
-            tokenObj.remove();
-            return func(null, tokenObj.userId);
-        }
-        return func(null, null);
-    });
-    // invalidate the single-use token
-};
-
-module.exports.issueToken = function (user, done) {
-    console.log(user);
+module.exports.issueToken = function () {
+    console.log("creating new token");
     var token = randomString(64);
-    var tokenObj = new Token({token: token, userId: user._id});
-    tokenObj.save(function (err) {
-        if (err) {
-            return done(err);
-        }
-        return done(null, token);
-    });
+    return token;
 };
 
 

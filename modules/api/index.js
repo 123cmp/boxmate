@@ -1,10 +1,13 @@
 var path = require('path');
 var log = require("../myWinston")(module);
 var User = require("../models/userModel"),
-    Token = require("../passport/Token");
+    Project = require("../models/projectModel");
 var sendfile = function (res, file) {
     res.sendFile(path.resolve(__dirname + '/../../front' + file));
 };
+
+var oneHour = 3600000,
+    houersInDay = 24;
 
 module.exports = function (app, passport) {
 
@@ -21,18 +24,11 @@ module.exports = function (app, passport) {
                 if (err) {
                     return next(err);
                 }
-                log.info(req.body);
                 if (req.body.remember_me) {
-
-                    Token.issueToken(req.user, function (err, token) {
-                        if (err) {
-                            return next(err);
-                        }
-                        res.cookie('remember_me', token, {path: '/', httpOnly: false, maxAge: 604800000});
-                        return res.send({id: user._id});
-                    });
+                    req.session.cookie.maxAge = 3*houersInDay*oneHour;
+                    return res.sendStatus(200);
                 } else {
-                    return res.send({id: user._id});
+                    return res.sendStatus(200);
                 }
             });
         })(req, res, next);
@@ -40,7 +36,6 @@ module.exports = function (app, passport) {
     });
 
     app.get("/api/logOut", function (req, res) {
-        res.clearCookie('remember_me');
         req.logout();
         res.sendStatus(200);
     });
@@ -52,9 +47,17 @@ module.exports = function (app, passport) {
         sendfile(res, "/templates/" + req.params.name);
     });
     app.get("/api/users/", isLoggedIn, function (req, res) {
-        console.log(req.cookies);
-        return res.send({status: 'OK'});
+        return res.send({message: req.session});
     });
+
+    app.get("/api/users/projects/", isLoggedIn, function (req, res) {
+        Project.find({owner: req.session.passport.user}, function(err, projects){
+            if(projects && !err) res.send(projects);
+            else if(err) res.sendStatus(400);
+            else res.sendStatus(404);
+        })
+    });
+
     app.get("/api/users/:id", function (req, res) {
 
     });
@@ -75,7 +78,6 @@ module.exports = function (app, passport) {
 
                 user.save(function (err) {
                     if (!err) {
-                        log.info("user created");
                         return res.send({status: 'OK'});
                     } else {
                         console.log(err);
@@ -105,14 +107,39 @@ module.exports = function (app, passport) {
     app.delete("/api/users/:id", function (req, res) {
 
     });
-    app.get("/api/users/:userId/projects/", function (req, res) {
 
+    app.get("/api/projects/:id", isLoggedIn, function (req, res) {
+        Project.findById(req.id, function(err, project){
+            if(!err && project) res.send(project);
+            else if(!project) res.sendStatus(404);
+            else res.sendStatus(400);
+        });
     });
-    app.get("/api/projects/:id", function (req, res) {
+    app.put("/api/projects/", isLoggedIn, function (req, res) {
+        var project = new Project(req.body);
+        project.owner = req.session.passport.user;
 
-    });
-    app.put("/api/projects/", function (req, res) {
-
+        project.save(function(err){
+            if(!err){
+                User.findById(req.session.passport.user, function(err, user){
+                    console.log(user);
+                    if(!err){
+                        user.myProjects.push(project._id);
+                        user.save();
+                    }
+                });
+                return res.send({id: project._id});
+            } else {
+                if (err.name == 'ValidationError') {
+                    res.statusCode = 400;
+                    res.send({error: 'Validation error'});
+                } else {
+                    res.statusCode = 500;
+                    res.send({error: 'Server error'});
+                }
+                log.error('Internal error(%d): %s', res.statusCode, err.message);
+            }
+        });
     });
     app.post("/api/projects/", function (req, res) {
 
@@ -153,11 +180,10 @@ module.exports = function (app, passport) {
 
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated()) {
-            console.log(req.user)
             return next();
         }
 
-        res.send(401);
+        res.sendStatus(401);
     }
 
     return this;

@@ -8,10 +8,10 @@ var express = require("express"),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     log = require("./modules/myWinston")(module),
-    mongoStore = require("connect-mongodb");
+    mongoStore = require("connect-mongo")(session);
 
 
-mongoose.connect('mongodb://admin:admin@localhost:27017/boxmate');
+mongoose.connect('mongodb://admin:admin@localhost:27017/boxmate', {server: { poolSize: 5 }});
 var db = mongoose.connection;
 
 db.on('error', function (err) {
@@ -28,45 +28,21 @@ app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
-    store: mongoStore({
-        dbname: "boxmate",
-        host: "localhost",
-        port: 27017,
-        username: "admin",
-        password: "admin"
-    }),
-    secret: "secret fraze"
+    store: new mongoStore({mongooseConnection: mongoose.connection}),
+    secret: "secret fraze",
+    name: "session_id",
+    rolling: true
 })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(passport.authenticate('remember-me'));
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 var api = require("./modules/api")(app, passport);
 
-//var File = mongoose.model('File', FileSchema);
-
-//var multer = require('multer');
-
 var sendfile = function (res, path) {
     res.sendFile(path, {root: __dirname});
 };
-//
-//app.use(multer({
-//    dest: './uploads/',
-//    rename: function (fieldname, filename) {
-//        return filename + Date.now();
-//    },
-//    onFileUploadStart: function (file) {
-//        console.log(file.originalname + ' is starting ...')
-//    },
-//    onFileUploadComplete: function (file) {
-//        console.log(file.fieldname + ' uploaded to  ' + file.path);
-//    },
-//    onFileUploadData: function (file, data, req, res) {
-//        res.write(JSON.stringify(file));
-//    }
-//}).single("files"));
+
 
 //app.use(express.static(path.join(__dirname, "front")));
 
