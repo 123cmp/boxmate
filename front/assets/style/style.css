@@ -307,16 +307,63 @@ label>.error-message{
     color:#FF0000;
 }
 
-
-
 /*usertool*/
 .main-usertool-block{
     background: #fff;
     padding: 1rem;
 }
+.centre-block-img>.right-open-block{
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    float: right;
+    display: block;
+    transition: 0.5s ease 0s;
+    z-index: 12;
+}
+
+/*correction-comments*/
+.centre-block-img>.correction-comments-wrapper{
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    float: right;
+}
+.correction-comments-wrapper>.correction-comments{
+    position: relative;
+}
+.correction-comments>.button-open-correction{
+    float: right;
+    margin: 0;
+    padding: 0.025rem 1rem 0.0875rem;
+    position:absolute;
+    right: 6px;
+    top: 6px;
+    z-index: 11;
+    background: #f2f2f2 none repeat scroll 0 0;
+    border: 2px solid #000;
+    border-radius: 2px;
+    color: #000000;
+    font-size: 1rem;
+}
+
+.correction-comments>.button-open-correction:hover{
+    background: #dbdbdb none repeat scroll 0 0;
+    box-shadow: 0 0 3px 1px #464646;
+    transition: all 0.2s ease 0s;
+}
+.correction-comments>.button-open-correction:active{
+    box-shadow: 0 0 3px 0 #000 inset;
+    transition: all 0.1s ease 0s;
+}
+
+
+/*end*/
+
 .panel-left,.panel-right{
-    background: #fff;
     padding: 5px;
+    margin: 0;
+    background: #fff;
 
 }
 .panel-left:hover,.panel-right:hover,.centre-block-img:hover{
@@ -340,7 +387,7 @@ label>.error-message{
     background: #dbdbdb
 }
 .collapse-block-left:active{
-    box-shadow: 0 0 5px 1px #464646;
+    box-shadow: 0 0 3px 0 #000 inset;
     transition: 0.1s ease 0s;
 
 }
@@ -549,11 +596,12 @@ section .user-name:nth-child(10) a:hover{
 }
 .centre-block-img>.click-bottom-right>p{
     position: absolute;
-    top: 140px;
+    bottom: 0;
     height: 32px;
     left: inherit;
-    right: 30px;
     margin: 0;
+    right: 30px;
+    top: inherit;
     width: 32px;
     z-index: 20;
     background: #ff3823 none repeat scroll 0 0;
@@ -737,7 +785,7 @@ margin: 5px 0 0 0;
     margin-right: 0;
 }
 .accordion-main{
-background: none;
+    background: none;
 }
 
 .accordion-main ul{
@@ -1118,6 +1166,7 @@ label>.error-message{
     transition: 0.2s ease 0s;
     color: #000000;
 }
+
 
 @media (max-width: 1348px) {
     .bm-project-title{
