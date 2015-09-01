@@ -27,8 +27,8 @@ bm.ApiService = {
     removeUser: function(id) {
         return $.delete("api/users/id");
     },
-    getUserProjects: function(userId) {
-        return $.get("api/users/"+userId+"/projects/");
+    getUserProjects: function() {
+        return $.get("api/projects");
     },
     getProject: function(id) {
         return $.get("api/projects/"+id);

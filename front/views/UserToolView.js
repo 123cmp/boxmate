@@ -6,8 +6,9 @@ bm.UserToolView = Backbone.View.extend({
     userKitView: null,
 
     setMode: function(mode) {
-        console.log(mode);
+        var currentMode = this.imageWithCanvasModel.get("mode");
         this.imageWithCanvasModel.set("mode", mode);
+        if(currentMode == mode) this.imageWithCanvasModel.trigger("change:mode", this.imageWithCanvasModel);
     },
 
     initialize: function () {

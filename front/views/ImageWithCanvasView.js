@@ -5,19 +5,43 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     template: "",
     compiled: null,
     clearMode: false,
+    timer: null,
+    SAVE_TIMEOUT: 2000,
+    imageData: null,
+
+    refreshTimer: function() {
+        if(this.timer) clearTimeout(this.timer);
+        this.initTimer();
+    },
+
+    initTimer: function() {
+        var __self = this;
+        __self.timer = setTimeout(function() {
+            __self.save()
+        }, __self.SAVE_TIMEOUT);
+    },
+
+    save: function() {
+        var canvas = $(".canvas").get(0);
+        var img    = canvas.toDataURL("image/png");
+       console.log("Saving", img)
+    },
+
+    switchClearMode: function() {
+        this.clearMode = !this.clearMode;
+        this.clearMode ? this.clear() : this.show();
+    },
 
     initialize: function () {
         var __self = this;
         if (!__self.model) __self.model = new bm.ImageWithCanvasModel();
         __self.model.bind("change:mode", function () {
             var mode = __self.model.get("mode");
-            if(mode == "clear") this.switchClearMode();
+            if(mode == "clear") __self.switchClearMode();
+            if(mode == "selection") {
+                $(".dot-pin").draggable();
+            }
         });
-    },
-
-    switchClearMode: function() {
-        this.clearMode = !this.clearMode;
-        this.clearMode ? this.clear() : this.show();
     },
 
     clear: function() {
@@ -51,7 +75,13 @@ bm.ImageWithCanvasView = Backbone.View.extend({
             touchstart: this.startDraw,
             touchmove: this.moveDraw,
             touchend: this.stopDraw,
-            color: "#FF0000"
+            color: "#FF0000",
+            refreshTimer: this.refreshTimer,
+            initTimer: this.initTimer,
+            save: this.save,
+            timer: this.timer,
+            SAVE_TIMEOUT: this.SAVE_TIMEOUT,
+
         }
     },
 
@@ -66,24 +96,40 @@ bm.ImageWithCanvasView = Backbone.View.extend({
             touchmove: this.movePin,
             touchend: this.stopPin,
             color: "#FF0000",
-            coors: {}
+            coors: {},
+            refreshTimer: this.refreshTimer,
+            initTimer: this.initTimer,
+            timer: this.timer,
+            SAVE_TIMEOUT: this.SAVE_TIMEOUT,
+            save: this.save,
+            dotPinTemplate: "<p class='message-number'>1</p><div class='click-message left'><div class='field-tool left large-12'><i class='fa fa-eye'></i><i class='fa fa-trash-o'></i></div><div class='field-text left large-12 '><textarea placeholder='Message'></textarea></div></div>",
+            dotPinSize: {
+                width: 256,
+                height: 174,
+                number: {
+                    width: 32,
+                    height: 32,
+                    offsetLeft: 30
+                }
+            }
         }
     },
 
     events: {
-        "mousedown .canvas": "drawOrPin",
-        "mousemove .canvas": "drawOrPin",
-        "mouseup .canvas": "drawOrPin",
-        "mouseleave .canvas": "drawOrPin",
-        "touchstart .canvas": "drawOrPin",
-        "touchmove .canvas": "drawOrPin",
-        "touchend .canvas": "drawOrPin"
+        "mousedown": "drawOrPin",
+        "mousemove": "drawOrPin",
+        "mouseup": "drawOrPin",
+        "mouseleave": "drawOrPin",
+        "touchstart": "drawOrPin",
+        "touchmove": "drawOrPin",
+        "touchend": "drawOrPin"
     },
 
     drawOrPin: function(e) {
+        var canvasPosition = $('.canvas').offset();
         var coors = {
-            x: e.offsetX,//e.clientX - canvasPosition.left,
-            y: e.offsetY//e.clientY - canvasPosition.top
+            x: e.pageX - canvasPosition.left,
+            y: e.pageY - canvasPosition.top
         };
         if(!coors.x && !coors.y && e.targetTouches && e.targetTouches[0]) {
             coors = {
@@ -111,6 +157,7 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     },
 
     stopPin: function (coors) {
+        this.refreshTimer();
         var pin = $("<div></div>");
         pin.addClass("pin");
         if(this.isSquare) {
@@ -130,14 +177,37 @@ bm.ImageWithCanvasView = Backbone.View.extend({
             pin.css("width", width);
             pin.css("height", height);
         } else {
+            var containerPositionLeft = 0;
+            var containerPositionTop = 0;
+            var containerClass = "";
+            if(coors.y + this.dotPinSize.height > this.pinLayer.height()) {
+                containerClass = "click-bottom-";
+                containerPositionTop = coors.y + (this.dotPinSize.number.height / 2) - this.dotPinSize.height;
+            } else {
+                containerClass = "click-";
+                containerPositionTop = coors.y - (this.dotPinSize.number.height / 2) ;
+            }
+            if(coors.x + this.dotPinSize.width > this.pinLayer.width()) {
+                containerClass += "right";
+                containerPositionLeft = coors.x + (this.dotPinSize.number.width / 2) + this.dotPinSize.number.offsetLeft - this.dotPinSize.width;
+            } else {
+                containerClass += "left";
+                containerPositionLeft = coors.x - (this.dotPinSize.number.width / 2) - this.dotPinSize.number.offsetLeft;
+            }
             pin.addClass("dot-pin")
-               .text("qweasd")
-               .css("left", coors.x)
-               .css("top", coors.y);
+                .addClass("main-click-message")
+                .addClass(containerClass)
+                .html(this.dotPinTemplate)
+                .css("left", containerPositionLeft)
+                .css("top", containerPositionTop )
+                .find("textarea").blur(function() {
+                    console.log("textarea into div");
+                })
         }
 
         this.coors = null; this.isSquare = false;
         this.pinLayer.append(pin);
+        autosize(pin.find("textarea"));
     },
 
     draw: function (coors, e) {
@@ -150,6 +220,7 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     },
     moveDraw: function (coors) {
         if (this.isDrawing) {
+            this.refreshTimer();
             this.context.strokeStyle = this.color;
             this.context.lineJoin = "round";
             this.context.lineWidth = 3;
@@ -159,6 +230,7 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     },
     stopDraw: function (coors) {
         if (this.isDrawing) {
+            this.refreshTimer();
             this.touchmove(coors);
             this.isDrawing = false;
         }
