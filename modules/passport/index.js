@@ -1,5 +1,5 @@
 var LocalStrategy = require('passport-local').Strategy,
-    RememberMeStrategy = require("passport-remember-me").Strategy,
+    //RememberMeStrategy = require("passport-remember-me").Strategy,
     User = require("../models/userModel"),
     Token = require("./Token");
 
@@ -66,31 +66,31 @@ module.exports = function (passport) {
     // =========================================================================
 
 
-    passport.use(new RememberMeStrategy(
-        function (token, done) {
-            Token.consumeRememberMeToken(token, function (err, uid) {
-                if (err) {
-                    return done(err);
-                }
-                if (!uid) {
-                    return done(null, false);
-                }
-
-                User.findById(uid, function (err, user) {
-                    if (err) {
-                        return done(err);
-                    }
-                    if (!user) {
-                        return done(null, false);
-                    }
-                    return done(null, user);
-                });
-            });
-        },
-        function (user, func) {
-            Token.issueToken(user, func);
-        }
-    ));
+    //passport.use(new RememberMeStrategy(
+    //    function (token, done) {
+    //        Token.consumeRememberMeToken(token, function (err, uid) {
+    //            if (err) {
+    //                return done(err);
+    //            }
+    //            if (!uid) {
+    //                return done(null, false);
+    //            }
+    //            console.log("i have uid");
+    //            User.findById(uid, function (err, user) {
+    //                if (err) {
+    //                    return done(err);
+    //                }
+    //                if (!user) {
+    //                    return done(null, false);
+    //                }
+    //                return done(null, user);
+    //            });
+    //        });
+    //    },
+    //    function (user, func) {
+    //        Token.issueToken(user, func);
+    //    }
+    //));
 
     // =========================================================================
     // LOCAL SIGNUP ============================================================
