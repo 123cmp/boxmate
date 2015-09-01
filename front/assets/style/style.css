@@ -533,7 +533,8 @@ section .user-name:nth-child(10) a:hover{
 }
 .centre-block-img>.click-bottom-left>p{
     position: absolute;
-    top: 140px;
+    top: inherit;
+    bottom: 0;
     height: 32px;
     left: 30px;
     margin: 0;
@@ -541,10 +542,10 @@ section .user-name:nth-child(10) a:hover{
     z-index: 20;
     background: #ff3823 none repeat scroll 0 0;
     border-radius: 50%;
-    color: #fff;
-    font-size: 24px;
     text-align: center;
+    font-size: 24px;
     vertical-align: middle;
+    color: #fff;
 }
 .centre-block-img>.click-bottom-right>p{
     position: absolute;
@@ -616,6 +617,16 @@ section .user-name:nth-child(10) a:hover{
     height: 0;
     display: block;
 }
+.main-click-message>.click-message>.one-comments{
+    height: auto;
+    display: block;
+    overflow: hidden;
+}
+.main-click-message>.click-message>.one-comments{
+    height: auto;
+    display: block;
+    overflow: hidden;
+}
 .comments-block>.field-comments:nth-child(even){
     background: rgb(221, 221, 221);
 }
@@ -683,11 +694,11 @@ section .user-name:nth-child(10) a:hover{
     background: #e6e6e6;
 }
 .click-message>.field-text>textarea{
-    min-height: 65px;
+  height: 100px;
     margin: 0;
     min-width: 100%;
     padding: 2px;
-    resize: both;
+    resize: none;
     overflow: hidden;
     box-sizing: border-box;
     border: none;
