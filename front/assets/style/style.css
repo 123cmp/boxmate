@@ -954,16 +954,9 @@ background: none;
     box-shadow: 0 0 0.1rem 0 #ccc ;
 }
 .main-add-page>.block-add-project:active{
-    /*padding: 0.77rem;*/
     transition: 0.2s ease 0s;
     box-shadow: 0 0 0.5rem 0 #ccc,inset ;
 }
-/*.main-add-page>.block-add-project:hover>img{*/
-    /*max-height: 11.5rem;*/
-    /*min-height: 11.5rem;*/
-    /*transition: 0.7s ease 0s;*/
-/*}*/
-
 
 .main-add-page>.block-add-project>img{
     max-height: 11rem;
@@ -1025,9 +1018,7 @@ label>.error-message{
     font-size: 0.8rem;
     text-align: left;
     color:#fa0103 ;
-
 }
-
 .registration-project input:focus{
     box-shadow: 0 0 4px 0 #000;
 }
@@ -1040,11 +1031,78 @@ label>.error-message{
     margin-top: 1rem;
 
 }
+.registration-project-button>.button-create-project:hover{
+    background: #c5c5c5;
+    transition: 0.2s ease 0s;
+}
 .registration-project-button>.button-create-project:active{
     background: #d2d2d2;
    box-shadow: 0 0 2px 0 #000 inset;
     transition: 0.2s ease 0s;
+}
 
+/*autorization*/
+
+.block-autorization-input input{
+    padding: 1rem;
+    height: auto;
+    box-shadow: 0 0 2px 0 #000;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+}
+.block-autorization-input input:focus{
+    box-shadow: 0 0 4px 0 #000;
+}
+
+.password-form>.button-autorization{
+    background: #e6e6e6;
+    border: 2px solid #000000;
+    color: #000000;
+    font-size: 1.5rem;
+    border-radius: 0.3rem;
+    margin-top: 1rem;
+}
+.password-form>.button-autorization:active{
+    background: #d2d2d2;
+    box-shadow: 0 0 2px 0 #000 inset;
+    transition: 0.2s ease 0s;
+
+}
+.password-form>.button-autorization:hover{
+    background: #c5c5c5;
+    transition: 0.2s ease 0s;
+    color: #000000;
+}
+
+/*block-registration*/
+.block-registration-input input{
+    padding: 1rem;
+    height: auto;
+    box-shadow: 0 0 2px 0 #000;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+}
+.block-registration-input input:focus{
+    box-shadow: 0 0 4px 0 #000;
+}
+
+.password-form>.button-registration{
+    background: #e6e6e6;
+    border: 2px solid #000000;
+    color: #000000;
+    font-size: 1.5rem;
+    border-radius: 0.3rem;
+    margin-top: 1rem;
+}
+.password-form>.button-registration:active{
+    background: #d2d2d2;
+    box-shadow: 0 0 2px 0 #000 inset;
+    transition: 0.2s ease 0s;
+}
+.password-form>.button-registration:hover{
+    background: #c5c5c5;
+    transition: 0.2s ease 0s;
+    color: #000000;
 }
 
 @media (max-width: 1348px) {
