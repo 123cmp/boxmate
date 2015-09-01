@@ -31,7 +31,9 @@ app.use(session({
     store: new mongoStore({mongooseConnection: mongoose.connection}),
     secret: "secret fraze",
     name: "session_id",
-    rolling: true
+    rolling: true,
+    resave: false,
+    saveUninitialized: false
 })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions

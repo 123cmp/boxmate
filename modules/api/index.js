@@ -1,7 +1,9 @@
-var path = require('path');
-var log = require("../myWinston")(module);
-var User = require("../models/userModel"),
-    Project = require("../models/projectModel");
+var path = require('path'),
+    log = require("../myWinston")(module),
+    User = require("../models/userModel"),
+    Project = require("../models/projectModel"),
+    checkRegex = require("./utils").checkRegex,
+    validate = require("./utils").validate;
 var sendfile = function (res, file) {
     res.sendFile(path.resolve(__dirname + '/../../front' + file));
 };
@@ -57,10 +59,7 @@ module.exports = function (app, passport) {
         User.findOne({email: req.body.email}, function (err, article) {
             if (!article) {
 
-                if (req.body.password != req.body.repeat) {
-                    res.statusCode = 400;
-                    res.send({error: 'Password mismatch'});
-                }
+                if(!validate(req.body, "registration")) res.sendStatus(400);
 
                 var user = new User({
                     name: req.body.name,
@@ -86,7 +85,7 @@ module.exports = function (app, passport) {
 
             } else {
                 console.log(article);
-                res.statusCode = 400;
+                res.statusCode = 409;
                 res.send({error: 'Email is not available'});
 
             }
@@ -117,13 +116,21 @@ module.exports = function (app, passport) {
     });
 
     app.put("/api/projects/", isLoggedIn, function (req, res) {
+
+        var unexpectedSymbol = false;
+        for(itemName in req.body){
+            if(!checkRegex(req.body[itemName])){
+                unexpectedSymbol = true;
+            }
+        }
+
+        if(unexpectedSymbol) return res.sendStatus(400);
         var project = new Project(req.body);
         project.owner = req.session.passport.user;
 
         project.save(function(err){
             if(!err){
                 User.findById(req.session.passport.user, function(err, user){
-                    console.log(user);
                     if(!err){
                         user.myProjects.push(project._id);
                         user.save();
