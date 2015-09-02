@@ -1,19 +1,19 @@
 'use strict';
 
-jQuery.each( [ "put", "delete" ], function( i, method ) {
-    jQuery[ method ] = function( url, data, callback, type ) {
-        if ( jQuery.isFunction( data ) ) {
-            type = type || callback;
-            callback = data;
-            data = undefined;
-        }
-
+jQuery.each( [ "putJSON", "deleteJSON", "postJSON"], function( i, method ) {
+    jQuery[ method ] = function(url, data) {
+        if(typeof data == "object")
+            try {
+                data = JSON.stringify(data);
+            } catch (parseError) {
+                console.error(parseError);
+            }
         return jQuery.ajax({
             url: url,
-            type: method,
-            dataType: type,
-            data: data,
-            success: callback
+            type: method.replace("JSON", "").toUpperCase(),
+            contentType: 'application/json',
+            dataType: "json",
+            data: data
         });
     };
 });
