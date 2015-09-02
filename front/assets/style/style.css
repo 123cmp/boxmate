@@ -77,7 +77,7 @@
     height: 0px;
     width: 0px;
     transform: rotate(360deg); }
-/*.callout-card .callout-card-content {*/
+/*.callout-card . callout-card-content{*/
     /*padding: 0.5rem 1.5rem 0.875rem; }*/
 .callout-card.radius {
     border-radius: 0.6rem;
@@ -164,8 +164,33 @@
 
 }
 
-.row.bm-row .columns.bm-project-box {
+.bm-projects-container > .bm-project-box {
     float: left;
+}
+/*.bm-row>.bm-project-box:last-child{*/
+    /*position: relative;*/
+/*}*/
+/*add-template projects-page*/
+/*.bm-project-box:last-child:after{*/
+    /*content: "\f067";*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*opacity: 0.5;*/
+    /*position: absolute;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*font-family: FontAwesome;*/
+    /*font-size: 4.85rem;*/
+    /*text-align: center;*/
+    /*background: #333333 none repeat scroll 0 0;*/
+/*}*/
+.bm-project-box>.add-project-user{
+    float: left;
+    height: 100%;
+    width: 100%;
+    display: block;
+    opacity: 0.5;
+    background: #333333 none repeat scroll 0 0;
 }
 
 .row.bm-row{
@@ -197,6 +222,10 @@
 .nav-list>.tools-job>a{
 color: #000000;
 }
+.nav-list>.bm-project-users{
+    float: left;
+    margin: 0 0.5rem 0 0;
+}
 .nav-list li:last-child{
     margin-right: 0;
 }
@@ -205,6 +234,9 @@ color: #000000;
     width: 40px;
     display: block;
 }
+
+
+
 
 .bm-user-additional-block {
     float: left;
@@ -318,8 +350,11 @@ label>.error-message{
     top: 6px;
     float: right;
     display: block;
-    transition: 0.5s ease 0s;
     z-index: 12;
+}
+.centre-block-img>.close{
+    display: none;
+    transition: 0.5s ease 0s;
 }
 
 /*correction-comments*/
@@ -345,6 +380,9 @@ label>.error-message{
     border-radius: 2px;
     color: #000000;
     font-size: 1rem;
+}
+.correction-comments>.open{
+    display: block;
 }
 
 .correction-comments>.button-open-correction:hover{
@@ -1054,7 +1092,7 @@ margin: 5px 0 0 0;
     height: 100%;
     overflow: auto;
 }
-.registration-project p{
+.registration-project p,.block-registration-input p,.block-autorization-input p{
     margin: 0;
     font-size: 1.5rem;
     text-align: left;
@@ -1062,7 +1100,9 @@ margin: 5px 0 0 0;
 }
 .registration-project input{
     padding: 1rem;
+    margin: 0;
     height: auto;
+    font-size: 1.5rem;
     box-shadow: 0 0 2px 0 #000;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -1103,11 +1143,13 @@ label>.error-message{
     transition: 0.2s ease 0s;
 }
 
+
 /*autorization*/
 
 .block-autorization-input input{
     padding: 1rem;
     height: auto;
+    font-size: 1.5rem;
     box-shadow: 0 0 2px 0 #000;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -1117,12 +1159,12 @@ label>.error-message{
 }
 
 .password-form>.button-autorization{
+    margin-top: 1rem;
+    font-size: 1.5rem;
     background: #e6e6e6;
     border: 2px solid #000000;
-    color: #000000;
-    font-size: 1.5rem;
     border-radius: 0.3rem;
-    margin-top: 1rem;
+    color: #000000;
 }
 .password-form>.button-autorization:active{
     background: #d2d2d2;
@@ -1140,6 +1182,7 @@ label>.error-message{
 .block-registration-input input{
     padding: 1rem;
     height: auto;
+    font-size: 1.5rem;
     box-shadow: 0 0 2px 0 #000;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -1149,12 +1192,13 @@ label>.error-message{
 }
 
 .password-form>.button-registration{
+    margin-top: 1rem;
     background: #e6e6e6;
     border: 2px solid #000000;
     color: #000000;
     font-size: 1.5rem;
     border-radius: 0.3rem;
-    margin-top: 1rem;
+
 }
 .password-form>.button-registration:active{
     background: #d2d2d2;
@@ -1167,6 +1211,36 @@ label>.error-message{
     color: #000000;
 }
 
+
+/*userprofile*/
+.list-project-user ul{
+   float: left;
+    padding: 0;
+    margin: 0;
+}
+.list-project-user li{
+    float: left;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+}
+.list-project-user li a{
+    padding: 0 0.3rem;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+    border-right: 2px solid #000000;
+    color: #000000;
+}
+.list-project-user li a:hover{
+    color: #00668b;
+    text-decoration: underline;
+    transition: 0.5s ease 0s;
+    border-color: #00668b;
+}
+.list-project-user li:last-child a{
+    border:none;
+}
 
 @media (max-width: 1348px) {
     .bm-project-title{
