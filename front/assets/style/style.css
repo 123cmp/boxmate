@@ -1054,8 +1054,8 @@ margin: 5px 0 0 0;
     box-shadow: 0 0 0.1rem 0 #ccc ;
 }
 .main-add-page>.block-add-project:active{
-    transition: 0.2s ease 0s;
-    box-shadow: 0 0 0.5rem 0 #ccc,inset ;
+    transition: 0.7s ease 0s;
+    box-shadow: 0 0 0.5rem 0 #000 inset ;
 }
 
 .main-add-page>.block-add-project>img{
@@ -1064,7 +1064,7 @@ margin: 5px 0 0 0;
     height: auto;
     width: 100%;
 }
-.main-add-page>.block-add-project>input{
+.main-add-page>.block-add-project>form>input{
     height: 100%;
     left: 0;
     opacity: 0;
@@ -1074,8 +1074,6 @@ margin: 5px 0 0 0;
     width: 100%;
     z-index: 12;
 }
-
-
 .main-add-page>.button-cancel{
     margin: 3rem auto 0 auto;
 }
