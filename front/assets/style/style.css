@@ -1421,6 +1421,17 @@ label>.error-message{
     .row .row.bm-user-block .bm-user img{
         width: 100%;
     }
+    .main-list-instrument > div {
+        width: 40px;
+    }
+}
+@media (max-width: 472px) {
+    .main-list-instrument > div > i {
+        font-size: 2rem;
+    }
+    .main-list-instrument > div {
+        width: 35px;
+    }
 }
 @media (max-width: 420px) {
         .bm-user-additional-block .button.bm-open {
