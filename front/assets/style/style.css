@@ -1040,6 +1040,7 @@ margin: 5px 0 0 0;
     margin: 0 0 5rem 0;
 }
 .main-add-page>.block-add-project{
+    position: relative;
     border: 1px solid #d8d8d8;
     margin: 0 6.3rem 0 0;
     padding: 1rem;
@@ -1047,7 +1048,6 @@ margin: 5px 0 0 0;
 .main-add-page>.google-disk{
     margin-right:0;
 }
-
 .main-add-page>.block-add-project:hover{
     /*padding: 0.77rem;*/
     transition: 0.7s ease 0s;
@@ -1064,9 +1064,20 @@ margin: 5px 0 0 0;
     height: auto;
     width: 100%;
 }
+.main-add-page>.block-add-project>input{
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 12;
+}
+
 
 .main-add-page>.button-cancel{
-    margin: 3rem 0 0 0;
+    margin: 3rem auto 0 auto;
 }
 .main-add-page>.button-cancel>button{
     display: block;
@@ -1076,7 +1087,8 @@ margin: 5px 0 0 0;
     border: 2px solid #000;
     border-radius: 2px;
     color: #000000;
-    font-size: 1rem;
+    font-size: 1.5rem;
+
 }
 .main-add-page>.button-cancel>button:hover{
     background: #dcdcdc none repeat scroll 0 0;
@@ -1283,14 +1295,49 @@ label>.error-message{
         width: 79%;
     }
 }
+@media (max-width: 1024px) {
+    .main-add-page > .block-add-project {
+        margin: 0 4.3rem 0 0;
+    }
+    .main-add-page >.google-disk{
+        margin: 0 0 0 0;
+    }
+    .main-add-page > .block-add-project > img {
+        max-height: 8rem;
+        min-height: 8rem;
+    }
+}
 @media (max-width: 788px) {
     .bm-project-image{
         max-height: 139px;
+    }
+    .main-add-page > .block-add-project {
+        margin: 0 3.3rem 0 0;
+    }
+    .main-add-page >.google-disk{
+        margin: 0 0 0 0;
+    }
+    .main-add-page > .block-add-project > img {
+        max-height: 8rem;
+        min-height: 8rem;
     }
 }
 @media (max-width: 650px) {
     .bm-user-additional-block .button.bm-open {
         width: 76%;
+    }
+    .add-project{
+        border: 0.2rem solid #ccc;
+        margin-top: 2rem;
+        padding: 1rem;
+
+    }
+    .main-add-page > .block-add-project {
+        margin: 0 0 2rem 0;
+    }
+    .main-add-page > .block-add-project > img {
+        max-height: 21rem;
+        min-height: 8rem;
     }
 }
 @media (max-width: 640px) {
