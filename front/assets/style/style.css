@@ -20,6 +20,9 @@
     margin: 3px 3px 3px 10px;
 }
 
+.columns+.columns:last-child{
+    float: left;
+}
 .callout-card-content {
     padding: 0.4rem 0.4rem 0.4rem 0.4rem;
 }
@@ -34,7 +37,7 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     margin: 1rem 0;
     overflow: hidden;
-    padding: 1em 0;
+    padding:0;
     box-sizing: border-box;
 }
 .callout-card .card-label {
@@ -311,9 +314,10 @@ form h3{
 }
 form>.bm-project-title{
    float: left;
-    border: 0.2rem solid #f3f3f3;
+   margin-top: 0;
     padding: 0.2rem 0.4rem;
     box-sizing: border-box;
+    border: 0.2rem solid #f3f3f3;
 }
 form>.search-project{
     border: 0.2rem solid #f3f3f3;
