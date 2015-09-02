@@ -9,16 +9,18 @@ bm.StateView = Backbone.View.extend({
         "projects": "ProjectsTemplate.html", //_.template("<div id='projects'></div>")
         "usertool": "UserToolTemplate.html", //_.template("<div id='projects'></div>")
         "addnewproject": "AddNewProjectTemplate.html", //_.template("<div id='projects'></div>")
-        "createnewproject": "CreateNewProjectTemplate.html" //_.template("<div id='projects'></div>")
+        "createnewproject": "CreateNewProjectTemplate.html", //_.template("<div id='projects'></div>")
+        "userprofile": "UserProfileTemplate.html" //_.template("<div id='projects'></div>")
     },
 
     views: {
         "home": ['HomeView'],
-        "upload": ['UploadFieldView'],
+        "upload": ['UploadView'],
         "authorization": ["AuthFormView"],
         "registration": ['RegistrationView'],
         "usertool": ["UserToolView"],
-        "projects": ["ProjectsView"]
+        "projects": ["ProjectsView"],
+        "createnewproject": ["CreateProjectView"]
     },
 
     initialize: function () {

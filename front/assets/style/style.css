@@ -77,7 +77,7 @@
     height: 0px;
     width: 0px;
     transform: rotate(360deg); }
-/*.callout-card .callout-card-content {*/
+/*.callout-card . callout-card-content{*/
     /*padding: 0.5rem 1.5rem 0.875rem; }*/
 .callout-card.radius {
     border-radius: 0.6rem;
@@ -164,8 +164,33 @@
 
 }
 
-.row.bm-row .columns.bm-project-box {
+.bm-projects-container > .bm-project-box {
     float: left;
+}
+/*.bm-row>.bm-project-box:last-child{*/
+    /*position: relative;*/
+/*}*/
+/*add-template projects-page*/
+/*.bm-project-box:last-child:after{*/
+    /*content: "\f067";*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*opacity: 0.5;*/
+    /*position: absolute;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*font-family: FontAwesome;*/
+    /*font-size: 4.85rem;*/
+    /*text-align: center;*/
+    /*background: #333333 none repeat scroll 0 0;*/
+/*}*/
+.bm-project-box>.add-project-user{
+    float: left;
+    height: 100%;
+    width: 100%;
+    display: block;
+    opacity: 0.5;
+    background: #333333 none repeat scroll 0 0;
 }
 
 .row.bm-row{
@@ -197,6 +222,10 @@
 .nav-list>.tools-job>a{
 color: #000000;
 }
+.nav-list>.bm-project-users{
+    float: left;
+    margin: 0 0.5rem 0 0;
+}
 .nav-list li:last-child{
     margin-right: 0;
 }
@@ -205,6 +234,9 @@ color: #000000;
     width: 40px;
     display: block;
 }
+
+
+
 
 .bm-user-additional-block {
     float: left;
@@ -318,8 +350,11 @@ label>.error-message{
     top: 6px;
     float: right;
     display: block;
-    transition: 0.5s ease 0s;
     z-index: 12;
+}
+.centre-block-img>.close{
+    display: none;
+    transition: 0.5s ease 0s;
 }
 
 /*correction-comments*/
@@ -345,6 +380,9 @@ label>.error-message{
     border-radius: 2px;
     color: #000000;
     font-size: 1rem;
+}
+.correction-comments>.open{
+    display: block;
 }
 
 .correction-comments>.button-open-correction:hover{
@@ -1002,6 +1040,7 @@ margin: 5px 0 0 0;
     margin: 0 0 5rem 0;
 }
 .main-add-page>.block-add-project{
+    position: relative;
     border: 1px solid #d8d8d8;
     margin: 0 6.3rem 0 0;
     padding: 1rem;
@@ -1009,15 +1048,14 @@ margin: 5px 0 0 0;
 .main-add-page>.google-disk{
     margin-right:0;
 }
-
 .main-add-page>.block-add-project:hover{
     /*padding: 0.77rem;*/
     transition: 0.7s ease 0s;
     box-shadow: 0 0 0.1rem 0 #ccc ;
 }
 .main-add-page>.block-add-project:active{
-    transition: 0.2s ease 0s;
-    box-shadow: 0 0 0.5rem 0 #ccc,inset ;
+    transition: 0.7s ease 0s;
+    box-shadow: 0 0 0.5rem 0 #000 inset ;
 }
 
 .main-add-page>.block-add-project>img{
@@ -1026,9 +1064,18 @@ margin: 5px 0 0 0;
     height: auto;
     width: 100%;
 }
-
+.main-add-page>.block-add-project>form>input{
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 12;
+}
 .main-add-page>.button-cancel{
-    margin: 3rem 0 0 0;
+    margin: 3rem auto 0 auto;
 }
 .main-add-page>.button-cancel>button{
     display: block;
@@ -1038,7 +1085,8 @@ margin: 5px 0 0 0;
     border: 2px solid #000;
     border-radius: 2px;
     color: #000000;
-    font-size: 1rem;
+    font-size: 1.5rem;
+
 }
 .main-add-page>.button-cancel>button:hover{
     background: #dcdcdc none repeat scroll 0 0;
@@ -1054,7 +1102,7 @@ margin: 5px 0 0 0;
     height: 100%;
     overflow: auto;
 }
-.registration-project p{
+.registration-project p,.block-registration-input p,.block-autorization-input p{
     margin: 0;
     font-size: 1.5rem;
     text-align: left;
@@ -1062,7 +1110,9 @@ margin: 5px 0 0 0;
 }
 .registration-project input{
     padding: 1rem;
+    margin: 0;
     height: auto;
+    font-size: 1.5rem;
     box-shadow: 0 0 2px 0 #000;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -1103,11 +1153,13 @@ label>.error-message{
     transition: 0.2s ease 0s;
 }
 
+
 /*autorization*/
 
 .block-autorization-input input{
     padding: 1rem;
     height: auto;
+    font-size: 1.5rem;
     box-shadow: 0 0 2px 0 #000;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -1117,12 +1169,12 @@ label>.error-message{
 }
 
 .password-form>.button-autorization{
+    margin-top: 1rem;
+    font-size: 1.5rem;
     background: #e6e6e6;
     border: 2px solid #000000;
-    color: #000000;
-    font-size: 1.5rem;
     border-radius: 0.3rem;
-    margin-top: 1rem;
+    color: #000000;
 }
 .password-form>.button-autorization:active{
     background: #d2d2d2;
@@ -1140,6 +1192,7 @@ label>.error-message{
 .block-registration-input input{
     padding: 1rem;
     height: auto;
+    font-size: 1.5rem;
     box-shadow: 0 0 2px 0 #000;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -1149,12 +1202,13 @@ label>.error-message{
 }
 
 .password-form>.button-registration{
+    margin-top: 1rem;
     background: #e6e6e6;
     border: 2px solid #000000;
     color: #000000;
     font-size: 1.5rem;
     border-radius: 0.3rem;
-    margin-top: 1rem;
+
 }
 .password-form>.button-registration:active{
     background: #d2d2d2;
@@ -1167,6 +1221,36 @@ label>.error-message{
     color: #000000;
 }
 
+
+/*userprofile*/
+.list-project-user ul{
+   float: left;
+    padding: 0;
+    margin: 0;
+}
+.list-project-user li{
+    float: left;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+}
+.list-project-user li a{
+    padding: 0 0.3rem;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+    border-right: 2px solid #000000;
+    color: #000000;
+}
+.list-project-user li a:hover{
+    color: #00668b;
+    text-decoration: underline;
+    transition: 0.5s ease 0s;
+    border-color: #00668b;
+}
+.list-project-user li:last-child a{
+    border:none;
+}
 
 @media (max-width: 1348px) {
     .bm-project-title{
@@ -1209,14 +1293,49 @@ label>.error-message{
         width: 79%;
     }
 }
+@media (max-width: 1024px) {
+    .main-add-page > .block-add-project {
+        margin: 0 4.3rem 0 0;
+    }
+    .main-add-page >.google-disk{
+        margin: 0 0 0 0;
+    }
+    .main-add-page > .block-add-project > img {
+        max-height: 8rem;
+        min-height: 8rem;
+    }
+}
 @media (max-width: 788px) {
     .bm-project-image{
         max-height: 139px;
+    }
+    .main-add-page > .block-add-project {
+        margin: 0 3.3rem 0 0;
+    }
+    .main-add-page >.google-disk{
+        margin: 0 0 0 0;
+    }
+    .main-add-page > .block-add-project > img {
+        max-height: 8rem;
+        min-height: 8rem;
     }
 }
 @media (max-width: 650px) {
     .bm-user-additional-block .button.bm-open {
         width: 76%;
+    }
+    .add-project{
+        border: 0.2rem solid #ccc;
+        margin-top: 2rem;
+        padding: 1rem;
+
+    }
+    .main-add-page > .block-add-project {
+        margin: 0 0 2rem 0;
+    }
+    .main-add-page > .block-add-project > img {
+        max-height: 21rem;
+        min-height: 8rem;
     }
 }
 @media (max-width: 640px) {

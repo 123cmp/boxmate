@@ -1,19 +1,19 @@
 'use strict';
 
-jQuery.each( [ "put", "delete" ], function( i, method ) {
-    jQuery[ method ] = function( url, data, callback, type ) {
-        if ( jQuery.isFunction( data ) ) {
-            type = type || callback;
-            callback = data;
-            data = undefined;
-        }
-
+jQuery.each( [ "putJSON", "deleteJSON", "postJSON"], function( i, method ) {
+    jQuery[ method ] = function(url, data) {
+        if(typeof data == "object")
+            try {
+                data = JSON.stringify(data);
+            } catch (parseError) {
+                console.error(parseError);
+            }
         return jQuery.ajax({
             url: url,
-            type: method,
-            dataType: type,
-            data: data,
-            success: callback
+            type: method.replace("JSON", "").toUpperCase(),
+            contentType: 'application/json',
+            dataType: "json",
+            data: data
         });
     };
 });
@@ -22,9 +22,6 @@ _.isBlank = function(str) {
     return (/^\s*$/).test(str||'');
 };
 
-
-
-
 Backbone.Model.prototype.test = function(value, ruleName, ruleValue) {
     switch (ruleName) {
         case 'required': {
@@ -32,17 +29,18 @@ Backbone.Model.prototype.test = function(value, ruleName, ruleValue) {
             return true;
         }
         case 'maxLength': {
+            console.log(_.isBlank(value));
             if (!(_.isUndefined(value) || _.isBlank(value))) return String(value).length <= parseInt(ruleValue.value);
-            return false
+            return true
         }
         case 'minLength': {
             if (!(_.isUndefined(value) || _.isBlank(value))) return String(value).length >= parseInt(ruleValue.value);
-            return false
+            return true
         }
         case 'isEmail': {
             if (!(_.isUndefined(value) || _.isBlank(value)))
                 return /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/.test(value);
-            return false
+            return true
         }
 
         default: return true;
