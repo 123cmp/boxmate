@@ -18,9 +18,9 @@ bm.ProjectsView = Backbone.View.extend({
             __self.project = answer;
             if(__self.project && __self.project.length > 0) {
                 $.each(__self.project, function(i, project) {
-                    var model = new bm.ProjectModel();
+                    var model = new bm.ProjectModel(project);
                     __self.projectModels.push(model);
-                    __self.projectViews.push(new bm.ProjectView(model))
+                    __self.projectViews.push(new bm.ProjectView({model: model}))
                 });
             }
         })

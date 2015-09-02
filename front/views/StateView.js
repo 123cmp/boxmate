@@ -19,7 +19,8 @@ bm.StateView = Backbone.View.extend({
         "authorization": ["AuthFormView"],
         "registration": ['RegistrationView'],
         "usertool": ["UserToolView"],
-        "projects": ["ProjectsView"]
+        "projects": ["ProjectsView"],
+        "createnewproject": ["CreateProjectView"]
     },
 
     initialize: function () {

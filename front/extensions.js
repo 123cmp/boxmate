@@ -22,9 +22,6 @@ _.isBlank = function(str) {
     return (/^\s*$/).test(str||'');
 };
 
-
-
-
 Backbone.Model.prototype.test = function(value, ruleName, ruleValue) {
     switch (ruleName) {
         case 'required': {
@@ -32,17 +29,18 @@ Backbone.Model.prototype.test = function(value, ruleName, ruleValue) {
             return true;
         }
         case 'maxLength': {
+            console.log(_.isBlank(value));
             if (!(_.isUndefined(value) || _.isBlank(value))) return String(value).length <= parseInt(ruleValue.value);
-            return false
+            return true
         }
         case 'minLength': {
             if (!(_.isUndefined(value) || _.isBlank(value))) return String(value).length >= parseInt(ruleValue.value);
-            return false
+            return true
         }
         case 'isEmail': {
             if (!(_.isUndefined(value) || _.isBlank(value)))
                 return /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/.test(value);
-            return false
+            return true
         }
 
         default: return true;

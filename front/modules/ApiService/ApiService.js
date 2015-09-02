@@ -34,7 +34,13 @@ bm.ApiService = {
         return $.get("api/projects/"+id);
     },
     addProject: function(project) {
-        return $.put("api/projects/", project);
+        return $.ajax({
+            url: "api/projects/",
+            type: "PUT",
+            contentType: 'application/json',
+            dataType: "json",
+            data: JSON.stringify(project)
+        });
     },
     removeProject: function(id) {
         return $.delete("api/projects/"+id);

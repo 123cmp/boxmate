@@ -2,7 +2,9 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     el: "#image-container",
 
     templateName: "ImageWithCanvasTemplate.html",
+    pinTemplateName: "PinTemplate.html",
     template: "",
+    pinTemplate: "",
     compiled: null,
     clearMode: false,
     timer: null,
@@ -86,33 +88,45 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     },
 
     initPiner: function() {
-        this.piner = {
-            pinLayer: null,
-            isSquare: false,
-            mousedown: this.startPin,
-            mousemove: this.movePin,
-            mouseup: this.stopPin,
-            touchstart: this.startPin,
-            touchmove: this.movePin,
-            touchend: this.stopPin,
-            color: "#FF0000",
-            coors: {},
-            refreshTimer: this.refreshTimer,
-            initTimer: this.initTimer,
-            timer: this.timer,
-            SAVE_TIMEOUT: this.SAVE_TIMEOUT,
-            save: this.save,
-            dotPinTemplate: "<p class='message-number'>1</p><div class='click-message left'><div class='field-tool left large-12'><i class='fa fa-eye'></i><i class='fa fa-trash-o'></i></div><div class='field-text left large-12 '><textarea placeholder='Message'></textarea></div></div>",
-            dotPinSize: {
-                width: 256,
-                height: 174,
-                number: {
-                    width: 32,
-                    height: 32,
-                    offsetLeft: 30
+        var __self = this;
+
+        if (!__self.pinTemplate) {
+            $.when(bm.TemplateStore.get(__self.pinTemplateName)).then(function (template) {
+                if (template) {
+                    console.log(__self.pinTemplate);
+                    __self.pinTemplate = _.template(template);
+                    __self.piner = {
+                        pinLayer: null,
+                        isSquare: false,
+                        mousedown: __self.startPin,
+                        mousemove: __self.movePin,
+                        mouseup: __self.stopPin,
+                        touchstart: __self.startPin,
+                        touchmove: __self.movePin,
+                        touchend: __self.stopPin,
+                        color: "#FF0000",
+                        coors: {},
+                        refreshTimer: __self.refreshTimer,
+                        initTimer: __self.initTimer,
+                        timer: __self.timer,
+                        SAVE_TIMEOUT: __self.SAVE_TIMEOUT,
+                        save: __self.save,
+                        dotPinTemplate: __self.pinTemplate,
+                        dotPinSize: {
+                            width: 256,
+                            height: 174,
+                            number: {
+                                width: 32,
+                                height: 32,
+                                offsetLeft: 30
+                            }
+                        }
+                    };
+                    __self.initPinLayer();
                 }
-            }
+            });
         }
+
     },
 
     events: {
@@ -126,6 +140,7 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     },
 
     drawOrPin: function(e) {
+
         var canvasPosition = $('.canvas').offset();
         var coors = {
             x: e.pageX - canvasPosition.left,
@@ -157,6 +172,7 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     },
 
     stopPin: function (coors) {
+
         this.refreshTimer();
         var pin = $("<div></div>");
         pin.addClass("pin");
@@ -177,9 +193,11 @@ bm.ImageWithCanvasView = Backbone.View.extend({
             pin.css("width", width);
             pin.css("height", height);
         } else {
+            console.log("dotpin", this.dotPinTemplate);
             var containerPositionLeft = 0;
             var containerPositionTop = 0;
             var containerClass = "";
+            console.log(this);
             if(coors.y + this.dotPinSize.height > this.pinLayer.height()) {
                 containerClass = "click-bottom-";
                 containerPositionTop = coors.y + (this.dotPinSize.number.height / 2) - this.dotPinSize.height;
@@ -244,8 +262,9 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     },
 
     initPinLayer: function () {
-        this.piner.pinLayer = $(this.el);
-        console.log(this.piner.pinLayer);
+        var __self = this;
+        __self.piner.pinLayer = $(__self.el);
+
     },
 
     render: function () {
@@ -256,7 +275,7 @@ bm.ImageWithCanvasView = Backbone.View.extend({
                 __self.initDrawer();
                 __self.initCanvas();
                 __self.initPiner();
-                __self.initPinLayer();
+
             })
         } else {
             $.when(bm.TemplateStore.get(__self.templateName)).then(function (template) {
