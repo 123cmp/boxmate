@@ -15,7 +15,7 @@ bm.StateView = Backbone.View.extend({
 
     views: {
         "home": ['HomeView'],
-        "upload": ['UploadFieldView'],
+        "upload": ['UploadView'],
         "authorization": ["AuthFormView"],
         "registration": ['RegistrationView'],
         "usertool": ["UserToolView"],
