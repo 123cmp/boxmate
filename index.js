@@ -11,7 +11,7 @@ var express = require("express"),
     mongoStore = require("connect-mongo")(session);
 
 
-mongoose.connect('mongodb://admin:admin@localhost:27017/boxmate', {server: { poolSize: 5 }});
+mongoose.connect('mongodb://dbOwner:dbOwner@carbon.si:27017/mate', {server: { poolSize: 5 }});
 var db = mongoose.connection;
 
 db.on('error', function (err) {

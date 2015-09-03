@@ -9,10 +9,11 @@ bm.UploadView = Backbone.View.extend({
         var formData = new FormData();
         if($(e.target)[0].files) {
             $.each($(e.target)[0].files, function(i, file) {
-                formData.append('file'+i, $(e.target)[0].files[i]);
+                formData.append('file'+i, file);
             });
         }
         bm.ApiService.addImage(formData);
+        $(e.target).replaceWith( $(e.target).clone( true ) );
     }
 
 });
