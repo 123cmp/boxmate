@@ -51,9 +51,9 @@ bm.ApiService = {
     getImage: function(id) {
         return $.get("api/images/"+id);
     },
-    addImage: function(image) {
+    addImage: function(image, id) {
         return $.ajax({
-            url: "api/images/",
+            url: "api/projects/"+id+"images/",
             type: "PUT",
             processData: false,
             data: image

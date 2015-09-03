@@ -5,7 +5,8 @@ bm.PinerModel = Backbone.Model.extend({
         initTimer: function() {},
         timer: function() {},
         save: function() {},
-        pin: function() {}
+        pin: function() {},
+        pins: []
     }
 });
 

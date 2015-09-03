@@ -15,7 +15,7 @@ bm.StateView = Backbone.View.extend({
 
     views: {
         "home": ['HomeView'],
-        "upload": ['UploadView'],
+        "upload": [{view: 'UploadView', model: "UploadModel"}],
         "authorization": ["AuthFormView"],
         "registration": ['RegistrationView'],
         "usertool": ["UserToolView"],
@@ -60,8 +60,15 @@ bm.StateView = Backbone.View.extend({
             $(__self.el).html(template(__self.model.toJSON()));
             if (__self.views[state]) {
                 $.each(__self.views[state], function (i, v) {
-                    if (!bm[v]) console.error("Ошибка при инжекте вьюхи (проверь index.html)");
+                    if(typeof v == 'object') {
+                        var model = new bm[v.model]();
+                    console.log(__self.model.get("routeParams"));
+                        $.each(__self.model.get("routeParams"), function(i,v) {model.set(i,v)});
+                        new bm[v.view]({model: model}).render();
+                    }
+                    else if (!bm[v]) console.error("Ошибка при инжекте вьюхи (проверь index.html)");
                     else new bm[v]().render();
+
                 });
             }
         });
