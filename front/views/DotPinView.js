@@ -1,12 +1,17 @@
 bm.DotPinView = Backbone.View.extend({
-    el: "",
+    el: null,
 
-    events: {
+    addComment: function() {
+        console.log("textarea into div");
+    },
 
+    addListeners: function() {
+        $(this.el).find(".button-click")
     },
 
     initialize: function () {
-
+        this.el = $(this.model.get("el"));
+        this.addListeners();
     }
 
 });

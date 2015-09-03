@@ -15,6 +15,7 @@ bm.Router = Backbone.Router.extend({
         "!/home": "home",
         "!/upload": "upload",
         "!/projects": "projects",
+        "!/projects/:id": "project",
         "!/registration": "registration",
         "!/authorization": "authorization",
         "!/usertool": "usertool",
@@ -61,6 +62,10 @@ bm.Router = Backbone.Router.extend({
     },
     userprofile: function () {
         bm.stateModel.set({ state: "userprofile" });
+        bm.stateModel.trigger("change");
+    },
+    project: function (id) {
+        bm.stateModel.set({ state: "upload", routeParams: {id: id} });
         bm.stateModel.trigger("change");
     }
 

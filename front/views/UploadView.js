@@ -1,8 +1,14 @@
 bm.UploadView = Backbone.View.extend({
     el: ".bm-upload",
+    id: 0,
 
     events: {
         "change .bm-pc-upload": "upload"
+    },
+
+    initialize: function() {
+        console.log(this.model.get("id"));
+        this.id = this.model.get("id");
     },
 
     upload: function(e) {
@@ -12,7 +18,7 @@ bm.UploadView = Backbone.View.extend({
                 formData.append('file'+i, file);
             });
         }
-        bm.ApiService.addImage(formData);
+        bm.ApiService.addImage(formData, id);
         $(e.target).replaceWith( $(e.target).clone( true ) );
     }
 

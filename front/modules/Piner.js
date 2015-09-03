@@ -120,9 +120,7 @@ bm.Piner = function(obj) {
                 .html(this.pinTemplate)
                 .css("left", containerPositionLeft)
                 .css("top", containerPositionTop)
-                .find("textarea").blur(function () {
-                    console.log("textarea into div");
-                });
+
             pin.find(".message-number")
                 .text(String(++__self.pinNumber))
                 .click(function() {
@@ -135,6 +133,19 @@ bm.Piner = function(obj) {
 
             this.closeAll();
             this.expand(pin);
+
+            if(this.model.get("pins")) {
+
+                var pinModel = new bm.PinModel({
+                    el: $(pin)
+                });
+                var pinView = new bm.DotPinView({model: pinModel});
+                this.model.get("pins").push({
+                    el: $(pin),
+                    model: pinModel,
+                    view: pinView
+                });
+            }
 
             return pin;
         },

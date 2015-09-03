@@ -12,7 +12,10 @@ bm.ProjectView = Backbone.View.extend({
     compile: function() {
         var __self = this;
         if(__self.el) {
-            $(__self.el).find(".bm-project-title").text(__self.model.get("name")).end();
+            $(__self.el).find(".bm-project-title")
+                .text(__self.model.get("name"))
+                .attr("href", "#!/projects/"+__self.model.get("_id"))
+                .end();
             var userBlock = $(__self.el).find(".bm-project-users");
             if(__self.model.get("users") && __self.model.get("users").length > 0) $.each(__self.model.get("users"), function(i, user) {
                 userBlock.append("<li><a href='#'><i class='fa fa-user'></i></a></li>");
