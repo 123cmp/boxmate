@@ -4,12 +4,26 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     templateName: "ImageWithCanvasTemplate.html",
     userColor: "#FF0000",
     template: "",
-    pinerModel: new bm.PinerModel(),
+    pinerModel: null,
+    drawerModel: null,
+    drawer: null,
+    piner: null,
+
     compiled: null,
     clearMode: false,
     timer: null,
     SAVE_TIMEOUT: 2000,
     imageData: null,
+
+    events: {
+        "mousedown": "drawOrPin",
+        "mousemove": "drawOrPin",
+        "mouseup": "drawOrPin",
+        "mouseleave": "drawOrPin",
+        "touchstart": "drawOrPin",
+        "touchmove": "drawOrPin",
+        "touchend": "drawOrPin"
+    },
 
     refreshTimer: function() {
         if(this.timer) clearTimeout(this.timer);
@@ -25,8 +39,7 @@ bm.ImageWithCanvasView = Backbone.View.extend({
 
     save: function() {
         var canvas = $(".canvas").get(0);
-        var img    = canvas.toDataURL("image/png");
-       console.log("Saving", img)
+        var img = canvas.toDataURL("image/png");
     },
 
     switchClearMode: function() {
@@ -37,13 +50,18 @@ bm.ImageWithCanvasView = Backbone.View.extend({
     initialize: function () {
         var __self = this;
         if (!__self.model) __self.model = new bm.ImageWithCanvasModel();
-        __self.model.bind("change:mode", function () {
-            var mode = __self.model.get("mode");
-            if(mode == "clear") __self.switchClearMode();
-            if(mode == "selection") {
-                $(".dot-pin").draggable();
-            }
+        __self.model.bind("change:mode", function() {
+            __self.changeModeHandler()
         });
+    },
+
+    changeModeHandler: function() {
+        var __self = this;
+        var mode = __self.model.get("mode");
+        if(mode == "clear") __self.switchClearMode();
+        if(mode == "selection") {
+            $(".dot-pin").draggable();
+        }
     },
 
     clear: function() {
@@ -64,43 +82,8 @@ bm.ImageWithCanvasView = Backbone.View.extend({
         return _.template(template)
     },
 
-    drawer: {},
-    piner: {},
-
-    initDrawer: function() {
-        this.drawer = {
-            isDrawing: false,
-            mousedown: this.startDraw,
-            mousemove: this.moveDraw,
-            mouseup: this.stopDraw,
-            mouseleave: this.stopDraw,
-            touchstart: this.startDraw,
-            touchmove: this.moveDraw,
-            touchend: this.stopDraw,
-            color: "#FF0000",
-            refreshTimer: this.refreshTimer,
-            initTimer: this.initTimer,
-            save: this.save,
-            timer: this.timer,
-            SAVE_TIMEOUT: this.SAVE_TIMEOUT,
-
-        }
-    },
-
-
-    events: {
-        "mousedown": "drawOrPin",
-        "mousemove": "drawOrPin",
-        "mouseup": "drawOrPin",
-        "mouseleave": "drawOrPin",
-        "touchstart": "drawOrPin",
-        "touchmove": "drawOrPin",
-        "touchend": "drawOrPin"
-    },
-
-    drawOrPin: function(e) {
-
-        var canvasPosition = $('.canvas').offset();
+    calculateCoors: function(e) {
+        var canvasPosition = $(this.el).find('#canvas').offset();
         var coors = {
             x: e.pageX - canvasPosition.left,
             y: e.pageY - canvasPosition.top
@@ -111,41 +94,20 @@ bm.ImageWithCanvasView = Backbone.View.extend({
                 y: e.targetTouches[0].offsetY // - canvasPosition.top
             }
         }
+        return coors;
+    },
+
+    drawOrPin: function(e) {
+        if(!$(e.target).hasClass("canvas")) {
+            return true;
+        }
+        var coors = this.calculateCoors(e);
         var mode = this.model.get("mode");
-        if(mode == "drawing") this.draw(coors, e);
-        if(mode == "pining") this.pin(coors, e);
-    },
-
-    pin: function (coors, e) {
-        if(this.piner[e.type]) this.piner[e.type](coors);
-    },
-
-
-
-    draw: function (coors, e) {
-        this.drawer[e.type](coors);
-    },
-    startDraw: function (coors) {
-        this.context.beginPath();
-        this.context.moveTo(coors.x, coors.y);
-        this.isDrawing = true;
-    },
-    moveDraw: function (coors) {
-        if (this.isDrawing) {
-            this.refreshTimer();
-            this.context.strokeStyle = this.color;
-            this.context.lineJoin = "round";
-            this.context.lineWidth = 3;
-            this.context.lineTo(coors.x, coors.y);
-            this.context.stroke();
+        if(mode == "drawing") {
+            this.drawerModel.get("draw").call(this.drawer, coors, e);
         }
-    },
-    stopDraw: function (coors) {
-        if (this.isDrawing) {
-            this.refreshTimer();
-            this.touchmove(coors);
-            this.isDrawing = false;
-        }
+
+        if(mode == "pining") this.pinerModel.get("pin").call(this.piner, coors, e);
     },
 
     initCanvas: function () {
@@ -155,21 +117,28 @@ bm.ImageWithCanvasView = Backbone.View.extend({
         this.drawer.context = canvas.get(0).getContext('2d');
     },
 
-    initPinLayer: function () {
-        var __self = this;
-        __self.piner.pinLayer = $(__self.el);
-
-    },
-
     initPiner: function() {
         var __self = this;
-        this.pinerModel = new bm.PinerModel({
+        __self.pinerModel = new bm.PinerModel({
             color: __self.userColor,
             refreshTimer: __self.refreshTimer,
             initTimer: __self.initTimer,
             timer: __self.timer,
             save: __self.save
         });
+        __self.piner = new bm.Piner({model: __self.pinerModel}).initialize();
+    },
+
+    initDrawer: function() {
+        var __self = this;
+        __self.drawerModel = new bm.DrawerModel({
+            color: __self.userColor,
+            refreshTimer: __self.refreshTimer,
+            initTimer: __self.initTimer,
+            timer: __self.timer,
+            save: __self.save
+        });
+        __self.drawer = new bm.Drawer({model: __self.drawerModel}).initialize();
     },
 
     render: function () {
@@ -178,9 +147,8 @@ bm.ImageWithCanvasView = Backbone.View.extend({
             $(this.el).html(this.compiled());
             $(__self.el).find(".image-with-canvas-image").load(function() {
                 __self.initDrawer();
-                __self.initCanvas();
                 __self.initPiner();
-
+                __self.initCanvas();
             })
         } else {
             $.when(bm.TemplateStore.get(__self.templateName)).then(function (template) {
