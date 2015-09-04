@@ -14,6 +14,9 @@
 .medium-7{
     width: 57%;
 }
+.large-block-grid-3{
+    margin: 0;
+}
 .bm-avatar {
     width: 39px;
     height: 39px;
@@ -690,7 +693,29 @@ section .user-name:nth-child(10) a:hover{
     border: 20px solid transparent;
     border-top: 20px solid #ff3823;
 }
-
+.message-number {
+    cursor: pointer;
+}
+.message-number:before {
+    display: none;
+}
+.expand .message-number:before {
+    display: block;
+}
+.click-message {
+    display: none;
+}
+.expand .click-message {
+    display: block;
+}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 /*.main-click-message>.click-message>.field-tool{*/
     /*background: #e6e6e6;*/
     /*padding: 8px 0.5rem 0.5rem 0;*/
@@ -1365,6 +1390,7 @@ label>.error-message{
         min-height: 8rem;
     }
 }
+/* this part is taken from Foundation, and there commit 4893 line */
 @media only screen and (min-width: 55em ) {
     .top-bar {
         background: #333333;
