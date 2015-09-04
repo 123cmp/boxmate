@@ -1,4 +1,4 @@
-bm.ImageModel = Backbone.Model.extend({
+bm.TaskModel = Backbone.Model.extend({
     defaults: {
         id: 0,
         title: "",

@@ -22,7 +22,18 @@ bm.ImageWithCanvasView = Backbone.View.extend({
         "mouseleave": "drawOrPin",
         "touchstart": "drawOrPin",
         "touchmove": "drawOrPin",
-        "touchend": "drawOrPin"
+        "touchend": "drawOrPin",
+        "click .collapse-block-left": "hideBlock",
+        "click .button-open-correction": "showBlock"
+
+    },
+
+    hideBlock: function(){
+        $(this.el).find(".right-open-block").hide();
+    },
+
+    showBlock: function(){
+        $(this.el).find(".right-open-block").show();
     },
 
     refreshTimer: function() {
