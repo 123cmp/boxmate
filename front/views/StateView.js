@@ -10,7 +10,8 @@ bm.StateView = Backbone.View.extend({
         "usertool": "UserToolTemplate.html", //_.template("<div id='projects'></div>")
         "addnewproject": "AddNewProjectTemplate.html", //_.template("<div id='projects'></div>")
         "createnewproject": "CreateNewProjectTemplate.html", //_.template("<div id='projects'></div>")
-        "userprofile": "UserProfileTemplate.html" //_.template("<div id='projects'></div>")
+        "userprofile": "UserProfileTemplate.html", //_.template("<div id='projects'></div>")
+        "projectpage": "ProjectPageTemplate.html" //_.template("<div id='projects'></div>")
     },
 
     views: {
