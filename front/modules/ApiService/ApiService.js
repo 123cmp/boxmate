@@ -53,8 +53,9 @@ bm.ApiService = {
     },
     addImage: function(image, id) {
         return $.ajax({
-            url: "api/projects/"+id+"images/",
+            url: "api/projects/"+id+"/images/",
             type: "PUT",
+            contentType: false,
             processData: false,
             data: image
         });

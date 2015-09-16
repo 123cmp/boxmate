@@ -15,7 +15,7 @@ bm.UploadView = Backbone.View.extend({
         var formData = new FormData();
         if($(e.target)[0].files) {
             $.each($(e.target)[0].files, function(i, file) {
-                formData.append('file'+i, file);
+                formData.append('file', file);
             });
         }
         bm.ApiService.addImage(formData, this.id);
