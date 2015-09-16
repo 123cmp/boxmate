@@ -1320,6 +1320,222 @@ label>.error-message{
 .list-project-user li:last-child a{
     border:none;
 }
+
+/*project-page-scroll*/
+.project-page{
+    background: #ffffff;
+}
+
+.scalable-thumbnails,.block-list-user{
+    float: left;
+    margin: 0;
+    padding: 1rem 0 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.scalable-thumbnails>.block-input{
+    position: relative;
+    width: 100%;
+    float: left;
+}
+.scalable-thumbnails>.block-input>input{
+    height: auto;
+    padding: 1rem 1.5rem 1rem 1rem;
+    border: 1px solid #000000;
+    box-shadow: 0 0 2px 0 #000;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+}
+.scalable-thumbnails>.block-input>input:focus{
+    box-shadow: 0 0 4px 0 #000;
+    border-color: #fff;
+}
+.scalable-thumbnails>.block-input>input:focus+i{
+    transform: translate3d(0px, 0px, 0px) rotate3d(0, 0, 1, -90deg);
+    transition-delay: 0.01s;
+    color: #0cbd15;
+}
+.scalable-thumbnails>.block-input>i{
+   position: absolute;
+    right: 0.5rem;
+    top: 1rem;
+    font-size: 1.5rem;
+}
+.scalable-thumbnails>.list-project-pages{
+    width: 100%;
+    float: left;
+    padding:0;
+}
+.list-project-pages>.mapping-project{
+    padding: 0.4rem;
+    float: left;
+    /*width: 125px;*/
+    height: auto;
+    box-sizing: border-box;
+}
+.list-project-pages>.mapping-project:hover{
+    box-shadow: 0 0 3px 0 #000000;
+    transition: 0.5s ease 0s;
+}
+.block-list-user>.user-instrument{
+    position: relative;
+    width: 100%;
+    float: left;
+    margin: 0 0 1rem 0;
+}
+.block-list-user>.user-instrument>ul{
+   padding: 0;
+    margin: 0;
+}
+.block-list-user>.user-instrument>ul>li{
+    float: left;
+    display: block;
+    margin: 0 0.5rem 0.5rem 0;
+    padding: 0.6rem 1.2rem;
+    border: 2px solid #000000;
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #606060;
+    list-style: outside none none;
+}
+.user-instrument>ul>li>button{
+    padding: 0;
+    margin: 0;
+    font-size: 2rem;
+    color: #000000;
+    background: none;
+}
+.user-instrument>ul>li:active{
+    box-shadow: 0 0 4px 0 #000 inset;
+    border-color: #fff;
+}
+.block-list-user>.list-user{
+    width: 100%;
+    float: left;
+    padding:0;
+}
+.block-list-user>.list-user>ul{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.block-list-user>.list-user>ul>li{
+    position: relative;
+    float: left;
+    display: block;
+    /*width:15rem ;*/
+    padding: 0.4rem;
+    /*width: 227px;*/
+    min-width: 192px;
+    max-width: 48%;
+    width: 48%;
+    height: 81px;
+    margin: 0 0.5rem 0.5rem 0;
+    background: #f3f3f3;
+    border: 2px solid #000000;
+    list-style: outside none none;
+    cursor: pointer;
+}
+.block-list-user>.list-user>ul>li:nth-child(even){
+   margin-right:0 ;
+}
+.block-list-user>.list-user>ul>.add-user:after{
+    content: "\f067";
+    position: absolute;
+    bottom: 0;
+    left:0;
+    background: #333333;
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    color: #8c877f;
+    font-family: FontAwesome;
+    font-size: 3.5rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.list-user>ul>li>img{
+    width: 4rem;
+    height: auto;
+    margin: 0 0.5rem 0 0;
+    border: 2px solid #900000;
+}
+.list-user>ul>li>p{
+    margin: 0;
+   font-size: 1rem;
+    color: #000;
+}
+.list-user>.description-project{
+   width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.list-user>.description-project>ul{
+    padding: 0;
+    margin: 0;
+}
+.list-user>.description-project>ul>li{
+    display:block;
+    width: 100%;
+    float: left;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    background: #CCCCCC;
+}
+.list-user>.description-project>ul>li:hover{
+    background: #919191;
+}
+.list-user>.description-project>ul>li:nth-child(even){
+    background: #dddddd;
+}
+.list-user>.description-project>ul>li:nth-child(even):hover{
+    background: #919191;
+}
+
+.description-project>ul>li>p{
+    float: left;
+   width: 11rem;
+    margin: 0;
+}
+.description-project>ul>li>i{
+    float: right;
+    font-size:1.5rem;
+}
+.description-project>ul>li>.fa-angle-down{
+  display: block;
+}
+.description-project>ul>li>.fa-angle-up{
+    display:none;
+}
+.description-project>ul>li>.watch-description{
+    display:none;
+    float: left;
+    width: 100%;
+    margin: 0;
+    text-align: left;
+}
+.watch-description>p{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.description-project>ul>.read>.watch-description{
+    display:block;
+    float: left;
+    width: 100%;
+    text-align: left;
+}
+.description-project>ul>.read>.fa-angle-down{
+    display: none;
+}
+.description-project>ul>.read>.fa-angle-up{
+    display: block;
+}
+
+
+
 @media (max-width: 1600px) {
     .main-list-instrument > div {
         width: 55px;

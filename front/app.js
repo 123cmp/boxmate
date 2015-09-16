@@ -21,7 +21,8 @@ bm.Router = Backbone.Router.extend({
         "!/usertool": "usertool",
         "!/addnewproject": "addnewproject",
         "!/createnewproject": "createnewproject",
-        "!/userprofile": "userprofile"
+        "!/userprofile": "userprofile",
+        "!/projectpage": "projectpage"
 
     },
 
@@ -66,6 +67,10 @@ bm.Router = Backbone.Router.extend({
     },
     project: function (id) {
         bm.stateModel.set({ state: "upload", routeParams: {id: id} });
+        bm.stateModel.trigger("change");
+    },
+    projectpage: function () {
+        bm.stateModel.set({ state: "projectpage" });
         bm.stateModel.trigger("change");
     }
 
