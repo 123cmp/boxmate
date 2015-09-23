@@ -1,0 +1,13 @@
+{
+  "email": {
+    "required":  {"value" : "true", "message": "Укажите email"},
+    "maxLength": {"value" : "25", "message": "Email слишком длинный"},
+    "minLength": {"value" : "4", "message": "Email слишком короткий"},
+    "isEmail" :  {"value" : "true", "message": "Email не валидный"}
+  },
+  "password": {
+    "required":  {"value" : "true", "message": "Укажите пароль"},
+    "maxLength": {"value" : "25", "message": "Пароль слишком длинный"},
+    "minLength": {"value" : "6", "message": "Пароль слишком короткий"},
+  }
+}

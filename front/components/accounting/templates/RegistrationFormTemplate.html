@@ -1,0 +1,47 @@
+<form class="registration-form">
+    <% model.each(function(i, field) { %>
+        <% if (typeof field == 'object') { %>
+            <div class="row block-registration-input">
+                <div class="large-12 medium-12 small-12 padding-0 columns">
+                    <label>
+                        <p><%= field.title %></p>
+                        <% if (field.type == 'checkbox') { %>
+                            <% if (field.errors.length > 0) { %>
+                                <% if (field.value) { %>
+                                    <input name="<%= field.name %>" class="error" checked type="checkbox"/>
+                                <% } else { %>
+                                    <input name="<%= field.name %>" class="error" type="checkbox"/>
+                                <% } %>
+                                <div class="error-message">
+                                <%= field.errors.at(0).get("message") %>
+                            </div>
+                            <% } else { %>
+                                <% if (field.value) { %>
+                                    <input name="<%= field.name %>" class="error" checked type="checkbox"/>
+                                <% } else { %>
+                                    <input name="<%= field.name %>" class="error" type="checkbox"/>
+                                <% } %>
+                            <% } %>
+                        <% } else { %>
+                            <% if (field.errors.length > 0) { %>
+                                <input name="<%= field.name %>" class="error" type="<%= field.type %>" placeholder="<%= field.placeholder %>" value="<%= field.value %>"/>
+                                <div class="error-message">
+                                     <%= field.errors.at(0).get("message") %>
+                                </div>
+                            <% } else {%>
+                                <input name="<%= field.name %>" type="<%= field.type %>" placeholder="<%= field.placeholder %>" checked="<%= field.value %>" value="<%= field.value %>"/>
+                            <% } %>
+                        <% } %>
+                    </label>
+                </div>
+            </div>
+        <% } %>
+    <% }); %>
+
+    <div class="row">
+        <div class="large-12 medium-12 small-12  password-form padding-0 columns">
+            <button class="button button-registration large-12 medium-12 small-12  ">Регистрация </button>
+        </div>
+    </div>
+
+</form>

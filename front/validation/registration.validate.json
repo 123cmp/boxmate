@@ -1,0 +1,27 @@
+{
+  "name": {
+    "required":  {"value" : true, "message": "Укажите имя"},
+    "type": {"value": "string"},
+    "maxLength": {"value" : 25, "message": "Имя слишком длинное"},
+    "minLength": {"value" : 2, "message": "Имя слишком короткое"},
+    "no-specSymbols": {"value": "^[A-Za-zА-Яа-я0-9_-]*$"}
+  },
+  "email": {
+    "required":  {"value" : true, "message": "Укажите email"},
+    "type": {"value": "string", "message": "не строка"},
+    "maxLength": {"value" : 25, "message": "Email слишком длинный"},
+    "minLength": {"value" : 4, "message": "Email слишком короткий"},
+    "isEmail" :  {"value" : "^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$", "message": "Email не валидный"}
+  },
+  "password": {
+    "required":  {"value" : true, "message": "Укажите пароль"},
+    "type": {"value": "string"},
+    "maxLength": {"value" : 25, "message": "Пароль слишком длинный"},
+    "minLength": {"value" : 6, "message": "Пароль слишком короткий"}
+  },
+  "repeat": {
+    "required":  {"value" : true, "message": "Поле не заполнено"},
+    "type": {"value": "string"},
+    "equals" :   {"value" : "password", "message": "Пароль не совпадает с подтверждением"}
+  }
+}

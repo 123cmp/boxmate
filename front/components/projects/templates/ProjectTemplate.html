@@ -1,0 +1,52 @@
+<div class="small-12 medium-6 large-4 columns bm-project-box">
+    <div class="callout-card radius">
+        <div class="callout-card-content  left">
+            <form>
+                <a href=<%= "#!/projects/" + model._id %> class="bm-project-title pointer large-12 small-12
+                        medium-12"><%- model.name %></a>
+                <input class="search-project large-12 small-12
+                        medium-12 left " type="text" placeholder="name project" />
+                <% if (!model.image)  { %>
+                    <img class="bm-project-image medium-10 left large-10 small-10 pointer pointer" src="http://static.tumblr.com/rmabzuk/hQMm51hf6/brainart-project.png">
+                <% } else { %>
+                    <img class="bm-project-image medium-10 left large-10 small-10 pointer pointer" src=<%= model.image %> >
+                <% } %>
+
+                <%- model.image %>
+
+                <div class="project-block right small-1 medium-1 large-1">
+                    <ul class="button-status">
+                        <li class="">
+                            <button class="button button-status status-all" title="status-all">1</button>
+                        </li>
+                        <li >
+                            <button class="button button-status status-to_do" title="status-to_do">2</button>
+                        </li>
+                        <li>
+                            <button class="button button-status status-resolve" title="status-resolve">3</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bm-bottom-block left large-12 small-12 medium-12">
+                    <div class="row bm-user-block large-12 small-12 medium-12">
+                        <ul class="inline-list nav-list large-12 small-12 medium-12">
+                            <span class="bm-project-users">
+                                <% if (!model.users)  { %>
+                                    <% $.each(model.users, function(i, v) { %>
+                                        <li><a href='#'><i class='fa fa-user'></i></a></li>
+                                    <% }); %>
+                                <% } %>
+                            </span>
+                            <li><a href="#"><i class="fa fa-plus"></i></a></li>
+                            <li class="tools-job"><a href="#"><i class="fa fa-trash-o"></i></a></li>
+                            <li class="tools-job"><a href="#"><i class="fa fa-times-circle"></i></a></li>
+                            <li class="tools-job"><a href="#"><i class="fa fa-pencil"></i></a></li>
+                            <li class="tools-job"><a href=<%= "#!/projects/" + model._id %>>Open</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
