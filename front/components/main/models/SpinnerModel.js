@@ -4,7 +4,7 @@
  * @extends Backbone.Model
  * @description Model for preloader
  */
-define(['../../../bower_components/backbone/backbone-min'],
+define(['backbone'],
     function(bb) {
         return bb.Model.extend({
             defaults: {

@@ -1,10 +1,14 @@
-define(['jquery', 'backbone', 'routeViews/RouteView', 'text!templates/HomeTemplate.html'], function($, bb, RouteView, template) {
-    return new function() {
-
-        return RouteView.extend({
-            loadTemplate: function() {
-                console.log("loadTemplate", template);
-            }
-        });
-    };
-});
+define(['jquery', 'backbone', 'abstract/RouteView', 'text!components/accounting/templates/AuthorizationTemplate.html', 'components/accounting/models/AuthorizationModel', 'components/accounting/views/AuthFormView', 'underscore'],
+    function($, bb, RouteView, template, AuthModel, AuthView, _) {
+        return new function() {
+            return RouteView.extend({
+                loadTemplate: function() {
+                    this.template = _.template(template);
+                },
+                loadViews: function() {
+                    var formContainer = $(this.el).find('#authorization-form');
+                    new AuthView({model: new AuthModel(), el: formContainer});
+                }
+            });
+        };
+    });

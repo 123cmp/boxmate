@@ -54,81 +54,85 @@
 
     </div>
 </footer>
-    <script src="/front/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/front/third-party/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
-    <script src="/front/bower_components/underscore/underscore-min.js"></script>
-    <script src="/front/bower_components/backbone/backbone-min.js"></script>
-    <script src="/front/bower_components/foundation/js/foundation.min.js"></script>
-    <script src="/front/bower_components/backbone.syphon/lib/backbone.syphon.min.js"></script>
-    <script src="/front/bower_components/autosize/dist/autosize.min.js"></script>
-
-    <script src="/front/extensions.js"></script>
-    <script src="/front/scope.js"></script>
-
-    <script src="/front/modules/TemplateCache/TemplateLoader.js"></script>
-    <script src="/front/modules/TemplateCache/TemplateStore.js"></script>
-    <script src="/front/modules/ApiService/ApiService.js"></script>
-
-    <script src="/front/models/PinerModel.js"></script>
-    <script src="/front/models/PinModel.js"></script>
-    <script src="/front/models/DrawerModel.js"></script>
-    <script src="/front/models/StateModel.js"></script>
-    <script src="/front/models/ImageWithCanvasModel.js"></script>
-    <script src="/front/models/SpinnerModel.js"></script>
-    <script src="/front/models/ImageModel.js"></script>
-    <script src="/front/models/ProjectModel.js"></script>
-    <script src="/front/models/TaskModel.js"></script>
-    <script src="/front/models/UserModel.js"></script>
-    <script src="/front/models/AuthModel.js"></script>
-    <script src="/front/models/UploadModel.js"></script>
-    <script src="/front/models/CommentModel.js"></script>
 
 
-    <script src="/front/views/RegistrationView.js"></script>
-    <script src="/front/views/CreateProjectView.js"></script>
-    <script src="/front/views/ImageWithCanvasView.js"></script>
-    <script src="/front/views/SpinnerView.js"></script>
-    <script src="/front/views/AuthFormView.js"></script>
-    <script src="/front/views/StateView.js"></script>
-    <script src="/front/views/HomeView.js"></script>
-    <script src="/front/views/MenuView.js"></script>
-    <script src="/front/views/ProjectsView.js"></script>
-    <script src="/front/views/DotPinView.js"></script>
-    <script src="/front/views/ProjectView.js"></script>
-    <script src="/front/views/UploadView.js"></script>
-    <script src="/front/views/UserToolView.js"></script>
-    <script src="/front/views/UserKitView.js"></script>
+    <script src="/front/bower_components/requirejs/require.js"></script>
+    <script src="/front/boot.js"></script>
+    <!--<script src="/front/bower_components/jquery/dist/jquery.min.js"></script>-->
+    <!--<script src="/front/third-party/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>-->
+    <!--<script src="/front/bower_components/underscore/underscore-min.js"></script>-->
+    <!--<script src="/front/bower_components/backbone/backbone-min.js"></script>-->
+    <!--<script src="/front/bower_components/foundation/js/foundation.min.js"></script>-->
+    <!--<script src="/front/bower_components/backbone.syphon/lib/backbone.syphon.min.js"></script>-->
+    <!--<script src="/front/bower_components/autosize/dist/autosize.min.js"></script>-->
 
-    <script src="/front/modules/Piner.js"></script>
-    <script src="/front/modules/Drawer.js"></script>
+    <!--<script src="/front/extensions.js"></script>-->
+    <!--<script src="/front/router.js"></script>-->
 
-    <script src="/front/app.js"></script>
+    <!--<script src="/front/modules/TemplateCache/TemplateLoader.js"></script>-->
+    <!--<script src="/front/modules/TemplateCache/TemplateStore.js"></script>-->
+    <!--<script src="/front/modules/ApiService/ApiService.js"></script>-->
 
-<script>
-//footer
-    $(window).bind("load", function () {
-        var footer = $("#footer");
-        var pos = footer.position();
-        var height = $(window).height();
-        height = height - pos.top;
-        height = height - footer.height();
-        if (height > 0) {
-            footer.css({
-                'margin-top': height + 'px'
-            });
-        }
-    });
+    <!--<script src="/front/models/PinerModel.js"></script>-->
+    <!--<script src="/front/models/PinModel.js"></script>-->
+    <!--<script src="/front/models/DrawerModel.js"></script>-->
+    <!--<script src="/front/models/StateModel.js"></script>-->
+    <!--<script src="/front/models/UserToolModel.js"></script>-->
+    <!--<script src="/front/models/SpinnerModel.js"></script>-->
+    <!--<script src="/front/models/ImageModel.js"></script>-->
+    <!--<script src="/front/models/ProjectModel.js"></script>-->
+    <!--<script src="/front/models/TaskModel.js"></script>-->
+    <!--<script src="/front/models/UserModel.js"></script>-->
+    <!--<script src="/front/models/AuthorizationModel.js"></script>-->
+    <!--<script src="/front/models/UploadModel.js"></script>-->
+    <!--<script src="/front/models/CommentModel.js"></script>-->
 
-</script>
-<script>
-    $(document).foundation({
-        tab: {
-            callback : function (tab) {
-                console.log(tab);
-            }
-        }
-    });
-</script>
+
+    <!--<script src="/front/views/RegistrationView.js"></script>-->
+    <!--<script src="/front/views/CreateProjectView.js"></script>-->
+    <!--<script src="/front/views/UserToolView.js"></script>-->
+    <!--<script src="/front/views/SpinnerView.js"></script>-->
+    <!--<script src="/front/views/AuthFormView.js"></script>-->
+    <!--<script src="/front/views/StateView.js"></script>-->
+    <!--<script src="/front/views/HomeView.js"></script>-->
+    <!--<script src="/front/views/MenuView.js"></script>-->
+    <!--<script src="/front/views/ProjectsView.js"></script>-->
+    <!--<script src="/front/views/DotPinView.js"></script>-->
+    <!--<script src="/front/views/ProjectView.js"></script>-->
+    <!--<script src="/front/views/UploadView.js"></script>-->
+    <!--<script src="/front/views/UserToolView.js"></script>-->
+    <!--<script src="/front/views/UserKitView.js"></script>-->
+
+    <!--<script src="/front/modules/Piner.js"></script>-->
+    <!--<script src="/front/modules/Drawer.js"></script>-->
+
+    <!--<script src="/front/app.js"></script>-->
+
+<!--<script>-->
+<!--//footer-->
+    <!--$(window).bind("load", function () {-->
+        <!--var footer = $("#footer");-->
+        <!--var pos = footer.position();-->
+        <!--var height = $(window).height();-->
+        <!--height = height - pos.top;-->
+        <!--height = height - footer.height();-->
+        <!--if (height > 0) {-->
+            <!--footer.css({-->
+                <!--'margin-top': height + 'px'-->
+            <!--});-->
+        <!--}-->
+    <!--});-->
+
+<!--</script>-->
+<!--<script>-->
+    <!--$(document).foundation({-->
+        <!--tab: {-->
+            <!--callback : function (tab) {-->
+                <!--console.log(tab);-->
+            <!--}-->
+        <!--}-->
+    <!--});-->
+<!--</script>-->
 
 
 </body>

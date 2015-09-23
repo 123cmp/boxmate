@@ -4,7 +4,7 @@
  * @extends Backbone.Model
  * @description Collection for all projects
  */
-define(['../../../bower_components/backbone/backbone-min', 'api', 'models/ProjectModel'],
+define(['backbone', 'api', 'components/projects/models/ProjectModel'],
     function(bb, api, ProjectModel) {
         return bb.Collection.extend({
             fetch: function() {

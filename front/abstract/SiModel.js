@@ -6,7 +6,7 @@
  * @description Backbone model with extended methods
  */
 
-define(['../../../bower_components/backbone/backbone-min'], function(bb) {
+define(['backbone'], function(bb) {
     return new function() {
         return bb.Model.extend({
             push: function(arg, val) {

@@ -1,20 +1,69 @@
-define(['../../../bower_components/jquery/dist/jquery.min', 'backbone', 'text!templates/ImageWithCanvasTemplate.html'],
-    function ($, bb, template) {
+define(['jquery', 'backbone', 'text!components/usertool/templates/ImageWithCanvasTemplate.html', 'components/usertool/modules/Drawer', 'components/usertool/modules/Piner'],
+    function ($, bb, template, Drawer, Piner) {
         return new function () {
             return bb.View.extend({
+                drawer: null,
+
                 events: {
-                    "click .button-registration": "done",
-                    "blur .registration-form input": "validateField"
+                    "click .bm-pencil": "toggleDrawer"
                 },
 
                 initialize: function () {
+                    var self = this;
                     this.template = _.template(template);
                     this.render();
+                    var image = this.$el.find('img.image-with-canvas-image');
+                    if(image.length > 0 && !image.complete){
+                        image.load(function() {
+                            self.addDrawer();
+                        });
+                    } else {
+                        this.addDrawer();
+                    }
                 },
 
                 render: function() {
-                    console.log(this.model, this.template, this.$el);
                     if (this.template && this.$el) $(this.$el).html(this.template({model: this.model}));
+                },
+
+                switchOnDrawer: function() {
+                    $('.bm-pencil').addClass("active");
+                    this.drawer.switchOn();
+                },
+
+                switchOffDrawer: function() {
+                    $('.bm-pencil').removeClass("active");
+                    this.drawer.switchOff();
+                },
+
+                toggleDrawer: function(e) {
+                    $('.bm-pencil').toggleClass("active");
+                    this.drawer.toggle();
+                },
+
+                addDrawer: function() {
+                    this.drawer = Drawer;
+                    this.drawer.attach(this.el)
+                },
+
+                switchOnPiner: function() {
+                    $('.bm-pencil').addClass("active");
+                    this.piner.switchOn();
+                },
+
+                switchOffPiner: function() {
+                    $('.bm-pencil').removeClass("active");
+                    this.piner.switchOff();
+                },
+
+                togglePiner: function(e) {
+                    $('.bm-pencil').toggleClass("active");
+                    this.piner.toggle();
+                },
+
+                addPiner: function() {
+                    this.piner = Piner;
+                    this.piner.attach(this.el)
                 }
             });
         };

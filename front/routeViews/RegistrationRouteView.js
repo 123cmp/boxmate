@@ -1,9 +1,13 @@
-define(['jquery', 'backbone', 'routeViews/RouteView', 'text!templates/HomeTemplate.html'], function($, bb, RouteView, template) {
+define(['jquery', 'backbone', 'abstract/RouteView', 'text!components/accounting/templates/RegistrationTemplate.html', 'underscore', 'components/accounting/models/RegistrationModel', 'components/accounting/views/RegistrationView'],
+    function($, bb, RouteView, template, _, RegistrationModel, RegistrationView) {
     return new function() {
-
         return RouteView.extend({
             loadTemplate: function() {
-                console.log("loadTemplate", template);
+                this.template = _.template(template);
+            },
+            loadViews: function() {
+                var element = this.el;
+                new RegistrationView({model: new RegistrationModel(), el: element});
             }
         });
     };

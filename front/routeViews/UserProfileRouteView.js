@@ -1,9 +1,8 @@
-define(['jquery', 'backbone', 'routeViews/RouteView', 'text!templates/HomeTemplate.html'], function($, bb, RouteView, template) {
+define(['jquery', 'backbone', 'abstract/RouteView', 'text!components/accounting/templates/HomeTemplate.html', 'underscore'], function($, bb, RouteView, template, _) {
     return new function() {
-
         return RouteView.extend({
             loadTemplate: function() {
-                console.log("loadTemplate", template);
+                this.template = _.template(template);
             }
         });
     };

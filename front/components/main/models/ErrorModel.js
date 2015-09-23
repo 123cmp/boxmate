@@ -5,7 +5,7 @@
  * @description Model for error-message
  * @link Drawer
  */
-define(['../../../bower_components/backbone/backbone-min'],
+define(['backbone'],
     function(bb) {
         return bb.Model.extend({
             defaults: {

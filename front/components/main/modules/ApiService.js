@@ -4,7 +4,7 @@
  * @extends Backbone.Model
  * @description Model for user
  */
-define(['../../../bower_components/jquery/dist/jquery.min', 'underscore'],
+define(['jquery', 'underscore'],
     function ($, _) {
         return {
             getTemplates: function () {

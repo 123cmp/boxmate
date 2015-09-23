@@ -4,7 +4,7 @@
  * @extends Backbone.Model
  * @description Model for registration form
  */
-define(['abstract/ValidationFormModel', 'models/ErrorsCollection', 'text!validation/registration.validate.json', 'models/UserModel'],
+define(['abstract/ValidationFormModel', 'components/main/models/ErrorsCollection', 'text!validation/registration.validate.json', 'components/accounting/models/UserModel'],
     function(ValidationFormModel, ErrorsCollection, validationRules, UserModel) {
 
         return ValidationFormModel.extend({

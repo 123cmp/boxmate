@@ -1,5 +1,5 @@
-define(['../../../bower_components/backbone/backbone-min', 'text!templates/ProjectsTemplate.html', 'views/ProjectView', 'models/ProjectModel'],
-    function (bb, template, ProjectView, ProjectModel) {
+define(['backbone', 'text!components/projects/templates/ProjectsTemplate.html', 'components/projects/views/ProjectView', 'components/projects/models/ProjectModel'],
+    function (bb, template, ProjectView) {
         return bb.View.extend({
             initialize: function () {
                 var self = this;
@@ -24,42 +24,3 @@ define(['../../../bower_components/backbone/backbone-min', 'text!templates/Proje
         })
     }
 );
-//bm.ProjectsView = Backbone.View.extend({
-//    el: "#projects",
-//    projects: [],
-//    projectViews: [],
-//    projectModels: [],
-//
-//    initialize: function() {
-//        var __self = this;
-//        bm.ApiService.getUserProjects().then(function(answer) {
-//            if(!answer) return false;
-//            if(typeof answer === 'string') {
-//                try {
-//                    answer = JSON.parse(answer);
-//                } catch(e) {
-//                    console.error(answer);
-//                }
-//            }
-//            __self.project = answer;
-//            if(__self.project && __self.project.length > 0) {
-//                $.each(__self.project, function(i, project) {
-//                    var model = new bm.ProjectModel(project);
-//                    __self.projectModels.push(model);
-//                    __self.projectViews.push(new bm.ProjectView({model: model}))
-//                });
-//            }
-//        })
-//    },
-//
-//    render: function () {
-//        var __self = this;
-//        if(__self.project && __self.project.length > 0) {
-//            $.each(__self.project, function(i, project) {
-//
-//            });
-//        }
-//    }
-//});
-
-

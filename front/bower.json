@@ -7,5 +7,9 @@
     "backbone": "~1.2.1",
     "foundation": "~5.5.2",
     "backbone.syphon": "~0.6.2"
+  },
+  "dependencies": {
+    "requirejs": "~2.1.20",
+    "requirejs-text": "~2.0.14"
   }
 }

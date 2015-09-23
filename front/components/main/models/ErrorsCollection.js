@@ -4,7 +4,7 @@
  * @extends Backbone.Model
  * @description Collection for all projects
  */
-define(['../../../bower_components/backbone/backbone-min', 'api', 'models/ErrorModel'],
+define(['backbone', 'api', 'components/main/models/ErrorModel'],
     function(bb, api, ErrorModel) {
         return bb.Collection.extend({
             model: ErrorModel,

@@ -1,4 +1,4 @@
-define(['../../../bower_components/jquery/dist/jquery.min', 'abstract/ValidationFormView', 'text!templates/RegistrationFormTemplate.html'],
+define(['jquery', 'abstract/ValidationFormView', 'text!components/accounting/templates/RegistrationFormTemplate.html'],
     function($, ValidationFormView, template) {
         return new function() {
             return ValidationFormView.extend({

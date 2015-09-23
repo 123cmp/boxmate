@@ -1,4 +1,4 @@
-define(['../../../bower_components/jquery/dist/jquery.min.js', '../bower_components/backbone/backbone-min', 'underscore', 'syphon'],
+define(['jquery', 'backbone', 'underscore', 'syphon'],
     function($, bb, _, syphon) {
         return new function() {
             return bb.View.extend({

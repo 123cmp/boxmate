@@ -1,74 +1,60 @@
-bm.Drawer = function(obj) {
-    var model = obj.model;
-    return {
-        el: "#image-container",
-        isDrawing: false,
-        mousedown: this.startDraw,
-        mousemove: this.moveDraw,
-        mouseup: this.stopDraw,
-        mouseleave: this.stopDraw,
-        touchstart: this.startDraw,
-        touchmove: this.moveDraw,
-        touchend: this.stopDraw,
-        color: "#FF0000",
-        SAVE_TIMEOUT: this.SAVE_TIMEOUT,
-        model: model,
-        refreshTimer: null,
-        initTimer: null,
-        timer: null,
-        save: null,
-        context: null,
+define(['jquery', 'abstract/CanvasProcessor'],
+    function ($, CanvasProcessor) {
+        return new function () {
+            var self = null;
+            self = $.extend(CanvasProcessor, this);
 
-        initVars: function () {
+            self.init = function () {
+                self.isDrawing = false;
+                self.color = "#FF0000";
+                self.switchedOn = false;
+            };
 
-            this.refreshTimer = this.model.get("refreshTimer");
-            this.initTimer = this.model.get("initTimer");
-            this.timer = this.model.get("timer");
-            this.save = this.model.get("save");
-            this.color = this.model.get("color");
-            this.context = this.model.get("context");
-            this.model.set("draw", this.draw);
+            self.startDraw = function (e) {
+                var coors = self.calculateCoors(e);
+                if (self.context && self.switchedOn) {
+                    self.context.beginPath();
+                    self.context.moveTo(coors.x, coors.y);
+                    self.isDrawing = true;
+                }
+            };
 
-            this.mousedown = this.startDraw;
-            this.mousemove = this.moveDraw;
-            this.mouseup = this.stopDraw;
-            this.touchstart = this.startDraw;
-            this.touchmove = this.moveDraw;
-            this.touchend = this.stopDraw;
-            console.log("init");
-        },
+            self.moveDraw = function (e) {
+                var coors = self.calculateCoors(e);
+                if (self.context && self.isDrawing && self.switchedOn) {
+                    self.changed();
+                    self.context.strokeStyle = self.color;
+                    console.log("draw", coors);
+                    self.context.lineJoin = "round";
+                    self.context.lineWidth = 3;
+                    self.context.lineTo(coors.x, coors.y);
+                    self.context.stroke();
+                }
+            };
 
-        draw: function (coors, e) {
-            if(this[e.type]) this[e.type](coors);
-        },
+            self.stopDraw = function (e) {
+                var coors = self.calculateCoors(e);
+                if (self.context && self.isDrawing && self.switchedOn) {
+                    self.changed();
+                    self.moveDraw(coors);
+                    self.isDrawing = false;
+                }
+            };
 
-        startDraw: function (coors) {
-            this.context.beginPath();
-            this.context.moveTo(coors.x, coors.y);
-            this.isDrawing = true;
-        },
-        moveDraw: function (coors) {
-            if (this.isDrawing) {
-                this.refreshTimer();
-                this.context.strokeStyle = this.color;
-                this.context.lineJoin = "round";
-                this.context.lineWidth = 3;
-                this.context.lineTo(coors.x, coors.y);
-                this.context.stroke();
+
+            return {
+                attach: function (element) {
+                    self.attach($(element));
+                },
+                switchOn: function () {
+                    self.switchedOn = true;
+                },
+                switchOff: function () {
+                    self.switchedOn = false;
+                },
+                toggle: function () {
+                    self.switchedOn = !self.switchedOn;
+                }
             }
-        },
-        stopDraw: function (coors) {
-            if (this.isDrawing) {
-                this.refreshTimer();
-                this.touchmove(coors);
-                this.isDrawing = false;
-            }
-        },
-
-        initialize: function () {
-            var __self = this;
-            if (__self.model) __self.initVars();
-            return __self;
-        }
-    };
-};
+        };
+    });

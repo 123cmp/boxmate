@@ -1,65 +1,96 @@
-define(['router', 'backbone', 'jquery'], function(router) {
-return Backbone.Router.extend({
-    routes: {
-        "": "home",
-        "!/": "home",
-        "!/home": "home",
-        "!/upload": "upload",
-        "!/projects": "projects",
-        "!/projects/:id": "project",
-        "!/registration": "registration",
-        "!/authorization": "authorization",
-        "!/usertool": "usertool",
-        "!/addnewproject": "addnewproject",
-        "!/createnewproject": "createnewproject",
-        "!/userprofile": "userprofile",
-        "!/projectpage": "projectpage"
+/**
+ * @module Router
+ * @author 123cmp
+ * @return {object} Router object
+ * @extends Backbone.Router
+ * @description Routing module
+ * */
+define(['jquery', 'backbone'], function($, bb) {
 
-    },
+    /**
+     * @private
+     * @description List of page views
+     * */
+    var views = {
+        home: "routeViews/HomeRouteView",
+        upload: "routeViews/UploadRouteView",
+        projects: "routeViews/ProjectsRouteView",
+        registration: "routeViews/RegistrationRouteView",
+        authorization: "routeViews/AuthorizationRouteView",
+        usertool: "routeViews/UserToolRouteView",
+        createnewproject: "routeViews/CreateNewProjectRouteView",
+        userprofile: "routeViews/UserProfileRouteView",
+        projectpage: "routeViews/ProjectPageRouteView"
+    };
 
-    home: function () {
+    /**
+     * @private
+     * @method
+     * @description Load page view
+     * */
+    var loadView = function(viewName, options) {
+        console.log(viewName);
+        require([views[viewName]], function(RouteView) {
+            new RouteView(options).run()
+        });
+    };
 
-    },
+    return bb.Router.extend({
+        routes: {
+            "": "home",
+            "!/": "home",
+            "!/home": "home",
+            "!/upload": "upload",
+            "!/projects": "projects",
+            //"!/projects": "project",
+            "!/registration": "registration",
+            "!/authorization": "authorization",
+            "!/usertool": "usertool",
+            "!/addnewproject": "addnewproject",
+            "!/createnewproject": "createnewproject",
+            "!/userprofile": "userprofile",
+            "!/projects/:id": "projectpage"
+        },
 
-    upload: function () {
+        home: function () {
+            loadView("home");
+        },
 
-    },
+        upload: function () {
+            loadView("upload");
+        },
 
-    projects: function () {
+        projects: function () {
+            loadView("projects");
+        },
 
-    },
-    registration: function () {
+        registration: function () {
+            loadView("registration");
+        },
 
-    },
+        authorization: function () {
+            loadView("authorization");
+        },
 
-    authorization: function () {
+        usertool: function () {
+            loadView("usertool");
+        },
 
-    },
+        createnewproject: function () {
+            loadView("createnewproject");
+        },
 
-    usertool: function () {
+        userprofile: function () {
+            loadView("userprofile");
+        },
 
-    },
+        //project: function (id) {
+        //    loadView("project");
+        //},
 
-    addnewproject: function () {
+        projectpage: function (id) {
+            loadView("projectpage", {id: id});
+        }
 
-    },
-    createnewproject: function () {
-        bm.stateModel.set({ state: "createnewproject" });
-        bm.stateModel.trigger("change");
-    },
-    userprofile: function () {
-        bm.stateModel.set({ state: "userprofile" });
-        bm.stateModel.trigger("change");
-    },
-    project: function (id) {
-        bm.stateModel.set({ state: "upload", routeParams: {id: id} });
-        bm.stateModel.trigger("change");
-    },
-    projectpage: function () {
-        bm.stateModel.set({ state: "projectpage" });
-        bm.stateModel.trigger("change");
-    }
-
+    });
 });
-
-bm.router = new bm.Router();

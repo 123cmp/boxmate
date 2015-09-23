@@ -8,6 +8,6 @@
   "password": {
     "required":  {"value" : "true", "message": "Укажите пароль"},
     "maxLength": {"value" : "25", "message": "Пароль слишком длинный"},
-    "minLength": {"value" : "6", "message": "Пароль слишком короткий"},
+    "minLength": {"value" : "6", "message": "Пароль слишком короткий"}
   }
 }

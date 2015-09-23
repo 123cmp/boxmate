@@ -4,7 +4,7 @@
  * @extends Backbone.Model
  * @description Model for create new project
  */
-define(['abstract/ValidationFormModel', 'models/ErrorsCollection', 'text!validation/create-project.validate.json'],
+define(['abstract/ValidationFormModel', 'components/main/models/ErrorsCollection', 'text!validation/create-project.validate.json'],
     function(ValidationFormModel, ErrorsCollection, validationRules) {
 
         return ValidationFormModel.extend({

@@ -5,7 +5,7 @@
  * @description Model for Drawer module
  * @link Drawer
  */
-define(['../../../bower_components/backbone/backbone-min'],
+define(['backbone'],
     function(bb) {
         return bb.Model.extend({
             defaults: {

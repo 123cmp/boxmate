@@ -1,9 +1,13 @@
-define(['jquery', 'backbone', 'routeViews/RouteView', 'text!templates/HomeTemplate.html'], function($, bb, RouteView, template) {
+define(['jquery', 'backbone', 'abstract/RouteView', 'text!components/usertool/templates/UserToolTemplate.html', 'underscore', 'components/usertool/models/UserToolModel', 'components/usertool/views/UserToolView'],
+    function($, bb, RouteView, template, _, UserToolModel, UserToolView) {
     return new function() {
-
         return RouteView.extend({
             loadTemplate: function() {
-                console.log("loadTemplate", template);
+                this.template = _.template(template);
+            },
+            loadViews: function() {
+                var element = $(this.el);
+                new UserToolView({model: new UserToolModel(), el: element});
             }
         });
     };

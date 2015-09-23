@@ -4,7 +4,7 @@
  * @extends Backbone.Model
  * @description Model for user
  */
-define(['abstract/SiModel', '../../../modules/ApiService/ApiService'],
+define(['abstract/SiModel', 'api'],
     function(SiModel, api) {
         return SiModel.extend({
             defaults: {

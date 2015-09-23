@@ -6,7 +6,7 @@
  * @description Backbone collection with extended methods
  */
 
-define(['../../../bower_components/backbone/backbone-min'],
+define(['backbone'],
     function(bb) {
         return bb.Collection.extend({
 

@@ -6,7 +6,7 @@
  * @description Si model with validation methods
  */
 
-define(['abstract/SiModel', '../../../bower_components/underscore/underscore-min', 'extensions'], function(SiModel, _) {
+define(['abstract/SiModel', 'backbone', 'extensions'], function(SiModel, _) {
     return new function() {
 
         _.isBlank = function(str) {

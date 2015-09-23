@@ -6,7 +6,7 @@
  * @description View for every page loading by router
  */
 
-define(['../../../bower_components/jquery/dist/jquery.min', '../bower_components/backbone/backbone-min'], function($, bb) {
+define(['jquery', 'backbone'], function($, bb) {
     return new function() {
         return bb.View.extend({
             el: $("#view"),

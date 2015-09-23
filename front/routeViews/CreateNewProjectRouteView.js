@@ -1,9 +1,13 @@
-define(['jquery', 'backbone', 'routeViews/RouteView', 'text!templates/HomeTemplate.html'], function($, bb, RouteView, template) {
+define(['jquery', 'backbone', 'abstract/RouteView', 'text!components/projects/templates/CreateNewProjectTemplate.html', 'underscore', 'components/projects/views/CreateProjectView', 'components/projects/models/CreateNewProjectModel'],
+    function($, bb, RouteView, template, _, CreateProjectView, CreateNewProjectModel) {
     return new function() {
-
         return RouteView.extend({
             loadTemplate: function() {
-                console.log("loadTemplate", template);
+                this.template = _.template(template);
+            },
+            loadViews: function() {
+                var formContainer = $(this.el).find('.block-new_project');
+                new CreateProjectView({model: new CreateNewProjectModel(), el: formContainer});
             }
         });
     };
