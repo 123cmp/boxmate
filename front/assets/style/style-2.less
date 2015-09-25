@@ -276,14 +276,13 @@ section{
     width: 100%;
     padding: 0;
     margin: 0 auto;
+
     .field{
       float: left;
       width: 100%;
       margin: 0 0 30px 0;
       padding: 0;
-      &:last-child{
-        margin-bottom: 0;
-      }
+
       h3{
         float: left;
         width: 100%;
@@ -306,34 +305,35 @@ section{
           color: @text-input;
         }
       }
-      .btn-default{
-        float: right;
-        margin: 30px 0 0 0;
-        border: 1px solid @border-color;
-        .border-radius();
-        font-size: 22px;
-        font-weight: 300;
-        background: #fbfbfb;
-        .transition(0.4s ease 0s);
-        .active-button();
-        @media (max-width: 540px) {
-         width: 100%;
-        }
-        }
-      &:last-child{
-        margin-bottom: 0;
-      }
+
     }
     @media (max-width: 1200px) {
       padding-right:15px;
       padding-left:15px;
       .box-sizing();
     }
-@media (max-width: 768px) {
-  padding-right:15px;
-  padding-left:15px;
-  .box-sizing();
-}
+    @media (max-width: 768px) {
+      padding-right:15px;
+      padding-left:15px;
+      .box-sizing();
+    }
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+  .btn-default{
+    float: right;
+    margin: 0;
+    border: 1px solid @border-color;
+    .border-radius();
+    font-size: 22px;
+    font-weight: 300;
+    background: #fbfbfb;
+    .transition(0.4s ease 0s);
+    .active-button();
+    @media (max-width: 540px) {
+      width: 100%;
+    }
   }
   @media (max-width: 768px) {
     padding-right:15px;
