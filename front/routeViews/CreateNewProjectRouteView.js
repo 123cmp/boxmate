@@ -6,7 +6,7 @@ define(['jquery', 'backbone', 'abstract/RouteView', 'text!components/projects/te
                 this.template = _.template(template);
             },
             loadViews: function() {
-                var formContainer = $(this.el).find('.block-new_project');
+                var formContainer = $(this.el).find('.data-field');
                 new CreateProjectView({model: new CreateNewProjectModel(), el: formContainer});
             }
         });

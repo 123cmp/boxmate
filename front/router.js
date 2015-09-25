@@ -46,7 +46,7 @@ define(['jquery', 'backbone'], function($, bb) {
             "!/registration": "registration",
             "!/authorization": "authorization",
             "!/usertool": "usertool",
-            "!/addnewproject": "addnewproject",
+            //"!/addnewproject": "addnewproject",
             "!/createnewproject": "createnewproject",
             "!/userprofile": "userprofile",
             "!/projects/:id": "projectpage"

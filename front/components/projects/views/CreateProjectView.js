@@ -4,7 +4,7 @@ define(['jquery', 'abstract/ValidationFormView', 'text!components/projects/templ
             return ValidationFormView.extend({
                 events: {
                     "blur form input": "validateField",
-                    "submit form" : "done"
+                    "click bm-create-project" : "done"
                 },
 
                 templateHtml: template,
