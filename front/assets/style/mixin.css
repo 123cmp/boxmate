@@ -1,0 +1,22 @@
+.active-button:hover {
+  background: #ed145b;
+  color: #FFFFFF;
+  -webkit-transition: 0.3s ease 0s;
+  -moz-transition: 0.3s ease 0s;
+  -ms-transition: 0.3s ease 0s;
+  -o-transition: 0.3s ease 0s;
+}
+.active-button:active {
+  background: #333333;
+  -webkit-transition: 0.3s ease 0s;
+  -moz-transition: 0.3s ease 0s;
+  -ms-transition: 0.3s ease 0s;
+  -o-transition: 0.3s ease 0s;
+  color: #FFFFFF;
+}
+.active-input:hover {
+  background: #ed145b;
+}
+.active-input:active {
+  background: #333333;
+}
