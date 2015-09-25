@@ -86,9 +86,11 @@ h3{
 .navbar-default{
   max-height: 75px;
   padding: 12px 0;
+  margin-bottom: 0;
   .box-sizing();
   height: 100%;
   background:#272d3a;
+  border: none;
   .navbar-nav{
     li{
       border: 1px solid @border-color;
@@ -157,7 +159,80 @@ h3{
     }
   }
 }
+.wrapper-user-fase{
+  float: right;
+  margin: 6px -15px 0 0;
+  text-decoration: none;
+  span{
+    float: left;
+    margin-right: 14px;
+    padding: 9px 0 0  0;
+    color: #99a3b1;
+    font-size: 14px;
+  }
+  .user-face{
+    float: right;
+    height: 34px;
+    width: 34px;
+    border: 1px solid #FFFFFF;
+    .border-radius();
+    img{
+      height: auto;
+      width: 100%;
+    }
+  }
+}
+.title{
+  float: left;
+  width: 100%;
 
+  h1{
+    float: left;
+    margin: 27px 0 32px 0;
+    font-weight: 300;
+    color: @title-color;
+    text-align:left;
 
+  }
+
+}
+section{
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid @border-color;
+  .border-radius();
+  .new-project{
+    float: left;
+    width: 100%;
+    padding: 0 15px;
+    .box-sizing();
+    h1{
+      margin: 30px 0 0 0;
+      font-weight: normal;
+      text-align:center;
+      color: @title-color;
+    }
+  }
+  .data-field{
+    max-width: 970px;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    h3{
+      float: left;
+      width: 100%;
+      margin: 0;
+      text-align: left;
+      font-weight:normal ;
+      color: @title-color-h3;
+    }
+    input{
+      float: left;
+      border: 1px solid @border-color;
+      width: 100%;
+    }
+  }
+}
 
 

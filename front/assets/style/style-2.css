@@ -84,11 +84,13 @@ h3 {
 .navbar-default {
   max-height: 75px;
   padding: 12px 0;
+  margin-bottom: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   height: 100%;
   background: #272d3a;
+  border: none;
 }
 .navbar-default .navbar-nav li {
   border: 1px solid #ed145b;
@@ -165,4 +167,88 @@ h3 {
   -moz-transition: 0.4s ease 0s;
   -ms-transition: 0.4s ease 0s;
   -o-transition: 0.4s ease 0s;
+}
+.wrapper-user-fase {
+  float: right;
+  margin: 6px -15px 0 0;
+  text-decoration: none;
+}
+.wrapper-user-fase span {
+  float: left;
+  margin-right: 14px;
+  padding: 9px 0 0  0;
+  color: #99a3b1;
+  font-size: 14px;
+}
+.wrapper-user-fase .user-face {
+  float: right;
+  height: 34px;
+  width: 34px;
+  border: 1px solid #FFFFFF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.wrapper-user-fase .user-face img {
+  height: auto;
+  width: 100%;
+}
+.title {
+  float: left;
+  width: 100%;
+}
+.title h1 {
+  float: left;
+  margin: 27px 0 32px 0;
+  font-weight: 300;
+  color: 333333;
+  text-align: left;
+}
+section {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ed145b;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+section .new-project {
+  float: left;
+  width: 100%;
+  padding: 0 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+section .new-project h1 {
+  margin: 30px 0 0 0;
+  font-weight: normal;
+  text-align: center;
+  color: 333333;
+}
+section .data-field {
+  max-width: 970px;
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
+section .data-field h3 {
+  float: left;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  font-weight: normal ;
+  color: #696969;
+}
+section .data-field input {
+  float: left;
+  border: 1px solid #ed145b;
+  width: 100%;
 }
