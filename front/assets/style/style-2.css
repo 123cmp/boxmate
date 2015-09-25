@@ -1,3 +1,25 @@
+.active-button:hover {
+  background: #ed145b;
+  color: #FFFFFF;
+  -webkit-transition: 0.3s ease 0s;
+  -moz-transition: 0.3s ease 0s;
+  -ms-transition: 0.3s ease 0s;
+  -o-transition: 0.3s ease 0s;
+}
+.active-button:active {
+  background: #333333;
+  -webkit-transition: 0.3s ease 0s;
+  -moz-transition: 0.3s ease 0s;
+  -ms-transition: 0.3s ease 0s;
+  -o-transition: 0.3s ease 0s;
+  color: #FFFFFF;
+}
+.active-input:hover {
+  background: #ed145b;
+}
+.active-input:active {
+  background: #333333;
+}
 html,
 body {
   height: 100%;
@@ -75,11 +97,26 @@ textarea {
 h1 {
   font-size: 36px;
 }
+@media (max-width: 768px) {
+  h1 {
+    font-size: 30px;
+  }
+}
 h2 {
   font-size: 30px;
 }
+@media (max-width: 768px) {
+  h2 {
+    font-size: 24px;
+  }
+}
 h3 {
   font-size: 22px;
+}
+@media (max-width: 768px) {
+  h3 {
+    font-size: 18px;
+  }
 }
 .navbar-default {
   max-height: 75px;
@@ -91,6 +128,7 @@ h3 {
   height: 100%;
   background: #272d3a;
   border: none;
+  border-radius: 0;
 }
 .navbar-default .navbar-nav li {
   border: 1px solid #ed145b;
@@ -122,13 +160,63 @@ h3 {
 .navbar-default .navbar-nav li:active {
   background: #333333;
 }
+.navbar-default .navbar-toggle {
+  float: right;
+  display: none;
+}
+@media only screen and (max-width: 992px) {
+  .navbar-default .navbar-toggle {
+    display: block;
+  }
+}
+.navbar-default .navbar-collapse.collapse {
+  display: block;
+}
+@media only screen and (max-width: 992px) {
+  .navbar-default .navbar-collapse.collapse {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .navbar-default .navbar-collapse.in {
+    display: block !important;
+  }
+}
 .navbar-header .navbar-brand {
   padding: 0 240px 0 0;
+  -webkit-transition: 0.4s ease 0s;
+  -moz-transition: 0.4s ease 0s;
+  -ms-transition: 0.4s ease 0s;
+  -o-transition: 0.4s ease 0s;
 }
 .navbar-header .navbar-brand img {
   margin: 0;
   height: 100%;
   display: block;
+}
+@media (max-width: 1220px) {
+  .navbar-header .navbar-brand {
+    padding: 0 120px 0 0;
+    -webkit-transition: 0.4s ease 0s;
+    -moz-transition: 0.4s ease 0s;
+    -ms-transition: 0.4s ease 0s;
+    -o-transition: 0.4s ease 0s;
+  }
+}
+@media (max-width: 992px) {
+  .navbar-header .navbar-brand {
+    padding: 0 60px 0 0;
+    -webkit-transition: 0.4s ease 0s;
+    -moz-transition: 0.4s ease 0s;
+    -ms-transition: 0.4s ease 0s;
+    -o-transition: 0.4s ease 0s;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .navbar-header {
+    width: 100%;
+    margin: 0!important;
+  }
 }
 .navbar-form {
   margin: 0;
@@ -200,17 +288,28 @@ h3 {
   float: left;
   width: 100%;
 }
+@media (max-width: 1200px) {
+  .title {
+    padding-left: 15px ;
+    padding-right: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
 .title h1 {
   float: left;
   margin: 27px 0 32px 0;
   font-weight: 300;
-  color: 333333;
+  color: #333333;
   text-align: left;
 }
 section {
   max-width: 1170px;
   width: 100%;
   margin: 0 auto;
+}
+section .container {
   border: 1px solid #ed145b;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -218,11 +317,15 @@ section {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  background: #fbfbfb;
+}
+section .container.create_new_project {
+  padding-bottom: 60px ;
 }
 section .new-project {
   float: left;
   width: 100%;
-  padding: 0 15px;
+  padding: 0 15px 60px 15px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -231,7 +334,12 @@ section .new-project h1 {
   margin: 30px 0 0 0;
   font-weight: normal;
   text-align: center;
-  color: 333333;
+  color: #333333;
+}
+@media (max-width: 768px) {
+  section .new-project {
+    padding-bottom: 30px;
+  }
 }
 section .data-field {
   max-width: 970px;
@@ -239,16 +347,110 @@ section .data-field {
   padding: 0;
   margin: 0 auto;
 }
-section .data-field h3 {
+section .data-field .field {
   float: left;
   width: 100%;
-  margin: 0;
+  margin: 0 0 30px 0;
+  padding: 0;
+}
+section .data-field .field:last-child {
+  margin-bottom: 0;
+}
+section .data-field .field h3 {
+  float: left;
+  width: 100%;
+  margin: 0 0 16px 0;
   text-align: left;
   font-weight: normal ;
   color: #696969;
 }
-section .data-field input {
+section .data-field .field input {
   float: left;
   border: 1px solid #ed145b;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 22px;
+  color: #CCCCCC;
+  padding: 5px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   width: 100%;
+  background: #fbfbfb;
+}
+section .data-field .field input:focus {
+  color: #333333;
+}
+section .data-field .field .btn-default {
+  float: right;
+  margin: 30px 0 0 0;
+  border: 1px solid #ed145b;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 22px;
+  font-weight: 300;
+  background: #fbfbfb;
+  -webkit-transition: 0.4s ease 0s;
+  -moz-transition: 0.4s ease 0s;
+  -ms-transition: 0.4s ease 0s;
+  -o-transition: 0.4s ease 0s;
+}
+section .data-field .field .btn-default:hover {
+  background: #ed145b;
+  color: #FFFFFF;
+  -webkit-transition: 0.3s ease 0s;
+  -moz-transition: 0.3s ease 0s;
+  -ms-transition: 0.3s ease 0s;
+  -o-transition: 0.3s ease 0s;
+}
+section .data-field .field .btn-default:active {
+  background: #333333;
+  -webkit-transition: 0.3s ease 0s;
+  -moz-transition: 0.3s ease 0s;
+  -ms-transition: 0.3s ease 0s;
+  -o-transition: 0.3s ease 0s;
+  color: #FFFFFF;
+}
+@media (max-width: 540px) {
+  section .data-field .field .btn-default {
+    width: 100%;
+  }
+}
+section .data-field .field:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 1200px) {
+  section .data-field {
+    padding-right: 15px;
+    padding-left: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 768px) {
+  section .data-field {
+    padding-right: 15px;
+    padding-left: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 768px) {
+  section {
+    padding-right: 15px;
+    padding-left: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
 }
