@@ -353,9 +353,6 @@ section .data-field .field {
   margin: 0 0 30px 0;
   padding: 0;
 }
-section .data-field .field:last-child {
-  margin-bottom: 0;
-}
 section .data-field .field h3 {
   float: left;
   width: 100%;
@@ -385,48 +382,6 @@ section .data-field .field input {
 section .data-field .field input:focus {
   color: #333333;
 }
-section .data-field .field .btn-default {
-  float: right;
-  margin: 30px 0 0 0;
-  border: 1px solid #ed145b;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  font-size: 22px;
-  font-weight: 300;
-  background: #fbfbfb;
-  -webkit-transition: 0.4s ease 0s;
-  -moz-transition: 0.4s ease 0s;
-  -ms-transition: 0.4s ease 0s;
-  -o-transition: 0.4s ease 0s;
-}
-section .data-field .field .btn-default:hover {
-  background: #ed145b;
-  color: #FFFFFF;
-  -webkit-transition: 0.3s ease 0s;
-  -moz-transition: 0.3s ease 0s;
-  -ms-transition: 0.3s ease 0s;
-  -o-transition: 0.3s ease 0s;
-}
-section .data-field .field .btn-default:active {
-  background: #333333;
-  -webkit-transition: 0.3s ease 0s;
-  -moz-transition: 0.3s ease 0s;
-  -ms-transition: 0.3s ease 0s;
-  -o-transition: 0.3s ease 0s;
-  color: #FFFFFF;
-}
-@media (max-width: 540px) {
-  section .data-field .field .btn-default {
-    width: 100%;
-  }
-}
-section .data-field .field:last-child {
-  margin-bottom: 0;
-}
 @media (max-width: 1200px) {
   section .data-field {
     padding-right: 15px;
@@ -443,6 +398,48 @@ section .data-field .field:last-child {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+  }
+}
+section .data-field:last-child {
+  margin-bottom: 0;
+}
+section .btn-default {
+  float: right;
+  margin: 0;
+  border: 1px solid #ed145b;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 22px;
+  font-weight: 300;
+  background: #fbfbfb;
+  -webkit-transition: 0.4s ease 0s;
+  -moz-transition: 0.4s ease 0s;
+  -ms-transition: 0.4s ease 0s;
+  -o-transition: 0.4s ease 0s;
+}
+section .btn-default:hover {
+  background: #ed145b;
+  color: #FFFFFF;
+  -webkit-transition: 0.3s ease 0s;
+  -moz-transition: 0.3s ease 0s;
+  -ms-transition: 0.3s ease 0s;
+  -o-transition: 0.3s ease 0s;
+}
+section .btn-default:active {
+  background: #333333;
+  -webkit-transition: 0.3s ease 0s;
+  -moz-transition: 0.3s ease 0s;
+  -ms-transition: 0.3s ease 0s;
+  -o-transition: 0.3s ease 0s;
+  color: #FFFFFF;
+}
+@media (max-width: 540px) {
+  section .btn-default {
+    width: 100%;
   }
 }
 @media (max-width: 768px) {
