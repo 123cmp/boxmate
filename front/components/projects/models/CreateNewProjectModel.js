@@ -10,15 +10,15 @@ define(['abstract/ValidationFormModel', 'components/main/models/ErrorsCollection
         return ValidationFormModel.extend({
             defaults: {
                 name: {
-                    title: "Название:",
+                    title: "Название проекта:",
                     value: "",
                     type: 'text',
                     name: "name",
-                    placeholder: "My project",
+                    placeholder: "Введите имя",
                     errors: new ErrorsCollection()
                 },
                 users: {
-                    title: "Добавить пользователей",
+                    title: "Добавить пользователей:",
                     value: "",
                     type: 'text',
                     name: "users",
