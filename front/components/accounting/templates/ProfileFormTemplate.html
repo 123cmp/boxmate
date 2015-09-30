@@ -1,0 +1,68 @@
+<% model.each(function(i, field) { %>
+    <% if (typeof field == 'object') { %>
+        <div class="field">
+            <div class="title-field">
+                <h3>
+                    <%= field.title %>
+                </h3>
+            </div>
+            <% if (field.errors.length > 0) { %>
+                <input name="<%= field.name %>" class="create-form-input error" type="<%= field.type %>" placeholder="<%= field.placeholder %>" value="<%= field.value %>"/>
+                <span class="error">
+                    <%= field.errors.at(0).get("message") %>
+                </span>
+            <% } else { %>
+                <input name="<%= field.name %>" class="create-form-input" type="<%= field.type %>" placeholder="<%= field.placeholder %>" checked="<%= field.value %>" value="<%= field.value %>"/>
+            <% } %>
+        </div>
+    <% } %>
+<% }); %>
+
+<button type="button" class="btn btn-default bm-create-project">Создать проект</button>
+
+
+<!--<form>-->
+    <!--<% model.each(function(i, field) { %>-->
+        <!--<% if (typeof field == 'object') { %>-->
+            <!--<div class="row block-autorization-input">-->
+                <!--<div class="large-12 small-12 padding-0 columns">-->
+                    <!--<label>-->
+                        <!--<p><%= field.title %></p>-->
+                        <!--<% if (field.type == 'checkbox') { %>-->
+                            <!--<% if (field.errors.length > 0) { %>-->
+                                <!--<% if (field.value) { %>-->
+                                    <!--<input name="<%= field.name %>" class="error" checked type="checkbox"/>-->
+                                <!--<% } else { %>-->
+                                    <!--<input name="<%= field.name %>" class="error" type="checkbox"/>-->
+                                <!--<% } %>-->
+                                <!--<div class="error-message">-->
+                                    <!--<%= field.errors.at(0).get("message") %>-->
+                                <!--</div>-->
+                            <!--<% } else { %>-->
+                                <!--<% if (field.value) { %>-->
+                                        <!--<input name="<%= field.name %>" class="error" checked type="checkbox"/>-->
+                                    <!--<% } else { %>-->
+                                        <!--<input name="<%= field.name %>" class="error" type="checkbox"/>-->
+                                    <!--<% } %>-->
+                                <!--<% } %>-->
+                        <!--<% } else { %>-->
+                            <!--<% if (field.errors.length > 0) { %>-->
+                                <!--<input name="<%= field.name %>" class="error" type="<%= field.type %>" placeholder="<%= field.placeholder %>" value="<%= field.value %>"/>-->
+                                <!--<div class="error-message">-->
+                                    <!--<%= field.errors.at(0).get("message") %>-->
+                                <!--</div>-->
+                            <!--<% } else { %>-->
+                                <!--<input name="<%= field.name %>" type="<%= field.type %>" placeholder="<%= field.placeholder %>" checked="<%= field.value %>" value="<%= field.value %>"/>-->
+                            <!--<% } %>-->
+                        <!--<% } %>-->
+                    <!--</label>-->
+                <!--</div>-->
+            <!--</div>-->
+<!--<% } %>-->
+<!--<% }); %>-->
+    <!--<div class="row">-->
+        <!--<div class="large-12 medium-6 small-12 padding-0 password-form columns">-->
+            <!--<button class="button large-12 medium-12 small-12 button-create-project">Создать проект</button>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</form>-->

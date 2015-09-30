@@ -1,0 +1,9 @@
+{
+  "name": {
+    "required":  {"value" : "true", "message": "Укажите название проекта"},
+    "maxLength": {"value" : "25", "message": "Название слишком длинное"},
+    "minLength": {"value" : "4", "message": "Название слишком короткое"}
+  },
+  "users": {
+  }
+}
