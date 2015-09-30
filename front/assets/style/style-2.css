@@ -25,6 +25,7 @@ body {
   height: 100%;
 }
 body {
+  position: relative;
   margin: 0 auto;
   max-width: 1920px;
   background: #fff;
@@ -691,4 +692,734 @@ section .btn-default:active {
   .block-btn {
     width: 100%;
   }
+}
+.mapping-project {
+  height: auto;
+  float: left;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.mapping-project .main-project-block {
+  float: left;
+  height: 100%;
+  width: 100%;
+  padding-top: 15px;
+  background-color: #fbfbfb;
+  border: 1px solid #ed145b;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.mapping-project .main-project-block .title {
+  float: left;
+  width: 100%;
+  padding: 0 15px;
+}
+.mapping-project .main-project-block .title h3 {
+  margin: 0;
+}
+.mapping-project .main-project-block .title .available-comments {
+  float: right;
+  width: auto;
+  padding: 5px 0 0 0;
+  color: #4183d7;
+  font-size: 15px;
+}
+.mapping-project .main-project-block:hover {
+  -webkit-box-shadow: 0 0 4px 0 #000000;
+  -moz-box-shadow: 0 0 4px 0 #000000;
+  box-shadow: 0 0 4px 0 #000000;
+  -webkit-transition: 0.1s ease;
+  -moz-transition: 0.1s ease;
+  -ms-transition: 0.1s ease;
+  -o-transition: 0.1s ease;
+  -webkit-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  -moz-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+.add-new-project {
+  min-height: 275px;
+  height: auto;
+  -webkit-transition: 0.1s ease;
+  -moz-transition: 0.1s ease;
+  -ms-transition: 0.1s ease;
+  -o-transition: 0.1s ease;
+  -webkit-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  -moz-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+.add-new-project .btn-info {
+  background: none;
+}
+.add-new-project .add-project {
+  color: #ff3366;
+  font-size: 80px;
+  text-align: center;
+  height: 100%;
+  min-height: 240px;
+  width: 100%;
+  float: left;
+  border: none;
+}
+.add-new-project .add-project:hover {
+  box-shadow: none;
+  color: #ed145b;
+  -webkit-transition: 0.1s ease;
+  -moz-transition: 0.1s ease;
+  -ms-transition: 0.1s ease;
+  -o-transition: 0.1s ease;
+  -webkit-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  -moz-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+.add-new-project .add-project:active {
+  color: #fff;
+}
+.add-new-project:active {
+  background: #333333;
+}
+.project-management {
+  float: left;
+  width: 100%;
+  padding: 15px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.project-management .scrin-project {
+  width: 178px;
+  float: left;
+  height: 140px;
+}
+.project-management .scrin-project img {
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ed145b;
+}
+.project-management .management-activity {
+  float: left;
+  padding-left: 5px;
+  width: 195px;
+}
+@media (max-width: 1200px) {
+  .project-management .management-activity {
+    padding-top: 10px;
+  }
+}
+@media (max-width: 992px) {
+  .project-management .management-activity {
+    padding-top: 0;
+  }
+}
+@media (max-width: 600px) {
+  .project-management .management-activity {
+    padding-top: 10px;
+  }
+}
+.active-block {
+  float: left;
+}
+.active-block .activity {
+  float: left;
+  height: 40px;
+  width: 40px;
+  margin-bottom: 10px;
+  padding: 4px 0 0 0 ;
+  list-style: none;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 22px;
+  color: #FFFFFF;
+  text-align: center;
+}
+.active-block .activity.all {
+  background: #4a89d9;
+}
+.active-block .activity.user-activity {
+  background: #ff3d6e ;
+}
+.active-block .activity.finished {
+  background: #31c587;
+  margin-bottom: 0;
+}
+.active-block .description {
+  float: left;
+  margin: 0;
+  padding: 6px 0 0 6px;
+  font-size: 20px;
+  color: #333333;
+}
+.user-management {
+  float: left;
+  padding: 10px 0 0 0;
+}
+.user-management button {
+  position: relative;
+  float: left;
+  height: 53px;
+  width: 53px;
+  padding: 0;
+  margin: 0 10px 0 0;
+  border: none;
+  outline: none;
+}
+.user-management button:before {
+  position: absolute;
+  content: "";
+  height: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  -webkit-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+  -moz-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+.user-management button:after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  left: 0;
+  width: 0;
+  background: rgba(0, 0, 0, 0.25);
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  -webkit-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+  -moz-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+.user-management button img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ed145b;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.user-management button i {
+  position: absolute;
+  display: none;
+  left: 29%;
+  top: 36%;
+  color: #FFFFFF;
+  font-size: 22px;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  -webkit-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+  -moz-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+.user-management button:last-child {
+  margin-right: 0;
+}
+.user-management button:hover:before {
+  height: 100%;
+}
+.user-management button:hover:after {
+  width: 100%;
+}
+.user-management button:hover i {
+  display: block;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  -webkit-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+  -moz-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+.user-management button.add-user {
+  border: 1px dashed #ed145b;
+  background: #FFFFFF;
+  text-align: center;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  -webkit-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+  -moz-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+.user-management button.add-user i {
+  display: block;
+  color: #ed145b;
+  position: static;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  -webkit-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+  -moz-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+.user-management button.add-user:before {
+  display: none;
+}
+.user-management button.add-user:after {
+  display: none;
+}
+.user-management button.add-user:hover {
+  background: #31c587;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.user-management button.add-user:hover i {
+  color: #FFFFFF;
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+}
+.user-management button.add-user:active {
+  background: #333333;
+}
+.user-management button.add-user:active i {
+  color: #31c587;
+}
+@media (max-width: 500px) {
+  .user-management button {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 500px) {
+  .user-management {
+    padding-top: 0;
+  }
+}
+.open-project {
+  float: right;
+  width: 160px;
+}
+.open-project .btn-open {
+  float: left;
+  width: 100%;
+  border: 1px solid #ed145b;
+  background: #ff3366;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 22px;
+  color: #FFFFFF;
+  font-weight: 300;
+}
+.open-project .btn-open:hover {
+  background: #ed145b;
+}
+.open-project .btn-open:active {
+  background: #333333;
+}
+.open-project .editing-project {
+  float: left;
+  width: 100%;
+  height: auto;
+  margin-top: 6px;
+  padding: 10px 0 10px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ed145b;
+}
+.open-project .editing-project span {
+  float: left;
+  margin-bottom: 10px;
+  color: #CCCCCC;
+  font-size: 13px;
+}
+.open-project .editing-project span i {
+  color: #3498db;
+  font-size: 14px;
+}
+.open-project .editing-project span i .fa-link {
+  color: #CCCCCC;
+}
+.open-project .editing-project span:last-child {
+  margin-bottom: 0;
+}
+.modal-backdrop {
+  background: #272d3a none repeat scroll 0 0;
+}
+.modal-backdrop.in {
+  opacity: 0.97;
+}
+.modal-dialog {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  max-height: 100%;
+  height: 100%;
+  padding: 0 15px;
+}
+.modal-dialog .modal-content {
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+.modal-dialog .modal-content .modal-header {
+  border: 0;
+  padding: 45px 0 0 0;
+}
+.modal-dialog .modal-content .close {
+  color: #FFFFFF;
+}
+.modal-dialog .modal-content .modal-title {
+  width: auto;
+  margin: 0 auto;
+  color: #FFFFFF;
+  text-align: center;
+}
+.gallery-layouts {
+  width: 100%;
+  float: left;
+  padding: 90px 0 30px 0;
+}
+.gallery-layouts .layouts {
+  height: 200px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ed145b;
+}
+.gallery-layouts .layouts img {
+  width: 100%;
+  height: 100%;
+}
+.gallery-layouts .layouts .name {
+  float: left;
+  width: 100%;
+  color: #fff;
+  font-size: 22px;
+  text-align: center;
+}
+@media (max-width: 992px) {
+  .gallery-layouts .layouts {
+    margin-bottom: 60px;
+  }
+}
+@media (max-width: 992px) {
+  .gallery-layouts {
+    padding-top: 60px;
+  }
+}
+.btn-add-layouts {
+  height: 100%;
+  padding: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.btn-add-layouts i {
+  color: #ff3366;
+  font-size: 40px;
+}
+.btn-add-layouts:hover {
+  background: none;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.btn-add-layouts:hover i {
+  color: #ed145b;
+}
+.btn-add-layouts:active i {
+  color: #FFFFFF;
+}
+.add-layouts .layouts {
+  height: 200px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ed145b;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.add-layouts .layouts:hover {
+  border: 1px dashed #03c9a9;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.wrapper-download-file {
+  width: 100%;
+  float: left;
+  margin-top: 40px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px dashed #ed145b;
+}
+.wrapper-download-file .title {
+  width: 100%;
+  float: left;
+  padding: 15px 15px 30px 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.wrapper-download-file .title h1 {
+  margin: 0;
+  float: none;
+  color: #FFFFFF;
+  text-align: center;
+}
+.wrapper-download-file .download-file {
+  margin: 0 auto;
+  max-width: 992px;
+  padding: 0 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+.block-download {
+  float: left;
+  height: auto;
+  margin-right: 6.5%;
+  width: 29%;
+  padding: 15px 0 15px 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background: #FFFFFF;
+  border: 1px solid #ed145b;
+}
+.block-download .btn {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+}
+.block-download .btn:hover {
+  box-shadow: none;
+}
+.block-download .btn:active {
+  box-shadow: none;
+}
+.block-download .btn img {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+.block-download.google {
+  margin-right: 0;
+}
+.wrapper-button-close {
+  float: left;
+  width: 100%;
+  padding: 30px 0;
+}
+.wrapper-button-close .btn {
+  float: right;
+  width: 268px;
+  font-size: 22px;
+  color: #FFFFFF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background: none;
+  border: 1px solid #ed145b;
+}
+@media (max-width: 540px) {
+  .wrapper-button-close .btn {
+    width: 100%;
+  }
+}
+.project_edit .new-project h1 {
+  text-align: left;
+}
+.block-layout {
+  float: left;
+  display: block;
+  margin: 0;
+}
+.display-layout {
+  margin-bottom: 30px;
+}
+.display-layout .layout {
+  height: 138px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ed145b;
+}
+.display-layout .layout img {
+  height: 100%;
+  width: 100%;
+}
+.display-layout .name-layout {
+  padding: 16px 0 0 0 ;
+  float: left;
+  width: 100%;
+  color: #333333;
+  text-align: left;
+}
+.display-layout.add-layouts .layout {
+  height: 138px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px dashed #ed145b;
+}
+.display-layout.add-layouts .layout .btn-add-layouts {
+  height: 100%;
+  padding: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.display-layout.add-layouts .layout .btn-add-layouts i {
+  color: #ff3366;
+  font-size: 40px;
+}
+.display-layout.add-layouts .layout .btn-add-layouts:hover {
+  background: none;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.display-layout.add-layouts .layout .btn-add-layouts:hover i {
+  color: #ed145b;
+}
+.display-layout.add-layouts .layout .btn-add-layouts:active {
+  box-shadow: none;
+  background: #333333;
+}
+.display-layout.add-layouts .layout .btn-add-layouts:active i {
+  color: #FFFFFF;
+}
+.editing-unit {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ed145b;
+}
+.btn-edition {
+  float: left;
+  width: 100%;
+  background: none;
+  border: none;
+}
+.btn-edition span {
+  color: #333333;
+}
+.btn-edition span i {
+  color: #cccccc;
+}
+.btn-edition:hover span i {
+  color: #ff3366;
+}
+.btn-edition:active {
+  box-shadow: none;
+}
+.btn-edition:active span i {
+  color: #3498db;
 }
