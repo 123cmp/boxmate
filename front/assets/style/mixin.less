@@ -99,6 +99,11 @@
   -moz-box-shadow:	@x @y @blur @size @color;
   box-shadow:		@x @y @blur @size @color;
 }
+.box-shadow-block (@x: 0, @y: 0, @blur:4px, @size: 0, @color: #000 ) {
+  -webkit-box-shadow:	@x @y @blur @size @color;
+  -moz-box-shadow:	@x @y @blur @size @color;
+  box-shadow:		@x @y @blur @size @color;
+}
 
 .placeholder(@color: #999, @placeholder-font-style:italic) {
   &::-moz-placeholder {
@@ -133,9 +138,6 @@
   }
   &:active{
     background:#333333;
-
-  }
-  &:focus{
 
   }
 }
