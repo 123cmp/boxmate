@@ -9,12 +9,12 @@ define(['text!components/projects/templates/ActiveProjectsTemplate.html', 'backb
                 template: _.template(template),
 
                 initialize: function() {
-                    this.getActiveProjects();
+                    this.getArchiveProjects();
                 },
 
-                getActiveProjects: function() {
+                getArchiveProjects: function() {
                     var self = this;
-                    api.getActiveProjects().then(function(res) {
+                    api.getArchiveProjects().then(function(res) {
                         self.model.set(res);
                         self.render();
                     });

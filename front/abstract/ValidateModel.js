@@ -6,7 +6,7 @@
  * @description Si model with validation methods
  */
 
-define(['abstract/SiModel', 'backbone', 'extensions'], function(SiModel, _) {
+define(['abstract/SiModel', 'underscore', 'extensions'], function(SiModel, _) {
     return new function() {
 
         _.isBlank = function(str) {
@@ -32,7 +32,7 @@ define(['abstract/SiModel', 'backbone', 'extensions'], function(SiModel, _) {
                     }
                     case 'isEmail': {
                         if (!(_.isUndefined(value) || _.isBlank(value)))
-                            return /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/.test(value);
+                            return /^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$/.test(value);
                         return true
                     }
                     default:

@@ -1,9 +1,9 @@
-define(['../../../bower_components/jquery/dist/jquery.min', 'abstract/ValidationFormView', 'text!components/projects/templates/ProfileFormTemplate.html'],
+define(['jquery', 'abstract/ValidationFormView', 'text!components/accounting/templates/ProfileFormTemplate.html'],
     function($, ValidationFormView, template) {
         return new function() {
             return ValidationFormView.extend({
                 events: {
-                    "blur .create-form-input": "validateField"
+                    "focusout .create-form-input": "validateField"
                     //"click .bm-create-project" : "done"
                 },
 

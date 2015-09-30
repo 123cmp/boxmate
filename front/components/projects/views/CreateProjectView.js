@@ -3,14 +3,15 @@ define(['jquery', 'abstract/ValidationFormView', 'text!components/projects/templ
         return new function() {
             return ValidationFormView.extend({
                 events: {
-                    "blur form input": "validateField",
-                    "click bm-create-project" : "done"
+                    "blur .create-form-input": "validateField",
+                    "click .bm-create-project" : "done"
                 },
 
                 templateHtml: template,
 
                 onValid: function() {
                     this.model.save();
+                    console.log("save");
                 }
             });
         };

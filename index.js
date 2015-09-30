@@ -54,6 +54,10 @@ app.get('/', function (req, res) {
     sendfile(res, 'front/index.html');
 });
 
+app.get('/tests', function (req, res) {
+    sendfile(res, 'front/tests.html');
+});
+
 app.get(/^\/front\/.+$/, function (req, res) {
     sendfile(res, req.url.replace("/", ""));
 });

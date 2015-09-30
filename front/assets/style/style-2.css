@@ -327,19 +327,19 @@ footer .block-product-social .social:active {
   -ms-transition: 0.4s ease 0s;
   -o-transition: 0.4s ease 0s;
 }
-.wrapper-user-fase {
+.wrapper-user-face {
   float: right;
   margin: 6px -15px 0 0;
   text-decoration: none;
 }
-.wrapper-user-fase span {
+.wrapper-user-face span {
   float: left;
   margin-right: 14px;
   padding: 9px 0 0  0;
   color: #99a3b1;
   font-size: 14px;
 }
-.wrapper-user-fase .user-face {
+.wrapper-user-face .user-face {
   float: right;
   height: 34px;
   width: 34px;
@@ -351,7 +351,7 @@ footer .block-product-social .social:active {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-.wrapper-user-fase .user-face img {
+.wrapper-user-face .user-face img {
   height: auto;
   width: 100%;
 }

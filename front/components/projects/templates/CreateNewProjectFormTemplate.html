@@ -7,12 +7,12 @@
                 </h3>
             </div>
             <% if (field.errors.length > 0) { %>
-                <input name="<%= field.name %>" class="error" type="<%= field.type %>" placeholder="<%= field.placeholder %>" value="<%= field.value %>"/>
-                <div class="error-message">
+                <input name="<%= field.name %>" class="create-form-input error" type="<%= field.type %>" placeholder="<%= field.placeholder %>" value="<%= field.value %>"/>
+                <span class="error">
                     <%= field.errors.at(0).get("message") %>
-                </div>
+                </span>
             <% } else { %>
-                <input name="<%= field.name %>" type="<%= field.type %>" placeholder="<%= field.placeholder %>" checked="<%= field.value %>" value="<%= field.value %>"/>
+                <input name="<%= field.name %>" class="create-form-input" type="<%= field.type %>" placeholder="<%= field.placeholder %>" checked="<%= field.value %>" value="<%= field.value %>"/>
             <% } %>
         </div>
     <% } %>
