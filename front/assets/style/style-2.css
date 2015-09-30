@@ -1311,3 +1311,115 @@ section .btn-default:active {
     width: 100%;
   }
 }
+.project_edit .new-project h1 {
+  text-align: left;
+}
+.block-layout {
+  float: left;
+  display: block;
+  margin: 0;
+}
+.display-layout {
+  margin-bottom: 30px;
+}
+.display-layout .layout {
+  height: 138px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ed145b;
+}
+.display-layout .layout img {
+  height: 100%;
+  width: 100%;
+}
+.display-layout .name-layout {
+  padding: 16px 0 0 0 ;
+  float: left;
+  width: 100%;
+  color: #333333;
+  text-align: left;
+}
+.display-layout.add-layouts .layout {
+  height: 138px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px dashed #ed145b;
+}
+.display-layout.add-layouts .layout .btn-add-layouts {
+  height: 100%;
+  padding: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.display-layout.add-layouts .layout .btn-add-layouts i {
+  color: #ff3366;
+  font-size: 40px;
+}
+.display-layout.add-layouts .layout .btn-add-layouts:hover {
+  background: none;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.display-layout.add-layouts .layout .btn-add-layouts:hover i {
+  color: #ed145b;
+}
+.display-layout.add-layouts .layout .btn-add-layouts:active {
+  box-shadow: none;
+  background: #333333;
+}
+.display-layout.add-layouts .layout .btn-add-layouts:active i {
+  color: #FFFFFF;
+}
+.editing-unit {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ed145b;
+}
+.btn-edition {
+  float: left;
+  width: 100%;
+  background: none;
+  border: none;
+}
+.btn-edition span {
+  color: #333333;
+}
+.btn-edition span i {
+  color: #cccccc;
+}
+.btn-edition:hover span i {
+  color: #ff3366;
+}
+.btn-edition:active {
+  box-shadow: none;
+}
+.btn-edition:active span i {
+  color: #3498db;
+}
