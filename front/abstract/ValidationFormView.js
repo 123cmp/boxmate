@@ -28,17 +28,23 @@ define(['jquery', 'backbone', 'underscore', 'syphon'],
                     this.render();
                     if(input) $("input[name="+input+"]").focus();
 
+
+
                     return true;
                 },
 
                 initialize: function () {
-
+                    var self = this;
                     this.template = _.template(this.templateHtml);
                     this.render();
+                    this.model.on("error", function() {
+                        self.render();
+                        console.log("ERROR");
+                    });
                 },
 
                 addError: function(field, message) {
-                    this.model.addError(field, message);
+                    var self = this;
                 },
 
                 render: function () {

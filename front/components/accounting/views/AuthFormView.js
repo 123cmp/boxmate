@@ -3,8 +3,8 @@ define(['jquery', 'abstract/ValidationFormView', 'text!components/accounting/tem
         return new function() {
             return ValidationFormView.extend({
                 events: {
-                    "click .button-authorization" : "done",
-                    "blur form input": "validateField"
+                    "click .bm-auth" : "done",
+                    "blur input": "validateField"
                 },
 
                 templateHtml: template,

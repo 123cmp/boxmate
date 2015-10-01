@@ -1,26 +1,18 @@
-define(['backbone', 'text!components/projects/templates/ProjectsTemplate.html', 'components/projects/views/ProjectView', 'components/projects/models/ProjectModel'],
-    function (bb, template, ProjectView) {
+define(['backbone', 'text!components/projects/templates/ProjectsTemplate.html'],
+    function (bb, template) {
         return bb.View.extend({
             initialize: function () {
                 var self = this;
                 self.template = _.template(template);
-                self.render();
                 $.when(self.model.fetch()).then(function () {
-                    self.createProjects();
+                    self.render();
                 });
             },
 
             render: function () {
-                if (this.template && this.$el) $(this.$el).html(this.template());
-            },
-
-            createProjects: function () {
-                var projectsContainer = $(this.$el).find('.bm-projects-container');
-                this.model.each(function (project) {
-                    new ProjectView({model: project, el: projectsContainer})
-                });
+                console.log("render", this.model.toJSON());
+                if (this.template && this.$el) $(this.$el).html(this.template({model: this.model.toJSON()}));
             }
-
         })
     }
 );
