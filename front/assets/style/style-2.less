@@ -836,6 +836,7 @@ section{
   margin: 0 auto;
   max-height: 100%;
   height: 100%;
+  .box-sizing();
   padding: 0 15px;
   .modal-content{
     background: none;
@@ -860,6 +861,7 @@ section{
 .gallery-layouts{
   width: 100%;
   float: left;
+  .box-sizing();
   padding: 90px 0 30px 0;
     .layouts{
     height: 200px;
@@ -955,6 +957,7 @@ section{
   height: auto;
   margin-right: 6.5%;
   width: 29%;
+  .box-sizing();
   padding: 15px 0 15px 0;
   .border-radius();
   background: #FFFFFF;
@@ -962,14 +965,11 @@ section{
   .btn{
     width: 100%;
     height: 100%;
-    background: none;
-    border: none;
+    .btn-default();
     &:hover{
       box-shadow: none;
     }
-    &:active{
-      box-shadow: none;
-    }
+
     img{
       width: 70%;
       height: auto;
@@ -1000,6 +1000,11 @@ section{
 }
 
 ///project_edit
+.wrapper-centre-block{
+  display: block;
+  max-width: 1040px;
+  margin: 0 auto;
+}
 .project_edit{
   .new-project{
     h1{
@@ -1016,6 +1021,8 @@ section{
   margin-bottom: 30px;
   .layout{
     height:138px;
+    padding: 0;
+    width: 100%;
     .border-radius();
     border: 1px solid @border-color;
     img{
@@ -1032,9 +1039,8 @@ section{
   }
   &.add-layouts{
     .layout{
-      height:138px;
       .border-radius();
-      border: 1px dashed @border-color;
+        border: 1px dashed @border-color;
       .btn-add-layouts{
         height: 100%;
         padding: 0;
@@ -1067,13 +1073,21 @@ section{
     }
   }
 }
-.editing-unit{
+.control-unit-layouts{
+  max-width: 270px;
+  float: right;
+}
+.editing-unit,.participants-project{
+  float: left;
   .border-radius();
   border: 1px solid @border-color;
 }
 .btn-edition{
   float: left;
   width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  text-align: left;
   background: none;
   border: none;
   span{
@@ -1094,6 +1108,104 @@ section{
     span{
       i{
         color:#3498db;
+      }
+    }
+  }
+}
+.wrapper-participants-project{
+  float: left;
+  .title-list{
+    float: left;
+    width: 100%;
+    margin: 0;
+    .box-sizing();
+    padding: 30px 0 16px 0;
+    color: #333333;
+  }
+}
+.participants-project{
+  .btn-user{
+    float: left;
+    width: 100%;
+    .btn-default();
+    img{
+      float: left;
+      width: 53px;
+      height: 53px;
+      .border-radius();
+      border: 1px solid @border-color;
+    }
+    &:last-child{
+      .add-yser-img{
+        position: relative;
+        float: left;
+        width: 53px;
+        height: 53px;
+        .border-radius();
+        border: 1px dashed @border-color;
+        &:before{
+          content: "\f067";
+          position: absolute;
+          top: 13px;
+          left: 18px;
+          font-size: 18px;
+          font-family: "FontAwesome";
+          color:#ff3366;
+        }
+        &:hover{
+          &:before{
+            color:#ed145b;
+          }
+        }
+      }
+      .description-user{
+        padding-top: 16px;
+        .new-user{
+          color: #333333;
+        }
+      }
+    }
+  }
+}
+.description-user{
+  float: right;
+  width: 100%;
+  padding: 0 15px;
+  .box-sizing();
+  max-width: 145px;
+  span{
+    float: left;
+    width: 100%;
+    text-align: left;
+    color: #333333;
+    &.post{
+      color: #CCCCCC;
+    }
+  }
+}
+///user_authorization
+.user_authorization{
+  .container{
+    padding-bottom: 60px;
+    @media (max-width: 768px) {
+      padding-bottom: 30px;
+    }
+  }
+  .field-left{
+   float: none;
+    margin:0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    .box-sizing();
+    width: 100%;
+    max-width: 730px;
+    @media (max-width: 768px) {
+      max-width: 100%;
+    }
+    .btn-default{
+      float: right;
+      @media (max-width: 500px) {
+        width: 100%;
       }
     }
   }

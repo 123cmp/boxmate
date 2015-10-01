@@ -20,6 +20,13 @@
 .active-input:active {
   background: #333333;
 }
+.btn-default {
+  border: none;
+  background: none;
+}
+.btn-default:active {
+  box-shadow: none;
+}
 html,
 body {
   height: 100%;
@@ -1095,6 +1102,9 @@ section .btn-default:active {
   margin: 0 auto;
   max-height: 100%;
   height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0 15px;
 }
 .modal-dialog .modal-content {
@@ -1118,6 +1128,9 @@ section .btn-default:active {
 .gallery-layouts {
   width: 100%;
   float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 90px 0 30px 0;
 }
 .gallery-layouts .layouts {
@@ -1256,6 +1269,9 @@ section .btn-default:active {
   height: auto;
   margin-right: 6.5%;
   width: 29%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 15px 0 15px 0;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -1269,13 +1285,13 @@ section .btn-default:active {
 .block-download .btn {
   width: 100%;
   height: 100%;
-  background: none;
   border: none;
-}
-.block-download .btn:hover {
-  box-shadow: none;
+  background: none;
 }
 .block-download .btn:active {
+  box-shadow: none;
+}
+.block-download .btn:hover {
   box-shadow: none;
 }
 .block-download .btn img {
@@ -1311,6 +1327,11 @@ section .btn-default:active {
     width: 100%;
   }
 }
+.wrapper-centre-block {
+  display: block;
+  max-width: 1040px;
+  margin: 0 auto;
+}
 .project_edit .new-project h1 {
   text-align: left;
 }
@@ -1324,6 +1345,8 @@ section .btn-default:active {
 }
 .display-layout .layout {
   height: 138px;
+  padding: 0;
+  width: 100%;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -1344,7 +1367,6 @@ section .btn-default:active {
   text-align: left;
 }
 .display-layout.add-layouts .layout {
-  height: 138px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -1393,7 +1415,13 @@ section .btn-default:active {
 .display-layout.add-layouts .layout .btn-add-layouts:active i {
   color: #FFFFFF;
 }
-.editing-unit {
+.control-unit-layouts {
+  max-width: 270px;
+  float: right;
+}
+.editing-unit,
+.participants-project {
+  float: left;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -1405,6 +1433,9 @@ section .btn-default:active {
 .btn-edition {
   float: left;
   width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  text-align: left;
   background: none;
   border: none;
 }
@@ -1422,4 +1453,119 @@ section .btn-default:active {
 }
 .btn-edition:active span i {
   color: #3498db;
+}
+.wrapper-participants-project {
+  float: left;
+}
+.wrapper-participants-project .title-list {
+  float: left;
+  width: 100%;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 30px 0 16px 0;
+  color: #333333;
+}
+.participants-project .btn-user {
+  float: left;
+  width: 100%;
+  border: none;
+  background: none;
+}
+.participants-project .btn-user:active {
+  box-shadow: none;
+}
+.participants-project .btn-user img {
+  float: left;
+  width: 53px;
+  height: 53px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ed145b;
+}
+.participants-project .btn-user:last-child .add-yser-img {
+  position: relative;
+  float: left;
+  width: 53px;
+  height: 53px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px dashed #ed145b;
+}
+.participants-project .btn-user:last-child .add-yser-img:before {
+  content: "\f067";
+  position: absolute;
+  top: 13px;
+  left: 18px;
+  font-size: 18px;
+  font-family: "FontAwesome";
+  color: #ff3366;
+}
+.participants-project .btn-user:last-child .add-yser-img:hover:before {
+  color: #ed145b;
+}
+.participants-project .btn-user:last-child .description-user {
+  padding-top: 16px;
+}
+.participants-project .btn-user:last-child .description-user .new-user {
+  color: #333333;
+}
+.description-user {
+  float: right;
+  width: 100%;
+  padding: 0 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 145px;
+}
+.description-user span {
+  float: left;
+  width: 100%;
+  text-align: left;
+  color: #333333;
+}
+.description-user span.post {
+  color: #CCCCCC;
+}
+.user_authorization .container {
+  padding-bottom: 60px;
+}
+@media (max-width: 768px) {
+  .user_authorization .container {
+    padding-bottom: 30px;
+  }
+}
+.user_authorization .field-left {
+  float: none;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 730px;
+}
+@media (max-width: 768px) {
+  .user_authorization .field-left {
+    max-width: 100%;
+  }
+}
+.user_authorization .field-left .btn-default {
+  float: right;
+}
+@media (max-width: 500px) {
+  .user_authorization .field-left .btn-default {
+    width: 100%;
+  }
 }

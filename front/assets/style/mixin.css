@@ -20,3 +20,10 @@
 .active-input:active {
   background: #333333;
 }
+.btn-default {
+  border: none;
+  background: none;
+}
+.btn-default:active {
+  box-shadow: none;
+}
