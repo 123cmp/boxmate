@@ -267,16 +267,16 @@ footer{
     color: #99a3b1;
     font-size: 14px;
   }
-  .user-face{
-    float: right;
-    height: 34px;
-    width: 34px;
-    border: 1px solid #FFFFFF;
-    .border-radius();
-    img{
-      height: auto;
-      width: 100%;
-    }
+}
+.user-face{
+  float: right;
+  height: 34px;
+  width: 34px;
+  border: 1px solid #FFFFFF;
+  .border-radius();
+  img{
+    height: auto;
+    width: 100%;
   }
 }
 .title{
@@ -1074,13 +1074,23 @@ section{
   }
 }
 .control-unit-layouts{
-  max-width: 270px;
   float: right;
+  @media (max-width:768px) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
-.editing-unit,.participants-project{
+.editing-unit{
   float: left;
+  max-width: 270px;
   .border-radius();
   border: 1px solid @border-color;
+  @media (max-width:768px) {
+    max-width: 47%;
+  }
+  @media (max-width:580px) {
+    max-width: 100%;
+  }
 }
 .btn-edition{
   float: left;
@@ -1112,9 +1122,22 @@ section{
     }
   }
 }
-<<<<<<< HEAD
+
 .wrapper-participants-project{
   float: left;
+  max-width: 270px;
+  .participants-project{
+    float: left;
+    width: 100%;
+    .border-radius();
+    border: 1px solid @border-color;
+    @media (max-width:768px) {
+      max-width: 311px;
+    }
+    @media (max-width:580px) {
+      max-width: 100%;
+    }
+  }
   .title-list{
     float: left;
     width: 100%;
@@ -1122,6 +1145,19 @@ section{
     .box-sizing();
     padding: 30px 0 16px 0;
     color: #333333;
+  }
+  @media (max-width:768px) {
+    float: right;
+    max-width: 47%;
+    .title-list{
+      padding: 0;
+    }
+  }
+  @media (max-width:580px) {
+    max-width: 100%;
+    .title-list{
+      padding: 30px 0 16px 0;
+    }
   }
 }
 .participants-project{
@@ -1211,5 +1247,4 @@ section{
     }
   }
 }
-=======
->>>>>>> 440a735c83c09d73f61fe17acaa470bafe195e42
+

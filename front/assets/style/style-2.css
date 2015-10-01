@@ -347,7 +347,7 @@ footer .block-product-social .social:active {
   color: #99a3b1;
   font-size: 14px;
 }
-.wrapper-user-face .user-face {
+.user-face {
   float: right;
   height: 34px;
   width: 34px;
@@ -359,7 +359,7 @@ footer .block-product-social .social:active {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-.wrapper-user-face .user-face img {
+.user-face img {
   height: auto;
   width: 100%;
 }
@@ -1416,12 +1416,17 @@ section .btn-default:active {
   color: #FFFFFF;
 }
 .control-unit-layouts {
-  max-width: 270px;
   float: right;
 }
-.editing-unit,
-.participants-project {
+@media (max-width: 768px) {
+  .control-unit-layouts {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+.editing-unit {
   float: left;
+  max-width: 270px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -1429,6 +1434,16 @@ section .btn-default:active {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   border: 1px solid #ed145b;
+}
+@media (max-width: 768px) {
+  .editing-unit {
+    max-width: 47%;
+  }
+}
+@media (max-width: 580px) {
+  .editing-unit {
+    max-width: 100%;
+  }
 }
 .btn-edition {
   float: left;
@@ -1456,6 +1471,28 @@ section .btn-default:active {
 }
 .wrapper-participants-project {
   float: left;
+  max-width: 270px;
+}
+.wrapper-participants-project .participants-project {
+  float: left;
+  width: 100%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ed145b;
+}
+@media (max-width: 768px) {
+  .wrapper-participants-project .participants-project {
+    max-width: 311px;
+  }
+}
+@media (max-width: 580px) {
+  .wrapper-participants-project .participants-project {
+    max-width: 100%;
+  }
 }
 .wrapper-participants-project .title-list {
   float: left;
@@ -1466,6 +1503,23 @@ section .btn-default:active {
   box-sizing: border-box;
   padding: 30px 0 16px 0;
   color: #333333;
+}
+@media (max-width: 768px) {
+  .wrapper-participants-project {
+    float: right;
+    max-width: 47%;
+  }
+  .wrapper-participants-project .title-list {
+    padding: 0;
+  }
+}
+@media (max-width: 580px) {
+  .wrapper-participants-project {
+    max-width: 100%;
+  }
+  .wrapper-participants-project .title-list {
+    padding: 30px 0 16px 0;
+  }
 }
 .participants-project .btn-user {
   float: left;
