@@ -18,6 +18,7 @@ define(['jquery', 'backbone'], function($, bb) {
         registration: "routeViews/RegistrationRouteView",
         authorization: "routeViews/AuthorizationRouteView",
         usertool: "routeViews/UserToolRouteView",
+        profile: "routeViews/ProfileRouteView",
         createnewproject: "routeViews/CreateNewProjectRouteView",
         userprofile: "routeViews/UserProfileRouteView",
         projectpage: "routeViews/ProjectPageRouteView"
@@ -46,6 +47,7 @@ define(['jquery', 'backbone'], function($, bb) {
             "!/registration": "registration",
             "!/authorization": "authorization",
             "!/usertool": "usertool",
+            "!/profile": "profile",
             //"!/addnewproject": "addnewproject",
             "!/createnewproject": "createnewproject",
             "!/userprofile": "userprofile",
@@ -74,6 +76,10 @@ define(['jquery', 'backbone'], function($, bb) {
 
         usertool: function () {
             loadView("usertool");
+        },
+
+        profile: function () {
+            loadView("profile");
         },
 
         createnewproject: function () {

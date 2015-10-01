@@ -62,6 +62,7 @@ define(['abstract/ValidateModel'],
             },
 
             setField: function(name, value) {
+                console.log(name);
                 var modelField = this.get(name);
                 modelField.value = value;
                 this.set(name, modelField);

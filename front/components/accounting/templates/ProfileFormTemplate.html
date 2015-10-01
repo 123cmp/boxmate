@@ -1,0 +1,19 @@
+<% model.each(function(i, field) { %>
+    <% if (typeof field == 'object') { %>
+        <div class="field">
+            <div class="title-field">
+                <h3>
+                    <%= field.title %>
+                </h3>
+            </div>
+            <% if (field.errors.length > 0) { %>
+                <input name="<%= field.name %>" class="create-form-input error" type="<%= field.type %>" placeholder="<%= field.placeholder %>" value="<%= field.value %>"/>
+                <span class="error">
+                    <%= field.errors.at(0).get("message") %>
+                </span>
+            <% } else { %>
+                <input name="<%= field.name %>" class="create-form-input" type="<%= field.type %>" placeholder="<%= field.placeholder %>" checked="<%= field.value %>" value="<%= field.value %>"/>
+            <% } %>
+        </div>
+    <% } %>
+<% }); %>

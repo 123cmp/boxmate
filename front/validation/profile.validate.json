@@ -1,0 +1,48 @@
+{
+  "name": {
+    "required": {
+      "value": "true",
+      "message": "Укажите имя"
+    },
+    "maxLength": {
+      "value": "45",
+      "message": "Имя слишком длинное"
+    },
+    "minLength": {
+      "value": "2",
+      "message": "Имя слишком короткое"
+    }
+  },
+  "second": {
+    "maxLength": {
+      "value": "45",
+      "message": "Фамилия слишком длинная"
+    },
+    "minLength": {
+      "value": "2",
+      "message": "Фамилия слишком короткая"
+    }
+  },
+  "email": {
+    "required": {
+      "value": true,
+      "message": "Укажите email"
+    },
+    "type": {
+      "value": "string",
+      "message": "не строка"
+    },
+    "maxLength": {
+      "value": 25,
+      "message": "Email слишком длинный"
+    },
+    "minLength": {
+      "value": 4,
+      "message": "Email слишком короткий"
+    },
+    "isEmail": {
+      "value": "true",
+      "message": "Email не валидный"
+    }
+  }
+}
