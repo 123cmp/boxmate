@@ -20,13 +20,6 @@
 .active-input:active {
   background: #333333;
 }
-.btn-default {
-  border: none;
-  background: none;
-}
-.btn-default:active {
-  box-shadow: none;
-}
 html,
 body {
   height: 100%;
@@ -351,6 +344,10 @@ footer .block-product-social .social:active {
   float: right;
   height: 34px;
   width: 34px;
+}
+.user-face img {
+  height: 100%;
+  width: 100%;
   border: 1px solid #FFFFFF;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -358,10 +355,6 @@ footer .block-product-social .social:active {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-}
-.user-face img {
-  height: auto;
-  width: 100%;
 }
 .title {
   float: left;
@@ -400,6 +393,48 @@ section .container {
 }
 section .container.create_new_project {
   padding-bottom: 60px ;
+}
+section .container.create_new_project .btn-default {
+  float: right;
+  margin: 0;
+  width: 270px;
+  background: #fbfbfb;
+  border: 1px solid #ed145b;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 22px;
+  font-weight: 300;
+  -webkit-transition: 0.4s ease 0s;
+  -moz-transition: 0.4s ease 0s;
+  -ms-transition: 0.4s ease 0s;
+  -o-transition: 0.4s ease 0s;
+}
+section .container.create_new_project .btn-default:hover {
+  border: 1px solid #ed145b;
+  background: #ed145b;
+  color: #FFFFFF;
+  -webkit-transition: 0.3s ease 0s;
+  -moz-transition: 0.3s ease 0s;
+  -ms-transition: 0.3s ease 0s;
+  -o-transition: 0.3s ease 0s;
+}
+section .container.create_new_project .btn-default:active {
+  background: #333333;
+  border: 1px solid #ed145b;
+  -webkit-transition: 0.3s ease 0s;
+  -moz-transition: 0.3s ease 0s;
+  -ms-transition: 0.3s ease 0s;
+  -o-transition: 0.3s ease 0s;
+  color: #FFFFFF;
+}
+@media (max-width: 540px) {
+  section .container.create_new_project .btn-default {
+    width: 100%;
+  }
 }
 section .new-project {
   float: left;
@@ -485,6 +520,8 @@ section .field input:focus {
 section .btn-default {
   float: right;
   margin: 0;
+  width: 270px;
+  background: #fbfbfb;
   border: 1px solid #ed145b;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -494,13 +531,13 @@ section .btn-default {
   background-clip: padding-box;
   font-size: 22px;
   font-weight: 300;
-  background: #fbfbfb;
   -webkit-transition: 0.4s ease 0s;
   -moz-transition: 0.4s ease 0s;
   -ms-transition: 0.4s ease 0s;
   -o-transition: 0.4s ease 0s;
 }
 section .btn-default:hover {
+  border: 1px solid #ed145b;
   background: #ed145b;
   color: #FFFFFF;
   -webkit-transition: 0.3s ease 0s;
@@ -510,6 +547,7 @@ section .btn-default:hover {
 }
 section .btn-default:active {
   background: #333333;
+  border: 1px solid #ed145b;
   -webkit-transition: 0.3s ease 0s;
   -moz-transition: 0.3s ease 0s;
   -ms-transition: 0.3s ease 0s;
@@ -670,8 +708,19 @@ section .btn-default:active {
   box-sizing: border-box;
 }
 .block-btn .btn-default {
+  background: #fbfbfb;
   width: 270px;
   float: left;
+}
+.block-btn .btn-default.btn-close {
+  border: 1px solid #ed145b;
+}
+.block-btn .btn-default.btn-close:hover {
+  background: #ed145b;
+}
+.block-btn .btn-default.btn-close:active {
+  background: #333333;
+  border: 1px solid #333333;
 }
 @media (max-width: 640px) {
   .block-btn .btn-default.btn-close {
@@ -681,13 +730,14 @@ section .btn-default:active {
 }
 .block-btn .btn-default.btn-save {
   margin-right: 30px;
-  border-color: #03c9a9;
+  border: 1px solid #03c9a9;
 }
 .block-btn .btn-default.btn-save:hover {
   background: #03c9a9;
 }
 .block-btn .btn-default.btn-save:active {
   background: #333333;
+  border: 1px solid #333333;
 }
 @media (max-width: 640px) {
   .block-btn .btn-default.btn-save {
@@ -748,9 +798,10 @@ section .btn-default:active {
   -moz-transition-delay: 0.1s;
   transition-delay: 0.1s;
 }
-.add-new-project {
+.mapping-project .add-new-project {
   min-height: 275px;
   height: auto;
+  border: 1px dashed #ed145b;
   -webkit-transition: 0.1s ease;
   -moz-transition: 0.1s ease;
   -ms-transition: 0.1s ease;
@@ -760,10 +811,10 @@ section .btn-default:active {
   -moz-transition-delay: 0.1s;
   transition-delay: 0.1s;
 }
-.add-new-project .btn-info {
+.mapping-project .add-new-project .btn-info {
   background: none;
 }
-.add-new-project .add-project {
+.mapping-project .add-new-project .add-project {
   color: #ff3366;
   font-size: 80px;
   text-align: center;
@@ -773,7 +824,7 @@ section .btn-default:active {
   float: left;
   border: none;
 }
-.add-new-project .add-project:hover {
+.mapping-project .add-new-project .add-project:hover {
   box-shadow: none;
   color: #ed145b;
   -webkit-transition: 0.1s ease;
@@ -785,10 +836,10 @@ section .btn-default:active {
   -moz-transition-delay: 0.1s;
   transition-delay: 0.1s;
 }
-.add-new-project .add-project:active {
+.mapping-project .add-new-project .add-project:active {
   color: #fff;
 }
-.add-new-project:active {
+.mapping-project .add-new-project:active {
   background: #333333;
 }
 .project-management {
@@ -1117,7 +1168,19 @@ section .btn-default:active {
   padding: 45px 0 0 0;
 }
 .modal-dialog .modal-content .close {
-  color: #FFFFFF;
+  padding: 0 7px 2px;
+  font-size: 3rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  color: #ffffff;
 }
 .modal-dialog .modal-content .modal-title {
   width: auto;
@@ -1208,7 +1271,7 @@ section .btn-default:active {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  border: 1px solid #ed145b;
+  border: 1px dashed #ed145b;
   -webkit-transition: 0.2s ease;
   -moz-transition: 0.2s ease;
   -ms-transition: 0.2s ease;
@@ -1608,7 +1671,7 @@ section .btn-default:active {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
-  max-width: 730px;
+  max-width: 970px;
 }
 @media (max-width: 768px) {
   .user_authorization .field-left {
@@ -1616,7 +1679,22 @@ section .btn-default:active {
   }
 }
 .user_authorization .field-left .btn-default {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background: #fbfbfb;
+  border: 1px solid #ed145b;
   float: right;
+}
+.user_authorization .field-left .btn-default:hover {
+  background: #ed145b none repeat scroll 0 0;
+}
+.user_authorization .field-left .btn-default:active {
+  background: #333333 none repeat scroll 0 0;
+  border: 1px solid #333333;
 }
 @media (max-width: 500px) {
   .user_authorization .field-left .btn-default {
