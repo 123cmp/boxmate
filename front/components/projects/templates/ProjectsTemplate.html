@@ -1,6 +1,99 @@
-<h1 class="bm-header">Проекты</h1>
-<section class="panel">
-    <div class="row bm-row bm-projects-container">
-
+<div class="container">
+    <div class="row">
+        <div class="title">
+            <h1>Список проектов</h1>
+        </div>
     </div>
-</section>
+</div>
+<div class="container">
+    <div class="row bm-projects-container">
+        <% $.each(model, function(i, project) { %>
+            <div class=" mapping-project col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="main-project-block">
+                    <div class="title">
+                        <h3><%= project.name %>
+                            <div class="available-comments">
+                                <i class="fa fa-comments-o"></i>
+                                <span class="comments">2</span>
+                            </div>
+                        </h3>
+                    </div>
+                    <div class="project-management">
+                        <div class="scrin-project">
+                            <img src="/front/assets/img/foto-1.png">
+                        </div>
+                        <div class="open-project">
+                            <button type="button" class="btn btn-default btn-open" data-toggle="modal" data-target="#myModal">Открыть
+                            </button>
+                            <div class="editing-project">
+                                      <span><i class="fa fa-pencil-square-o"></i> Скрыть проект
+                                      </span>
+                                      <span><i class="fa fa-trash-o"></i> Удалить проект
+                                      </span>
+                                      <span><i class="fa fa-link"></i> Скопировать ссылку
+                                      </span>
+                                      <span><i class="fa fa-check-square-o"></i> Утверждён
+                                      </span>
+                                       <span><i class="fa fa-commenting-o"></i> Описание проекта
+                                      </span>
+                            </div>
+                        </div>
+                        <div class="management-activity">
+                            <div class="active-block">
+                                <div class="activity all">
+                                    <sapn class="number-active">12 </sapn>
+                                </div>
+                                <p class="description">Все</p>
+                            </div>
+                            <div class="active-block">
+                                <div class="activity user-activity">
+                                    <sapn class="number-active">12 </sapn>
+                                </div>
+                                <p class="description">Активные</p>
+                            </div>
+                            <div class="active-block">
+                                <div class="activity finished">
+                                    <sapn class="number-active">12 </sapn>
+                                </div>
+                                <p class="description">Завершённые</p>
+                            </div>
+                        </div>
+                        <div class="user-management">
+                            <button type="button" class="btn btn-info">
+                                <img src="/front/assets/img/user-1.png">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                            <button type="button" class="btn btn-info">
+                                <img src="/front/assets/img/user-1.png">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                            <button type="button" class="btn btn-info">
+                                <img src="/front/assets/img/user-1.png">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                            <button type="button" class="btn btn-info">
+                                <img src="/front/assets/img/user-1.png">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                            <button type="button" class="btn btn-info">
+                                <img src="/front/assets/img/user-1.png">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                            <button type="button" class="btn btn-info add-user">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+
+        <div class=" mapping-project col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="main-project-block add-new-project">
+                <button type="button" class="btn btn-info add-project">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

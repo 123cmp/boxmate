@@ -6,7 +6,7 @@ define(['jquery', 'backbone', 'abstract/RouteView', 'text!components/accounting/
                     this.template = _.template(template);
                 },
                 loadViews: function() {
-                    var formContainer = $(this.el).find('#authorization-form');
+                    var formContainer = $(this.el).find('.field-left');
                     new AuthView({model: new AuthModel(), el: formContainer});
                 }
             });

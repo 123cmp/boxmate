@@ -4,8 +4,8 @@
  * @extends Backbone.Model
  * @description Model for auth page
  */
-define(['abstract/ValidationFormModel', 'components/main/models/ErrorsCollection', 'text!validation/registration.validate.json'],
-    function(ValidationFormModel, ErrorsCollection, validationRules) {
+define(['abstract/ValidationFormModel', 'components/main/models/ErrorsCollection', 'text!validation/authorization.validate.json', 'api', 'jquery'],
+    function(ValidationFormModel, ErrorsCollection, validationRules, api, $) {
         return ValidationFormModel.extend({
             defaults: {
                 email: {
@@ -24,19 +24,29 @@ define(['abstract/ValidationFormModel', 'components/main/models/ErrorsCollection
                     placeholder: "",
                     errors: new ErrorsCollection()
                 },
-                remember_me: {
-                    title: "Запомнить меня:",
-                    value: "",
-                    type: 'checkbox',
-                    name: "remember_me",
-                    placeholder: "",
-                    errors: new ErrorsCollection()
-                },
+                //remember_me: {
+                //    title: "Запомнить меня:",
+                //    value: "",
+                //    type: 'checkbox',
+                //    name: "remember_me",
+                //    placeholder: "",
+                //    errors: new ErrorsCollection()
+                //},
                 valid: false
             },
 
             save: function() {
-                 return api.authorize(this.toJSON())
+                var self = this;
+                var requestBody = {};
+                $.each(this.toJSON(), function(i, field) {
+                   if(field instanceof Object) requestBody[field.name] = field.value;
+                });
+                var promise = api.authorize(requestBody);
+                promise.fail(function(error) {
+                    if(error.status == 400) self.addError('email', 'Неправильный email или пароль');
+                    self.trigger('error');
+                });
+                return promise
             },
 
             validationRules: validationRules
