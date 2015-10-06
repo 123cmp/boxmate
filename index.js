@@ -9,7 +9,8 @@ var express = require("express"),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     log = require("./modules/myWinston")(module),
-    mongoStore = require("connect-mongo")(session);
+    mongoStore = require("connect-mongo")(session),
+    routes = require("./modules/controllers/");
 
 mongoose.connect('mongodb://dbOwner:dbOwner@carbon.si:27017/mate', {server: { poolSize: 5 }});
 var db = mongoose.connection;
@@ -39,7 +40,10 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 
-var api = require("./modules/api")(app, passport);
+//var api = require("./modules/controllers/index")(app, passport);
+
+app.use("/api", require("./modules/controllers/")(passport));
+
 
 var sendfile = function (res, path) {
     res.sendFile(path, {root: __dirname});

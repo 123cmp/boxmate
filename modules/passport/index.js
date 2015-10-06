@@ -47,11 +47,15 @@ module.exports = function (passport) {
                     // if no user is found, return the message
                     if (!user) {
                         console.log('No user found.');
-                        return done(null, false, req.flash('No user found.'));
+                        return done(null, false, "No user found");
+                    }
+
+                    if (user.deleted){
+                        return done(null, false, "User waiting for deleting");
                     }
                     if (user.password != password) {
-                        console.log('Oops! Wrong password.');
-                        return done(null, false, req.flash('Oops! Wrong password.'));
+                        console.log("wrong pass");
+                        return done(null, false, "Oops! Wrong password");
                     }
                     // all is well, return user
                     else

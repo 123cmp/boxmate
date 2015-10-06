@@ -1,15 +1,9 @@
-var Validate = require("../modules/api/utils").validate,
+var Validate = require("../modules/controllers/utils").validate,
     chai = require("chai"),
     assert = chai.assert,
     expect = chai.expect,
-    validator = require("../modules/utils/Validator"),
-    simple = require("simple-mock"),
-    should = require("chai").should,
-    Q = require("q"),
-    chaiAsPromised = require("chai-as-promised"),
-    fs = require("fs");
-
-//chai.use(chaiAsPromised);
+    fs = require("fs"),
+    sinon = require("sinon");
 
 var body = {
     email: "qwe@qwe.qwe",
@@ -17,46 +11,95 @@ var body = {
     repeat: "qweasd",
     name: "maxim"
 };
-//TODO tests not working
 describe("Validation", function () {
-    describe("Check validate file read when no file", function () {
+    describe("Validation when reedFile error", function () {
 
         var readFile;
         before(function(){
-            readFile = simple.mock(fs, "readFile");
+            readFile = sinon.stub(fs, "readFile").yields("error", "");
+        });
+
+        it("when read file error", function () {
+            return Validate(body, "qqq").then(function(data){
+                expect(data, "Validate return true").have.been.false;
+                expect(readFile.called, "readFile not called").have.been.true;
+                expect(readFile.args[0][0], "Path to file not correct").equal("/home/maxim/Projects/boxmate/qqq.validate.json")
+            });
         });
 
         after(function(){
-            simple.restore();
-        });
-        it("when read file error", function (done) {
-            Validate(body, "qqq").then(function(result){
-                console.log(result);
-                console.log(readFile.called, "called");
-                readFile.called.should.equal(false);
-                done();
-            });
+            fs.readFile.restore();
         });
     });
 
-    //describe("Check validate file read when file no content json", function () {
-    //
-    //    var readFile;
-    //    before(function(){
-    //        fs.writeFile("/home/maxim/Projects/boxmate/test.validate.json");
-    //        readFile = simple.mock(fs, "readFile");
-    //    });
-    //
-    //    after(function(){
-    //        simple.restore();
-    //        fs.unlink("/home/maxim/Projects/boxmate/test.validate.json")
-    //    });
-    //    it("", function () {
-    //        Validate(body, "test").then(function(result){
-    //            result.should.equal(true);
-    //            readFile.called.should.equal(true);
-    //        });
-    //    });
-    //});
+    describe("Check validate when bad response from reedFile", function () {
 
+        var readFile;
+        before(function(){
+            readFile = sinon.stub(fs, "readFile").yields("", 'qqq');
+        });
+
+
+        it("when read file error", function () {
+            return Validate(body, "qqq").then(function(data){
+                expect(data, "Validate return true").false;
+                expect(readFile.called, "readFile not called").true;
+                expect(readFile.args[0][0], "Path to file not correct").equal("/home/maxim/Projects/boxmate/qqq.validate.json")
+            });
+        });
+
+        after(function(){
+            fs.readFile.restore();
+        });
+    });
+
+    describe("Check validate when false from Validator", function () {
+
+        var readFile, validator,
+            Validator = require("../modules/utils/Validator");
+        before(function(){
+            readFile = sinon.stub(fs, "readFile").yields("", '{"email": {}}');
+            validator = sinon.stub(Validator, "Validator").returns({status: false})
+        });
+
+
+        it("when read file error", function () {
+            return Validate(body, "qqq").then(function(data){
+                expect(readFile.called, "readFile not called").true;
+                expect(validator.called, "Validator not called").true;
+                expect(data, "Validate return true").false;
+                expect(readFile.args[0][0], "Path to file not correct").equal("/home/maxim/Projects/boxmate/qqq.validate.json")
+            });
+        });
+
+        after(function(){
+            fs.readFile.restore();
+            Validator.Validator.restore();
+        });
+    });
+
+    describe("Check validate when true from Validator", function () {
+
+        var readFile, validator,
+            Validator = require("../modules/utils/Validator");
+        before(function(){
+            readFile = sinon.stub(fs, "readFile").yields("", '{"email": {}}');
+            validator = sinon.stub(Validator, "Validator").returns({status: true})
+        });
+
+
+        it("when read file error", function () {
+            return Validate(body, "qqq").then(function(data){
+                expect(readFile.called, "readFile not called").true;
+                expect(validator.called, "Validator not called").true;
+                expect(data, "Validate return true").true;
+                expect(readFile.args[0][0], "Path to file not correct").equal("/home/maxim/Projects/boxmate/qqq.validate.json")
+            });
+        });
+
+        after(function(){
+            fs.readFile.restore();
+            Validator.Validator.restore();
+        });
+    });
 });

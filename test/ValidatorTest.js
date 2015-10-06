@@ -1,4 +1,4 @@
-var Validator = require("../modules/utils/Validator"),
+var Validator = require("../modules/utils/Validator").Validator,
     assert = require("chai").assert,
     expect = require("chai").expect;
 

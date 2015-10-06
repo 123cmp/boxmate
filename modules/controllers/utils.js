@@ -1,23 +1,29 @@
 var fs = require('fs'),
+    Q = require("q"),
     log = require("../myWinston")(module),
+    validator = require("../utils/Validator"),
     validationFilesPath = "/home/maxim/Projects/boxmate/",
     validationFilePrefix = ".validate.json",
-    Q = require("q"),
-    validator = require("../utils/Validator"),
     conditions;
 
 module.exports.validate = function (body, name) {
     return Q.nfcall(fs.readFile, validationFilesPath + name + validationFilePrefix).then(function (data) {
-        conditions = (JSON.parse(data));
+        try{
+            conditions = (JSON.parse(data));
+        } catch(err){
+            console.log(err);
+            return false;
+        }
+
         for (value in body) {
             if (conditions[value]) {
                 if(conditions[value].equals){
-                    var result = validator(body[value], body[conditions[value].equals.value], conditions[value]);
+                    var result = validator.Validator(body[value], body[conditions[value].equals.value], conditions[value]);
                 } else {
-                    var result = validator(body[value], null, conditions[value]);
+
+                    var result = validator.Validator(body[value], null, conditions[value]);
                 }
                 if (!result.status) {
-                    console.log(result);
                     log.info("send false 1");
                     return false;
                 }
@@ -26,8 +32,6 @@ module.exports.validate = function (body, name) {
         log.info("send true");
         return true;
     }, function (err) {
-        console.log(err);
-        log.info("send false 2");
         return false;
     });
 };

@@ -1,6 +1,6 @@
 var res;
 
-module.exports = function (value, repeatValue, conditions) {
+module.exports.Validator = function Validator (value, repeatValue, conditions) {
     for (condition in conditions) {
         if (condition == "required") {
             if (!value && conditions[condition].value) return {status: false, message: conditions[condition].message};
