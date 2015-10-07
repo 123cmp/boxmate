@@ -43,7 +43,7 @@ define(['abstract/ValidationFormModel', 'components/main/models/ErrorsCollection
                 });
                 var promise = api.authorize(requestBody);
                 promise.fail(function(error) {
-                    if(error.status == 400) self.addError('email', 'Неправильный email или пароль');
+                    if(error.status == 401) self.addError('email', 'Неправильный email или пароль');
                     self.trigger('error');
                 });
                 return promise

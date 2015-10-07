@@ -1,197 +1,98 @@
-<section class="panel project-page">
+<div class="container ">
     <div class="row">
-        <div class="columns large-5 medium-4 small-12 left">
-            <div class="scalable-thumbnails">
-                <div class="block-input left">
-                    <input type="text" placeholder="Название проекта" />
-                    <i class="fa fa-pencil"></i>
-                </div>
-                <div class="list-project-pages">
-                    <div class="mapping-project large-3 medium-3 small-3">
-                        <a href="#">
-                            <img src="/front/assets/avatar.png">
-                        </a>
-                    </div>
-                    <div class="mapping-project large-3 medium-3 small-3">
-                        <a href="#">
-                            <img src="/front/assets/avatar.png">
-                        </a>
-                    </div>
-                    <div class="mapping-project large-3 medium-3 small-3">
-                        <a href="#">
-                            <img src="/front/assets/avatar.png">
-                        </a>
-                    </div>
-                    <div class="mapping-project large-3 medium-3 small-3">
-                        <a href="#">
-                            <img src="/front/assets/avatar.png">
-                        </a>
-                    </div>
-                    <div class="mapping-project large-3 medium-3 small-3">
-                        <a href="#">
-                            <img src="/front/assets/avatar.png">
-                        </a>
-                    </div>
-                    <div class="mapping-project large-3 medium-3 small-3">
-                        <a href="#">
-                            <img src="/front/assets/avatar.png">
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="title">
+            <h1>Список проектов</h1>
         </div>
-        <div class="columns large-7 medium-8 small-12 right">
-            <div class="block-list-user">
-                <div class="user-instrument ">
-                    <ul>
-                        <li>
-                            <button>
-                                <i class="fa fa-pencil"></i>
-                             </button>
-                        </li>
-                        <li>
-                            <button>
-                                <i class="fa fa-times-circle"></i>
+    </div>
+</div>
+<section class="clear project_edit ">
+    <div class="container ">
+        <div class="row">
+            <div class="new-project">
+                <h1><%= model.name %></h1>
+            </div>
+            <div class="wrapper-centre-block ">
+                <div class="block-layout col-lg-9 col-md-8 col-sm-7 col-xs-12">
+                    <% $.each(model.images, function(i, image) {
+                        var url = "/api/images/" + image;
+                    %>
+                        <div class="display-layout col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                            <button class="layout">
+                                <img src="<%= url %>">
                             </button>
-                        </li>
-                        <li>
-                            <button>
-                                <i class="fa fa-trash-o"></i>
+                                <span class="name-layout">
+                                    Название макета
+                                </span>
+                        </div>
+                    <% }); %>
+
+                    <div class="display-layout add-layouts col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <div class="layout">
+                            <button class="btn  btn-add-layouts" type="button">
+                                <i class="fa fa-plus"></i>
                             </button>
-                        </li>
-                    </ul>
+                        </div>
+                            <span class="name-layout">
+                                Добавить макет
+                            </span>
+                    </div>
                 </div>
-                 <div class="list-user">
-                     <ul>
-                         <li class="  ">
-                             <img class="left" src="/front/assets/avatar.png" class="bm-avatar">
-                             <p class="name-user "> Имя пользователя</p>
-                         </li>
-                         <li class="">
-                             <img class="left" src="/front/assets/avatar.png" class="bm-avatar">
-                             <p class="name-user "> Имя пользователя</p>
-                         </li>
-                         <li class="">
-                             <img class="left" src="/front/assets/avatar.png" class="bm-avatar">
-                             <p class="name-user  "> Имя пользователя</p>
-                         </li>
-                         <li class="">
-                             <img class="left" src="/front/assets/avatar.png" class="bm-avatar">
-                             <p class="name-user "> Имя пользователя</p>
-                         </li>
-                         <li class="">
-                             <img class="left" src="/front/assets/avatar.png" class="bm-avatar">
-                             <p class="name-user "> Имя пользователя</p>
-                         </li>
-                         <li class="">
-                             <img class="left" src="/front/assets/avatar.png" class="bm-avatar">
-                             <p class="name-user "> Имя пользователя</p>
-                         </li>
-                         <li class="">
-                             <img class="left" src="/front/assets/avatar.png" class="bm-avatar">
-                             <p class="name-user "> Имя пользователя</p>
-                         </li>
-                         <li class="">
-                             <img class="left" src="/front/assets/avatar.png" class="bm-avatar">
-                             <p class="name-user "> Имя пользователя</p>
-                         </li>
-                         <li class="">
-                             <img class="left" src="/front/assets/avatar.png" class="bm-avatar">
-                             <p class="name-user "> Имя пользователя</p>
-                         </li>
-                         <li class="add-user ">
-                         </li>
-                     </ul>
-                     <div class="description-project left">
-                         <ul>
-                             <li class="read">
-                                 <p>
-                                     Task-1
-                                 </p>
-                                 <i class="fa fa-angle-down"></i>
-                                 <i class="fa fa-angle-up"></i>
-                                 <div class="watch-description">
-                                     <p>Итак, нашей целью является разработка повторно используемого
-                                         компонента для MarionetteJS, занимающегося визуализацией
-                                         процесса загрузки. Как будет показано дальше, в случае
-                                         Backbone/Marionette события начала и окончания загрузки
-                                         можно считать частным случаем изменения состояния модели,
-                                         поэтому назначение этого компонента можно сформулировать
-                                         более абстрактно как визуализацию изменения состояния модели.
-                                     </p>
-                                 </div>
-                             </li>
-                             <li>
-                                 <p>
-                                     Task-2
-                                 </p>
-                                 <i class="fa fa-angle-down"></i>
-                                 <i class="fa fa-angle-up"></i>
-                                 <div class="watch-description">
-                                     <p>Итак, нашей целью является разработка повторно используемого
-                                         компонента для MarionetteJS, занимающегося визуализацией
-                                         процесса загрузки. Как будет показано дальше, в случае
-                                         Backbone/Marionette события начала и окончания загрузки
-                                         можно считать частным случаем изменения состояния модели,
-                                         поэтому назначение этого компонента можно сформулировать
-                                         более абстрактно как визуализацию изменения состояния модели.
-                                     </p>
-                                 </div>
-                             </li>
-                             <li>
-                                 <p>
-                                     Task-3
-                                 </p>
-                                 <i class="fa fa-angle-down"></i>
-                                 <i class="fa fa-angle-up"></i>
-                                 <div class="watch-description">
-                                     <p>Итак, нашей целью является разработка повторно используемого
-                                         компонента для MarionetteJS, занимающегося визуализацией
-                                         процесса загрузки. Как будет показано дальше, в случае
-                                         Backbone/Marionette события начала и окончания загрузки
-                                         можно считать частным случаем изменения состояния модели,
-                                         поэтому назначение этого компонента можно сформулировать
-                                         более абстрактно как визуализацию изменения состояния модели.
-                                     </p>
-                                 </div>
-                             </li>
-                             <li>
-                                 <p>
-                                     Task-4
-                                 </p>
-                                 <i class="fa fa-angle-down"></i>
-                                 <i class="fa fa-angle-up"></i>
-                                 <div class="watch-description">
-                                     <p>Итак, нашей целью является разработка повторно используемого
-                                         компонента для MarionetteJS, занимающегося визуализацией
-                                         процесса загрузки. Как будет показано дальше, в случае
-                                         Backbone/Marionette события начала и окончания загрузки
-                                         можно считать частным случаем изменения состояния модели,
-                                         поэтому назначение этого компонента можно сформулировать
-                                         более абстрактно как визуализацию изменения состояния модели.
-                                     </p>
-                                 </div>
-                             </li>
-                             <li>
-                                 <p>
-                                     Task-5
-                                 </p>
-                                 <i class="fa fa-angle-down"></i>
-                                 <i class="fa fa-angle-up"></i>
-                                 <div class="watch-description">
-                                     <p>Итак, нашей целью является разработка повторно используемого
-                                         компонента для MarionetteJS, занимающегося визуализацией
-                                         процесса загрузки. Как будет показано дальше, в случае
-                                         Backbone/Marionette события начала и окончания загрузки
-                                         можно считать частным случаем изменения состояния модели,
-                                         поэтому назначение этого компонента можно сформулировать
-                                         более абстрактно как визуализацию изменения состояния модели.
-                                     </p>
-                                 </div>
-                             </li>
-                         </ul>
-                     </div>
-                 </div>
+                <div class="control-unit-layouts col-lg-3 col-md-4 col-sm-5 col-xs-12 ">
+                    <div class="editing-unit col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <button class="btn  btn-edition" type="button">
+                                <span><i class="fa fa-pencil-square-o"></i> Скрыть проект
+                                      </span>
+                        </button>
+                        <button class="btn  btn-edition" type="button">
+                                <span><i class="fa fa-trash-o"></i> Удалить проект
+                                      </span>
+                        </button>
+                        <button class="btn  btn-edition" type="button">
+                                 <span><i class="fa fa-link"></i> Скопировать ссылку
+                                      </span>
+                        </button>
+                        <button class="btn  btn-edition" type="button">
+                               <span><i class="fa fa-check-square-o"></i> Утверждён
+                                      </span>
+                        </button>
+                        <button class="btn  btn-edition" type="button">
+                               <span><i class="fa fa-commenting-o"></i> Описание проекта
+                                      </span>
+                        </button>
+                    </div>
+                    <div class="wrapper-participants-project ">
+                        <span class="title-list">  Участники: </span>
+                        <div class="participants-project">
+                            <% $.each(model.users, function(i, user) { %>
+                                <a href="<%= user.href %>" class="btn btn-user">
+                                    <img src="<%= user.image %>>">
+                                    <div class="description-user">
+                                          <span class="name-user"> <%= user.name %>
+                                          </span>
+                                            <span class="post"> <%= user.position %>
+                                          </span>
+                                    </div>
+                                </a>
+                            <% }); %>
+                            <button type="button" class="btn btn-user ">
+                                <div class="add-yser-img"></div>
+                                <div class="description-user">
+                                        <span class="new-user">
+                                            Новый участник
+                                      </span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="block-btn">
+                            <button type="button" class="btn btn-default btn-save">Сохранить</button>
+                            <button type="button" class="btn btn-default btn-close">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

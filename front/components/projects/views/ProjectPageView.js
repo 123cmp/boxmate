@@ -1,9 +1,12 @@
-define(['backbone', 'text!components/projects/templates/ProjectTemplate.html'],
+define(['backbone', 'text!components/projects/templates/ProjectPageTemplate.html'],
     function(bb, template) {
         return bb.View.extend({
             initialize: function() {
-                this.template = _.template(template);
-                this.render();
+                var self = this;
+                self.template = _.template(template);
+                self.model.fetch().then(function() {
+                    self.render();
+                });
             },
 
             render: function () {

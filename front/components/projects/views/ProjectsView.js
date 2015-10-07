@@ -10,7 +10,6 @@ define(['backbone', 'text!components/projects/templates/ProjectsTemplate.html'],
             },
 
             render: function () {
-                console.log("render", this.model.toJSON());
                 if (this.template && this.$el) $(this.$el).html(this.template({model: this.model.toJSON()}));
             }
         })
